@@ -21,7 +21,8 @@ clock-numbers-algebra
                    '?))
 (puzzle-card (rule ' (sub 0 4)
                    '?))
-
+(puzzle-card (rule ' (sub 4 4)
+                   '?))
 
 
 
