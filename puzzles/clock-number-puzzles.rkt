@@ -16,3 +16,6 @@ clock-numbers-algebra
 (puzzle-card (rule '(add 0 1)
                    '?))
 
+;my new puzzle
+(puzzle-card (rule (tail (cons T T))
+              '?))
