@@ -239,3 +239,6 @@
                        (or T F)
                        (not T)))
                    ' ?))
+
+(puzzle-card (rule '(or T F)
+                   '?))

@@ -84,3 +84,10 @@
                               (and (or T T)
                                    F))))
                       '?))))
+
+   (puzzle-card (rule '(not
+                        (not
+                         (and F
+                              (and (or T F)
+                                   F))))
+                      '?))))
