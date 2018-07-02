@@ -13,12 +13,22 @@
 
 ;More puzzles here...
 (puzzle-card (rule '(and T
-                         (or F T(not T F))
-                         '?)))
+
+                         (or F T(not T F)))
+                         '?))
+
+
 
 (puzzle-card (rule '(or F
                         (not T))
                    '?))
+
+;adding my puzzle here...
+(puzzle-card (rule '(and
+                     (and F F)
+                     (or T (and T T)))
+                   '?))
+
 
 (puzzle-card (rule '(and
                      (not (or T F))
@@ -181,15 +191,15 @@
 
 ;2
 (puzzle-card (rule '(and F
-                        (and F
-                             (and T T)))
+                         (and F
+                              (and T T)))
                    '?))
 
 ;3
 (puzzle-card (rule '(not
-                    (or
-                     (or F F)
-                     (and F F)))
+                     (or
+                      (or F F)
+                      (and F F)))
                    '?))
 
 ;4
@@ -246,6 +256,16 @@
                    '?))
 
 
+(puzzle-card (rule ' (and
+                      (not
+                       (or T)
+                       (and T F))
+                      (and
+                       (and T F)
+                       (or F)))
+                   '?))
+
+
 (puzzle-card (rule ' (not
                       (and
                        (or
@@ -257,6 +277,7 @@
                    ' ?))
 
 
+
 (puzzle-card (rule ' (not
                       (or
                        (and T F)
@@ -265,15 +286,17 @@
                        (not T F)
                        (not T)))
                    ' ?))
-                   
- (puzzle-card (rule ' (or 
-                       (and T F)
-                         (or 
-                          (or 
-                           (or T F)))
-                       '?)))
 
- (puzzle-card (rule ' (not
+                   
+(puzzle-card (rule ' (or 
+                      (and T F)
+                      (or 
+                       (or 
+
+                        (or T F))))
+                      '?))
+
+(puzzle-card (rule ' (not
                       (or
                        (and T F)
                        (or T F))
@@ -281,3 +304,33 @@
                        (not T F)
                        (not T)))
                    ' ?))
+
+(puzzle-card (rule ' (or
+                      (or
+                       (or F)
+                       (and F T))
+                      (and
+                       (and T F)
+                       (or F)))
+                   '?))
+
+
+;Puzzles
+
+(puzzle-card (rule '(and
+                     (not (or T F))
+                     (and T (or F T)))
+                   '?))
+
+(puzzle-card (rule '(not
+                     (not
+                      (and F
+                           (and (or T T)
+                                F))))
+                   '?))
+
+(puzzle-card (rule '(not
+                     (and
+                      (and T
+                           (and T (or F T)))))
+                   '?))
