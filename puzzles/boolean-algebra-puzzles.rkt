@@ -12,9 +12,18 @@
 
 
 ;More puzzles here...
+(puzzle-card (rule '(and T
+                         (or F T(not T F)))
+                         '?))
 
 (puzzle-card (rule '(or F
                         (not T))
+                   '?))
+
+;adding my puzzle here...
+(puzzle-card (rule '(and
+                     (and F F)
+                     (or T (and T T)))
                    '?))
 
 (puzzle-card (rule '(and
@@ -241,7 +250,6 @@
                        (or T F)
                        (not T)))
                    '?))
-<<<<<<< HEAD
 
 (puzzle-card (rule ' (not
                       (and
@@ -252,12 +260,10 @@
                         (not F)
                         (not F))))
                    ' ?))
-=======
                    
  (puzzle-card (rule ' (or 
                        (and T F)
                          (or 
                           (or 
-                           (or T F)))
+                           (or T F))))
                        '?))
->>>>>>> b80390c7c461ed7323e4870abc3b6ba7ad27ae8b
