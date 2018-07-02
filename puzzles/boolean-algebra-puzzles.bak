@@ -12,9 +12,6 @@
 
 
 ;More puzzles here...
-(puzzle-card (rule '(and T
-                         (or F T(not T F))
-                         '?))
 
 (puzzle-card (rule '(and
                      (not (or T F))
