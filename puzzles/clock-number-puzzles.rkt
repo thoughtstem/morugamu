@@ -21,3 +21,6 @@ list-algebra
 (puzzle-card (rule '(tail (head (cons (cons T nil) nil)))
                    '?))
 
+;my new puzzle
+(puzzle-card (rule (tail (cons T T))
+              '?))
