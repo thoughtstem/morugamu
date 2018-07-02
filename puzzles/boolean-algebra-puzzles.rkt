@@ -16,6 +16,10 @@
                          (or F T(not T F))
                          '?))
 
+(puzzle-card (rule '(or F
+                        (not T))
+                   '?))
+
 (puzzle-card (rule '(and
                      (not (or T F))
                      (and T (or F T)))
@@ -176,15 +180,13 @@
                    '?))
 
 ;2
-(puzzle-card (rule '
-                   (and F
+(puzzle-card (rule '(and F
                         (and F
                              (and T T)))
                    '?))
 
 ;3
-(puzzle-card (rule '
-                   (not
+(puzzle-card (rule '(not
                     (or
                      (or F F)
                      (and F F)))
@@ -218,13 +220,13 @@
                       (or F F))
                      (and F
                           (not F)))
-                   ' ?))
+                   '?))
 
 (puzzle-card (rule ' (and
                       (not F)
                       (not
                        (or T F)))
-                   ' ?))
+                   '?))
 
 (puzzle-card (rule ' (not
                       (or
@@ -232,7 +234,7 @@
                       (and T
                            (not
                             (and T T))))
-                   ' ?))
+                   '?))
 
 (puzzle-card (rule ' (or
                       (or
@@ -241,4 +243,11 @@
                       (and
                        (or T F)
                        (not T)))
-                   ' ?))
+                   '?))
+                   
+ (puzzle-card (rule ' (or 
+                       (and T F)
+                         (or 
+                          (or 
+                           (or T F)))
+                       '?))
