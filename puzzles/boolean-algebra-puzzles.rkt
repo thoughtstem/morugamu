@@ -239,3 +239,12 @@
                        (or T F)
                        (not T)))
                    ' ?))
+
+(puzzle-card (rule ' (not
+                      (or
+                       (and T F)
+                       (or T F))
+                      (and
+                       (not T F)
+                       (not T)))
+                   ' ?))
