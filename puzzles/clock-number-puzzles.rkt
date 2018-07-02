@@ -15,4 +15,10 @@ clock-numbers-algebra
 
 (puzzle-card (rule '(add 0 1)
                    '?))
+(puzzle-card (rule '(add 1 2)
+                   '?))
+
+
+
+
 
