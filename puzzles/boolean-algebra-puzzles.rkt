@@ -281,7 +281,7 @@
                           (or 
                            (or T F))))
                        '?))
-(puzzle-card (rule ' (or
+(puzzle-card (rule ' (not
                       (or
                        (or F)
                        (and F T))
