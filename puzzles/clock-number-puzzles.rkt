@@ -15,6 +15,17 @@ clock-numbers-algebra
 
 (puzzle-card (rule '(add 0 1)
                    '?))
+(puzzle-card (rule '(add 1 2)
+                   '?))
+(puzzle-card (rule '(add 2 3)
+                   '?))
+
+
+
+
+
+
+
 
 ;my new puzzle
 (puzzle-card (rule (tail (cons T T))
