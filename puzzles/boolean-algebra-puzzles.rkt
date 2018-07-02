@@ -240,5 +240,8 @@
                        (not T)))
                    ' ?))
 
-(puzzle-card (rule '(or T F)
-                   '?))
+(puzzle-card (rule ' (and
+                      (not F)
+                      (not
+                       (or T F)))
+                   ' ?))
