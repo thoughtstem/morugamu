@@ -20,6 +20,12 @@
                         (not T))
                    '?))
 
+;adding my puzzle here...
+(puzzle-card (rule '(and
+                     (and F F)
+                     (or T (and T T)))
+                   '?))
+
 (puzzle-card (rule '(and
                      (not (or T F))
                      (and T (or F T)))
