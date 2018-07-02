@@ -70,22 +70,4 @@
 
    
 
-
-   ;Puzzles
-
-   (puzzle-card (rule '(and
-                        (not (or T F))
-                        (and T (or F T)))
-                      '?))
-
-   (puzzle-card (rule '(not
-                        (not
-                         (and F
-                              (and (or T T)
-                                   F))))
-                      '?))))
-  (puzzle-card(rule '(not
-                      (and
-                       (and T
-                            (and T (or F T)))
-                       '?))))
+))
