@@ -19,6 +19,8 @@ clock-numbers-algebra
                    '?))
 (puzzle-card (rule '(add 2 3)
                    '?))
+(puzzle-card (rule ' (sub 0 4)
+                   '?))
 
 
 
