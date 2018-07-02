@@ -1,0 +1,1 @@
+("6.9" ("246b1cc2fae51142db19c4d26b6ff6cfa2c1a004" . "c0e323f3b8ea19448c77135bdfe8f5676ad4abeb") #"/Users/thoughtstem/Dev/ParenGames/themes/../boolean-algebra-cards.rkt" (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

@@ -1,0 +1,1 @@
+("6.9" ("00eb0db9f4beaef7cbece554b69a435ebee620d7" . "193c262276f6caedc61c0700948a154caae7578d") #"/Users/thoughtstem/Dev/ParenGames/themes/../clock-number-cards.rkt" (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
