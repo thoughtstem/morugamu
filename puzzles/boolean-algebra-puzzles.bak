@@ -173,13 +173,23 @@
                    '?))
 
 ;2
+<<<<<<< HEAD
 (puzzle-card (rule '(and F
+=======
+(puzzle-card (rule '
+                   (and F
+>>>>>>> 431fa76a95450c3641ebf672be0ef5edbcb7c188
                         (and F
                              (and T T)))
                    '?))
 
 ;3
+<<<<<<< HEAD
 (puzzle-card (rule '(not
+=======
+(puzzle-card (rule '
+                   (not
+>>>>>>> 431fa76a95450c3641ebf672be0ef5edbcb7c188
                     (or
                      (or F F)
                      (and F F)))
@@ -213,13 +223,21 @@
                       (or F F))
                      (and F
                           (not F)))
+<<<<<<< HEAD
                    '?))
+=======
+                   ' ?))
+>>>>>>> 431fa76a95450c3641ebf672be0ef5edbcb7c188
 
 (puzzle-card (rule ' (and
                       (not F)
                       (not
                        (or T F)))
+<<<<<<< HEAD
                    '?))
+=======
+                   ' ?))
+>>>>>>> 431fa76a95450c3641ebf672be0ef5edbcb7c188
 
 (puzzle-card (rule ' (not
                       (or
@@ -227,7 +245,11 @@
                       (and T
                            (not
                             (and T T))))
+<<<<<<< HEAD
                    '?))
+=======
+                   ' ?))
+>>>>>>> 431fa76a95450c3641ebf672be0ef5edbcb7c188
 
 (puzzle-card (rule ' (or
                       (or
@@ -236,4 +258,8 @@
                       (and
                        (or T F)
                        (not T)))
+<<<<<<< HEAD
                    '?))
+=======
+                   ' ?))
+>>>>>>> 431fa76a95450c3641ebf672be0ef5edbcb7c188

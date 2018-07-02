@@ -13,6 +13,10 @@
 
 ;More puzzles here...
 
+(puzzle-card (rule '(or F
+                        (not T))
+                   '?))
+
 (puzzle-card (rule '(and
                      (not (or T F))
                      (and T (or F T)))
