@@ -244,6 +244,18 @@
                        (or T F)
                        (not T)))
                    '?))
+<<<<<<< HEAD
+
+(puzzle-card (rule ' (not
+                      (and
+                       (or
+                        (not T)
+                        (not F))
+                       (and
+                        (not F)
+                        (not F))))
+                   ' ?))
+=======
                    
  (puzzle-card (rule ' (or 
                        (and T F)
@@ -251,3 +263,4 @@
                           (or 
                            (or T F)))
                        '?))
+>>>>>>> b80390c7c461ed7323e4870abc3b6ba7ad27ae8b
