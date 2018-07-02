@@ -14,7 +14,7 @@
 ;More puzzles here...
 (puzzle-card (rule '(and T
                          (or F T(not T F))
-                         '?))
+                         '?)))
 
 (puzzle-card (rule '(or F
                         (not T))
@@ -244,7 +244,7 @@
                        (or T F)
                        (not T)))
                    '?))
-<<<<<<< HEAD
+
 
 (puzzle-card (rule ' (not
                       (and
@@ -255,7 +255,7 @@
                         (not F)
                         (not F))))
                    ' ?))
-<<<<<<< HEAD
+
 
 (puzzle-card (rule ' (not
                       (or
@@ -265,14 +265,19 @@
                        (not T F)
                        (not T)))
                    ' ?))
-=======
-=======
                    
  (puzzle-card (rule ' (or 
                        (and T F)
                          (or 
                           (or 
                            (or T F)))
-                       '?))
->>>>>>> b80390c7c461ed7323e4870abc3b6ba7ad27ae8b
->>>>>>> a228ac494a7bdbf43623482ce025314d12c48ec6
+                       '?)))
+
+ (puzzle-card (rule ' (not
+                      (or
+                       (and T F)
+                       (or T F))
+                      (and
+                       (not T F)
+                       (not T)))
+                   ' ?))
