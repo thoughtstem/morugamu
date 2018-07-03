@@ -1,1 +1,0 @@
-("6.12" ("246b1cc2fae51142db19c4d26b6ff6cfa2c1a004" . "55e0bd94b1f03dc1c8d4d12027b87d814d8be877") #"/Users/BazingaKid/morugamu/themes/../boolean-algebra-cards.rkt" (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
