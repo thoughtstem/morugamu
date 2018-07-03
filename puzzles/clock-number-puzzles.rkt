@@ -45,3 +45,17 @@ clock-numbers-algebra
 ;my new puzzle
 #;(puzzle-card (rule (tail (cons T T))
               '?))
+
+;Julia's new puzzles
+(puzzle-card (rule '(add 0 0)
+                   '?))
+(puzzle-card (rule '(add 3 7)
+                   '?))
+(puzzle-card (rule '(add 9 3)
+                   '?))
+(puzzle-card (rule '(sub 4 8)
+                   '?))
+(puzzle-card (rule '(sub 2 7)
+                   '?))
+(puzzle-card (rule '(sub 1 1)
+                   '?))
