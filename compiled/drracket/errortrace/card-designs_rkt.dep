@@ -1,0 +1,1 @@
+("6.12" ("23f350fea6f0ba017af0f2dc946db6aff9aff385" . "0d8ced39cc4ab2df57eef9620c3125ee90c2a56a") #"/Users/BazingaKid/morugamu/./config.rkt" (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
