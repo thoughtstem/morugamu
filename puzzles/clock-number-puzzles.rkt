@@ -26,6 +26,10 @@ clock-numbers-algebra
 
 
 
+;Hi, this is Sean's puzzle
+(puzzle-card (rule ' (S (P 4))
+                   '?))
+
 
 
 
