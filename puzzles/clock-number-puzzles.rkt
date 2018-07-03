@@ -25,11 +25,12 @@ clock-numbers-algebra
                    '?))
 
 
-
-
+;Hi, this is Sean's puzzle
+(puzzle-card (rule ' (S (P 4))
+                   '?))
 
 
 
 ;my new puzzle
-(puzzle-card (rule (tail (cons T T))
+#;(puzzle-card (rule (tail (cons T T))
               '?))

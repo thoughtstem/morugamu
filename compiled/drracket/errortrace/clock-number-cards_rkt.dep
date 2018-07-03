@@ -1,0 +1,1 @@
+("6.12" ("8f9394c8e2a81547c4d8b18631983400356a67ba" . "24d617e8966538487a24cdf54fbd07aea3d96ad8") #"/Users/BazingaKid/morugamu/./card-designs.rkt" #"/Users/BazingaKid/morugamu/./rules.rkt" (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
