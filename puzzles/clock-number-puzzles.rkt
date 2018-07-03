@@ -30,6 +30,14 @@ clock-numbers-algebra
 (puzzle-card (rule ' (S (P 4))
                    '?))
 
+(puzzle-card (rule ' (S (P 9))
+                   '?))
+
+(puzzle-card (rule ' (add (2 6))
+                   '?))
+
+(puzzle-card (rule ' (sub (4 5))
+                   '?))
 
 
 
