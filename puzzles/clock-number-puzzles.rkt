@@ -59,3 +59,17 @@ clock-numbers-algebra
                    '?))
 (puzzle-card (rule '(sub 1 1)
                    '?))
+(puzzle-card (rule '(add
+                     (sub 4 6)
+                     (add 1 2))
+                   '?))
+(puzzle-card (rule '(sub
+                     (add 2 (add 3 6))
+                     (sub (sub 1 1) (add 3 6)))
+                   '?))
+(puzzle-card (rule '(add
+                     (sub
+                      (add 2 5)
+                      4)
+                     (add 2 5))
+                   '?))
