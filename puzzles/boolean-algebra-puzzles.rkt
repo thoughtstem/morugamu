@@ -187,6 +187,14 @@
                      (and F F)))
                    '?))
 
+(puzzle-card (rule '
+                   (not
+                    (and
+                     (or F F)
+                     (and F F)))
+                   '?))
+
+
 ;4
 (puzzle-card (rule '
                    (not
