@@ -31,5 +31,5 @@ clock-numbers-algebra
 
 
 ;my new puzzle
-(puzzle-card (rule (tail (cons T T))
+#;(puzzle-card (rule (tail (cons T T))
               '?))
