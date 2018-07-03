@@ -18,6 +18,11 @@
                      (and T (or F T)))
                    '?))
 
+(puzzle-card (rule '(or
+                     (not (or T F))
+                     (or T (or F T)))
+                   '?))
+
 (puzzle-card (rule '(not
                      (not
                       (and F
