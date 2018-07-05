@@ -2,6 +2,12 @@
 
 The most awesome summer intern project of 2018!
 
+Docs can be found in 
+
+```
+internal-docs/morugamu/index.html
+```
+
 
 Step 1.  Make a github account!  Ask someone (Stephen) to add you to this repository. 
 
