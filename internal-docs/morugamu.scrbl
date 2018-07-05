@@ -106,7 +106,29 @@ Here's the current documentation for the existing libraries:
 
 @subsection{Boolean Algebra}
 
-**** COming soon... ****
+Here's an example of importing the boolean algebra rules, along with a theme, and rendering out those rule cards according to the theme.
+
+@racketblock[
+	(require
+	  (prefix-in bool: "../boolean-algebra-cards.rkt")
+	  (prefix-in bool: "../themes/emoji-boolean-algebra.rkt"))
+
+	(define boolean-algebra
+	  (bool:render bool:theme))
+]
+
+Note the use of the render function.  Here's how it works:
+
+@defproc[(render [theme theme?])
+         (listof image?)]{
+
+This takes in a theme (TODO: Define what a theme is), and produces a list of images of rule cards and symbols.  The symbols are the first thing in the list and they are arranged in a table to facilitate printing.  The rule cards follow the symbol page.  There may be 1 or more rule cards, depending on the particular algebra being rendered.
+
+TODO: Give an example of the output...
+
+}
+
+
 
 @subsection{Clock Numbers}
 

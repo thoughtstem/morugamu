@@ -255,7 +255,7 @@
                        (not T)))
                    '?))
 
-<<<<<<< HEAD
+
 
 (puzzle-card (rule ' (and
                       (not
