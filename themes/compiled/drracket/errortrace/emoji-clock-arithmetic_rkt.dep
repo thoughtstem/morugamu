@@ -1,1 +1,0 @@
-("6.12" ("dc0bede92cb15ebaeef12c7bccac17d4e6e1a52c" . "bb443d1d504d62590a9e3bbeb272dd3ccf178a88") #"C:\\Users\\Julia\\morugamu\\themes\\..\\clock-number-cards.rkt" (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

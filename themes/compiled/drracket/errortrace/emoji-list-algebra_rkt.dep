@@ -1,1 +1,0 @@
-("6.12" ("22c29657ad70401a5d2c4650a67e53f21e247dea" . "9e2518225562ef79bb9d3b6474720d34b23fce0c") #"/Users/BazingaKid/morugamu/themes/../list-algebra-cards.rkt" (collects #"2htdp" #"image.rkt") (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))
