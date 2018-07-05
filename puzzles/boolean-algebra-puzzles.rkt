@@ -255,6 +255,7 @@
                        (not T)))
                    '?))
 
+<<<<<<< HEAD
 
 (puzzle-card (rule ' (and
                       (not
@@ -341,3 +342,12 @@
                       (and T
                            (and T (or F T)))))
                    '?))
+
+(puzzle-card (rule ' (and
+                      (and
+                       (or T F)
+                       (and T F))
+                       (or
+                        (and T F)
+                        (not F)))
+                      '?))
