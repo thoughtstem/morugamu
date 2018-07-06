@@ -8,9 +8,17 @@ Game rules and modes
 
 CONTENTS
 
-Puzzle cards (Easy, Medium, Hard)
+Puzzle cards (Easy, Medium, Hard)(Like the one pictured below)
 
-Rules
+@image["./puzzle-example.png"]
+
+Rule Cards(like the one picture below)
+@require[
+         (prefix-in bool: "../boolean-algebra-cards.rkt")]
+@require[
+         (prefix-in bool: "../themes/emoji-boolean-algebra.rkt")]
+@define[ba-cards (bool:render bool:theme)]
+@second[ba-cards]
 
 Game Tiles
 
