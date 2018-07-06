@@ -19,8 +19,8 @@ clock-numbers-algebra
 ;Function rand-element
 ;randomly returns one item from the specified list (list-in)
 (define (rand-element list-in) 
-   (first (shuffle list-in) )
-)
+  (first (shuffle list-in) )
+  )
 
 ;Generate either an 'and or an 'or and put that in the variable output
 ;Simon random number generator: ,(+ 0 (random 10))
@@ -44,7 +44,7 @@ clock-numbers-algebra
 
 ;puzzle structure #3
 (puzzle-card (rule `(,(rand-element two-op-clock) ,(+ 0 (random 10))
-                     (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))))
+                                                  (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))))
                    '?))
 
 ;NEW CODE TEST
@@ -64,25 +64,80 @@ clock-numbers-algebra
 
 (if (eq? num 0)
     (set! puzzle-list (cons `(,(rand-element two-op-clock)
-                     ,(+ 0 (random 10))
-                     ,(+ 0 (random 10))) puzzle-list))
-(if (eq? num 1)
+                              ,(+ 0 (random 10))
+                              ,(+ 0 (random 10))) puzzle-list))
+    (if (eq? num 1)
         (set! puzzle-list (cons  `(,(rand-element two-op-clock)
-                     (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10)))
-                     (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10)))) puzzle-list))
+                                   (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10)))
+                                   (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10)))) puzzle-list))
 
-(if (eq? num 2)
-        (set! puzzle-list (cons `(,(rand-element two-op-clock)
-                     (,(rand-element two-op-clock) ,(+ 0 (random 10)) (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))))
-                     (,(rand-element two-op-clock) (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))) ,(+ 0 (random 10)))
-                     ) puzzle-list))
+        (if (eq? num 2)
+            (set! puzzle-list (cons `(,(rand-element two-op-clock)
+                                      (,(rand-element two-op-clock) ,(+ 0 (random 10)) (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))))
+                                      (,(rand-element two-op-clock) (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))) ,(+ 0 (random 10)))
+                                      ) puzzle-list))
 
- ;else
-        (set! puzzle-list (cons `(,(rand-element two-op-clock) ,(+ 0 (random 10))
-                     (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10)))) puzzle-list))
-         )))
+            ;else
+            (set! puzzle-list (cons `(,(rand-element two-op-clock) ,(+ 0 (random 10))
+                                                                   (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10)))) puzzle-list))
+            )))
 
 (puzzle-card (rule
               (first puzzle-list)
               '?))
+
+
+;-------------------------------------------------------------------------------------
+
+;NEW FUNCTION BELOW
+;define new function that adds one puzzle to a list
+(define (add-puzzle list-in)
+
+  (define num (+ 0 (random 4)))   ;generate a random number from 0-3
+
+  (cons
+   (cond [(eq? num 0)
+          `(,(rand-element two-op-clock)
+            ,(+ 0 (random 10))
+            ,(+ 0 (random 10)))]
+         [ (eq? num 1)
+           `(,(rand-element two-op-clock)
+             (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10)))
+             (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))))]
+
+         [(eq? num 2)
+          `(,(rand-element two-op-clock)
+            (,(rand-element two-op-clock) ,(+ 0 (random 10)) (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))))
+            (,(rand-element two-op-clock) (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))) ,(+ 0 (random 10)))
+            )]
+         [else `(,(rand-element two-op-clock) ,(+ 0 (random 10))
+                                              (,(rand-element two-op-clock) ,(+ 0 (random 10)) ,(+ 0 (random 10))))
+               ])
+   list-in)
+  
+  )
+
+(define (expression->puzzle-card e)
+  (puzzle-card (rule
+              e
+              '?)))
+
+(define (repeat f n l)
+  (if (= n 0)
+      l
+      (repeat f
+              (- n 1)
+              (f l))
+      ))
+
+(define random-puzzle-expressions
+  (repeat add-puzzle 3 '()))
+
+
+
+
+
+
+(map expression->puzzle-card
+     random-puzzle-expressions)
 
