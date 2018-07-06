@@ -256,6 +256,7 @@
                    '?))
 
 
+
 (puzzle-card (rule ' (and
                       (not
                        (or T)
@@ -341,3 +342,12 @@
                       (and T
                            (and T (or F T)))))
                    '?))
+
+(puzzle-card (rule ' (and
+                      (and
+                       (or T F)
+                       (and T F))
+                       (or
+                        (and T F)
+                        (not F)))
+                      '?))

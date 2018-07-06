@@ -1,2 +1,10 @@
+compiled/
 *compiled/*
 .DS_Store
+*.dep
+*.zo
+*~
+\#*
+.\#*
+.DS_Store
+*.bak
