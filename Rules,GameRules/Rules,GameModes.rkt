@@ -60,4 +60,35 @@ Goal of Reverse Codeoff is to find the order of the transformations to get the o
            @item{Whichever player first builds transformations which use all the given tiles and results in the correct output is the winner}
  ]
           
+@section{Code Attack}
 
+2-4 Players
+
+The objective of the game is to elimate opponnets health be completeing transformations and using the result as an attack.
+
+RULES OF CODE ATTACK
+
+
+@itemlist[
+          @item{SET UP: Place draw tiles face down in the middle and shuffle. All players take one board}
+          @item{Everyone draws five tiles}
+          @item{Agree upon the damage values and abilities of each of the transformation outputs (EX. some outputs can heal, some can shield, etc)}
+          @item{Youngest player goes first}]
+
+GAMEPLAY
+
+@itemlist[
+          @item{On each players turn, you can do one of three things}
+          @item{1) Play a tile from your hand onto your board and replace it with another from the draw pile}
+          @item{2) Replace all five tiles in your hand with new ones from the draw pile}
+          @item{3) Complete a transformation and perform the action of the output (Damage other player, heal/shield self, etc.)}
+          @item{You must use paranthesis to comeplete your transformation or it will not be considered complete}
+          @item{The last player with health remaining is the winner}]
+
+DO'S AND DONT'S
+
+@itemlist[
+          @item{Once a tile is placed onto your board, you cannot move it to a different location}
+          @item{If you mess up and cannot finish a transformation within the remaining space on your board, you can discard the entire line to the draw pile and restart}
+          @item{Be sure to keep five tiles in your hand at all times}
+          @item{To be a valid transformation, it must exactly match the example on the rule card}]
