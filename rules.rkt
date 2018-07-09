@@ -42,6 +42,7 @@
 (define (rule-card #:width (width BIG-CARD-WIDTH)
                    #:height (height BIG-CARD-HEIGHT)
                    #:caption (caption (text "Rules" 30 "black"))
+                   #:icon (icon #t)
                    . rules )
   (define inner
     (scale 0.25
@@ -50,13 +51,15 @@
 
   (define first-rule-from (rule-from (first rules)))
   (define symbol (if (list? first-rule-from)
-                     (first first-rule-from)
-                     first-rule-from))
+                         (first first-rule-from)
+                         first-rule-from))
 
   (place-image
-   (beside (scale 0.25 (render-symbol symbol))
+   (beside (if icon
+               (scale 0.25 (render-symbol symbol))
+               empty-image)
            caption)
-   70 30
+   60 20
    (overlay (scale-to (- width 20) inner)
            (rectangle width
                       height
@@ -68,7 +71,8 @@
    (curry rule-card
           #:width  BIG-CARD-HEIGHT
           #:height BIG-CARD-WIDTH
-          #:caption (text "Puzzle" 30 "black"))
+          #:caption (text "Puzzle" 30 "black")
+          #:icon #f)
    rules))
 
 

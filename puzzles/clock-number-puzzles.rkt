@@ -84,7 +84,8 @@ clock-numbers-algebra
 (puzzle-card (rule ' (add (2 6))
                    '?))
 
-(puzzle-card (rule ' (sub (4 5))))
+(puzzle-card (rule '(sub (4 5))
+                   '?))
 
 (puzzle-card (rule ' (add
                       (sub 1 1)
