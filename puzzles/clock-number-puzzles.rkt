@@ -156,3 +156,29 @@ clock-numbers-algebra
 
 (puzzle-card (rule '(sub (add (S 2) 4) (sub 6 3))
                    '?))
+
+(puzzle-card (rule '(add
+                     (sub
+                      (S 5) 
+                      2) 
+                     (P 4))
+                   '?)) ;7
+                   
+(puzzle-card (rule '(add
+                     (sub 8 6)
+                     2)
+                   '?)) ;4
+                   
+(puzzle-card (rule '(sub 7 5)
+                   '?)) ;2
+                   
+(puzzle-card (rule '(sub
+                     (P 0)
+                     (add 2 2))
+                   '?)) ;5
+                   
+(puzzle-card (rule '(sub
+                     (add 5
+                          (sub 6 2))
+                     3)
+                   '?)) ;6 
