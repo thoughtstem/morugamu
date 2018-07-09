@@ -146,13 +146,13 @@ clock-numbers-algebra
                    '?))
 
 (puzzle-card (rule '(add (sub 4
-                              (add 9 1)) 6)
+                              (S 9)) 6)
                    '?))
 
 (puzzle-card (rule '(add 1
                          (sub 2
-                              (add 9 1)))
+                              (S 9)))
                    '?))
 
-(puzzle-card (rule '(sub (add (add 1 1) 4) (sub 6 3))
+(puzzle-card (rule '(sub (add (S 1) 4) (sub 6 3))
                    '?))

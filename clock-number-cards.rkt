@@ -116,13 +116,6 @@
    (rule-card (rule '(sub x 0)
                     'x)
               (rule '(sub x (S y))
-                    '(sub (P x) y)))
-
-
-
+                    '(sub (P x) y) ))
+  
    ))
-
-
-
-
-
