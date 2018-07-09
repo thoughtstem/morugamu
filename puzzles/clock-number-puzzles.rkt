@@ -128,5 +128,31 @@ clock-numbers-algebra
                      (add 2 5))
                    '?))
 
+;Kunal's Cards
+(puzzle-card (rule '(add 9
+                         (sub 9 5))
+                   '?))
 
+(puzzle-card (rule '(add 1
+                         (sub 3 4))
+                   '?))
 
+(puzzle-card (rule '(add 1
+                         (sub 3
+                              (add 1 3)))
+                   '?))
+
+(puzzle-card (rule '(add (add 2 (sub 6 1)) 4)
+                   '?))
+
+(puzzle-card (rule '(add (sub 4
+                              (add 9 1)) 6)
+                   '?))
+
+(puzzle-card (rule '(add 1
+                         (sub 2
+                              (add 9 1)))
+                   '?))
+
+(puzzle-card (rule '(sub (add (add 1 1) 4) (sub 6 3))
+                   '?))
