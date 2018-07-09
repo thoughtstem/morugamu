@@ -154,5 +154,5 @@ clock-numbers-algebra
                               (S 9)))
                    '?))
 
-(puzzle-card (rule '(sub (add (S 1) 4) (sub 6 3))
+(puzzle-card (rule '(sub (add (S 2) 4) (sub 6 3))
                    '?))
