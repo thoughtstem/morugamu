@@ -32,13 +32,12 @@ clock-numbers-algebra
 
 ;my new puzzle
 #;(puzzle-card (rule (tail (cons T T))
-              '?))
-
+              '?));1
 
 
 ;7/3/18 more puzzles
 (puzzle-card (rule ' (sub 2 3)
-                   '?))
+                   '?));2
 (puzzle-card (rule ' (sub
                       (add 2 3)
                       (add 9 8))
@@ -194,6 +193,15 @@ clock-numbers-algebra
                    '?))
 (puzzle-card (rule '(sub (add(S (add 7 4)) (sub 3 2)))
                    '?))
-;; Alondra's
+;; Alondra's new puzzles
 
-(puzzle-card (rule '(add (sub 9 (S 3))(P 8))'?))
+(puzzle-card (rule ' (add (S 4) 2)
+                   '?))
+(puzzle-card (rule '(add (4 (P 2)))
+                   '?))
+(puzzle-card (rule '((sub (P (add 5 4))8))
+                   '?))
+(puzzle-card (rule ' (sub (S 2) (P 3)) 
+                   '?))
+(puzzle-card (rule '(sub (sub 2 1) (P 5))
+                   '?))
