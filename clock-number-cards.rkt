@@ -127,9 +127,6 @@
                     'x)
               (rule '(sub x y)
                     '(sub (P x) (P y))))
-
-
-
    ))
 
 
