@@ -67,13 +67,16 @@
                       (pen "black" 10 "solid" "round" "bevel")))))
 
 (define (puzzle-card . rules)
+  (increment!)
   (apply
    (curry rule-card
           #:width  BIG-CARD-HEIGHT
           #:height BIG-CARD-WIDTH
-          #:caption (text "Puzzle" 30 "black")
+          #:caption (text (string-append "                                             Puzzle " (number->string counter)) 30 "black")
           #:icon #f)
-   rules))
+   rules)
+  )
 
-
-
+(define counter 0)
+(define (increment!)
+      (set! counter (add1 counter)))
