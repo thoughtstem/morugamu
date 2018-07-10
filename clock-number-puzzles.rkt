@@ -32,14 +32,12 @@ clock-numbers-algebra
 
 ;my new puzzle
 #;(puzzle-card (rule (tail (cons T T))
-              '?))
-
+              '?));1
 
 
 ;7/3/18 more puzzles
 (puzzle-card (rule ' (sub 2 3)
-                   '?))
-
+                   '?));2
 (puzzle-card (rule ' (sub
                       (add 2 3)
                       (add 9 8))
@@ -129,7 +127,81 @@ clock-numbers-algebra
                      (add 2 5))
                    '?))
 
+;Kunal's Cards
+(puzzle-card (rule '(add 9
+                         (sub 9 5))
+                   '?))
 
-;; Alondra's
+(puzzle-card (rule '(add 1
+                         (sub 3 4))
+                   '?))
 
-(puzzle-card (rule '(add (sub 9 (S 3))(P 8))'?))
+(puzzle-card (rule '(add 1
+                         (sub 3
+                              (add 1 3)))
+                   '?))
+
+(puzzle-card (rule '(add (add 2 (sub 6 1)) 4)
+                   '?))
+
+(puzzle-card (rule '(add (sub 4
+                              (S 9)) 6)
+                   '?))
+
+(puzzle-card (rule '(add 1
+                         (sub 2
+                              (S 9)))
+                   '?))
+
+(puzzle-card (rule '(sub (add (S 2) 4) (sub 6 3))
+                   '?))
+
+;Althea's Puzzles
+(puzzle-card (rule '(add
+                     (sub
+                      (S 5) 
+                      2) 
+                     (P 4))
+                   '?)) ;7
+                   
+(puzzle-card (rule '(add
+                     (sub 8 6)
+                     2)
+                   '?)) ;4
+                   
+(puzzle-card (rule '(sub 7 5)
+                   '?)) ;2
+                   
+(puzzle-card (rule '(sub
+                     (P 0)
+                     (add 2 2))
+                   '?)) ;5
+                   
+(puzzle-card (rule '(sub
+                     (add 5
+                          (sub 6 2))
+                     3)
+                   '?)) ;6
+;Dhakshin's Cards
+(puzzle-card (rule '(sub(2 (add 4 2)))
+                   '?))
+(puzzle-card (rule '(add (sub(S (add 4 2)) (sub 4 1)))
+                   '?))
+(puzzle-card (rule '(sub (add 5 4) 8)
+                   '?))
+(puzzle-card (rule ' (add P 4) 
+                   '?))
+(puzzle-card (rule '(sub (add(S (add 7 4)) (sub 3 2)))
+                   '?))
+;; Alondra's new puzzles
+
+(puzzle-card (rule ' (add (S 4) 2)
+                   '?))
+(puzzle-card (rule '(add (4 (P 2)))
+                   '?))
+(puzzle-card (rule '((sub (P (add 5 4))8))
+                   '?))
+(puzzle-card (rule ' (sub (S 2) (P 3)) 
+                   '?))
+(puzzle-card (rule '(sub (sub 2 1) (P 5))
+                   '?))
