@@ -39,6 +39,7 @@ clock-numbers-algebra
 ;7/3/18 more puzzles
 (puzzle-card (rule ' (sub 2 3)
                    '?))
+
 (puzzle-card (rule ' (sub
                       (add 2 3)
                       (add 9 8))

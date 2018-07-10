@@ -6,7 +6,10 @@
          "./rules.rkt"
          2htdp/image)
 
-;Basic symbols
+(module+ test
+  (require (prefix-in numb: "./themes/emoji-clock-arithmetic.rkt"))
+
+  (render numb:theme))
 
 (define (icon s)
   (text s 50 "black"))
@@ -101,22 +104,29 @@
               (rule '(S 8) '9)
               (rule '(S 9) '0))
 
+   (rule-card (rule '(P 0) '9)
+              (rule '(P 1) '0)
+              (rule '(P 2) '1)
+              (rule '(P 3) '2)
+              (rule '(P 4) '3))
+
+   (rule-card (rule '(P 5) '4)
+              (rule '(P 6) '5)
+              (rule '(P 7) '6)
+              (rule '(P 8) '7)
+              (rule '(P 9) '8))
 
 
    (rule-card (rule '(add x 0)
                     'x)
-              (rule '(add x (S y))
-                    '(add (S x) y)))
-
-
-   (rule-card (rule '(P x)
-                    '(add x 9)))
+              (rule '(add x y)
+                    '(add (S x) (P y))))
 
 
    (rule-card (rule '(sub x 0)
                     'x)
-              (rule '(sub x (S y))
-                    '(sub (P x) y)))
+              (rule '(sub x y)
+                    '(sub (P x) (P y))))
 
 
 

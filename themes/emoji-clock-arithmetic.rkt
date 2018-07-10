@@ -2,8 +2,7 @@
 
 (provide theme)
 
-(require 2htdp/image
-         "../clock-number-cards.rkt")
+(require 2htdp/image)
 
 (define theme
   (list
