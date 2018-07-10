@@ -24,5 +24,5 @@ ineq-cards
 
 ;More puzzles here...
 
-(puzzle-card (rule '(if F (S (S 0)) (S 0))
-                   '?))
+(puzzle-card (rule '(< (S (S 0)) (S 0))
+                   '<))
