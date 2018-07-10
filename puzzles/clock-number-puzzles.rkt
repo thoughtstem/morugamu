@@ -181,4 +181,15 @@ clock-numbers-algebra
                      (add 5
                           (sub 6 2))
                      3)
-                   '?)) ;6 
+                   '?)) ;6
+;Dhakshin's Cards
+(puzzle-card (rule '(sub(2 (add 4 2)))
+                   '?))
+(puzzle-card (rule '(add (sub(S (add 4 2)) (sub 4 1)))
+                   '?))
+(puzzle-card (rule '(sub (add 5 4) 8)
+                   '?))
+(puzzle-card (rule ' (add P 4) 
+                   '?))
+(puzzle-card (rule '(sub (add(S (add 7 4)) (sub 3 2)))
+                   '?))
