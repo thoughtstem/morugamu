@@ -13,9 +13,9 @@
 
 (define (render theme)
 
-
+  
   (define-tile < '<
-    (text "<" 50 "black"))
+    (bitmap "./themes/emojis/LessThan.png"))
 
 
   (define-tile max 'max
@@ -35,14 +35,16 @@
            
               (rule '(< x 8) 'T)
               (rule '(< 8 x) 'F)
-
-              (rule '(< x 7) 'T)
+              )
+   
+   (rule-card (rule '(< x 7) 'T)
               (rule '(< 7 x) 'F)
 
               (rule '(< x 6) 'T)
               (rule '(< 6 x) 'F)
 
-              (rule '(< x 5) 'T))
+              (rule '(< x 5) 'T)
+              )
 
    (rule-card (rule '(< 5 x) 'F)
 
@@ -52,13 +54,16 @@
               (rule '(< x 3) 'T)
               (rule '(< 3 x) 'F)
 
-              (rule '(< x 2) 'T)
+              )
+
+
+   (rule-card (rule '(< x 2) 'T)
               (rule '(< 2 x) 'F)
 
               (rule '(< x 1) 'T)
               (rule '(< 1 x) 'F)
 
-              (rule '(< 0 0) 'F))
+              (rule '(< 0 0) 'F)) 
 
 
 
