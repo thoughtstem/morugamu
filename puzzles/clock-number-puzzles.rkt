@@ -194,3 +194,6 @@ clock-numbers-algebra
                    '?))
 (puzzle-card (rule '(sub (add(S (add 7 4)) (sub 3 2)))
                    '?))
+;; Alondra's
+
+(puzzle-card (rule '(add (sub 9 (S 3))(P 8))'?))
