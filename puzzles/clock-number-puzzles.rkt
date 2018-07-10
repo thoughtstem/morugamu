@@ -128,5 +128,34 @@ clock-numbers-algebra
                      (add 2 5))
                    '?))
 
+;Marlon's new puzzles
+(puzzle-card (rule '(add 1 1) '?)) ;Easy (valid)
+
+(puzzle-card (rule '(P (sub 2 4))
+                   '?)) ;Easy (valid)
+
+(puzzle-card (rule '(S
+                     (P (add(add 4 4))
+                     (sub 2 3))) '?)) ;Medium (valid)
+
+(puzzle-card (rule '(S
+                         (P (add(sub 1 7)
+                         (add 1 0)))) '?)) ;Medium (valid)
+(puzzle-card (rule '(sub
+                     (add 2 (sub 3 4))
+                     (add (sub 8 9) (add 1 2)))
+                   '?)) ;Hard (valid)
+
+(puzzle-card (rule '(S (P (add (sub 3
+                        (P 7))
+                        (S 1)))) '?)) ;Hard (valid)
+                       
+                         
+                     
+                    
+                       
+
+
+
 
 
