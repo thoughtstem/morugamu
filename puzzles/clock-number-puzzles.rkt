@@ -157,6 +157,7 @@ clock-numbers-algebra
 (puzzle-card (rule '(sub (add (S 2) 4) (sub 6 3))
                    '?))
 
+;Althea's Puzzles
 (puzzle-card (rule '(add
                      (sub
                       (S 5) 
