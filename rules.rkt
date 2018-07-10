@@ -74,8 +74,7 @@
           #:height BIG-CARD-WIDTH
           #:caption (text (string-append "                                             Puzzle " (number->string counter)) 30 "black")
           #:icon #f)
-   rules)
-  )
+   rules))
 
 (define counter 0)
 (define (increment!)
