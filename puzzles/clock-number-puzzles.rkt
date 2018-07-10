@@ -206,3 +206,25 @@ clock-numbers-algebra
                    '?))
 (puzzle-card (rule '(sub (sub 2 1) (P 5))
                    '?))
+
+;Marlon's new puzzles
+(puzzle-card (rule '(add 1 1) '?)) ;Easy 
+
+(puzzle-card (rule '(P (sub 2 4))
+                   '?)) ;Easy 
+
+(puzzle-card (rule '(S
+                     (P (add(add 4 4))
+                     (sub 2 3))) '?)) ;Medium 
+
+(puzzle-card (rule '(S
+                         (P (add(sub 1 7)
+                         (add 1 0)))) '?)) ;Medium 
+(puzzle-card (rule '(sub
+                     (add 2 (sub 3 4))
+                     (add (sub 8 9) (add 1 2)))
+                   '?)) ;Hard 
+
+(puzzle-card (rule '(S (P (add (sub 3
+                        (P 7))
+                        (S 1)))) '?)) ;Hard 
