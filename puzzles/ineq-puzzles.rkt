@@ -113,3 +113,23 @@ ineq-cards
 (puzzle-card (rule '(= (S 0)
                        (S 0))
                    'T))
+;sdad
+(puzzle-card (rule '(not(< (min 2 3)
+                        5))
+                   'F))
+
+(puzzle-card (rule '(not(= (S 7)
+                       (S 5)))
+                   'T))
+
+(puzzle-card (rule '(= (min 3 6)
+                       (S 8))
+                   'F))
+
+(puzzle-card (rule '(< = (S 9)
+                       (S 9))
+                   'T))
+
+(puzzle-card (rule '(> = (S 0)
+                       (S 0))
+                   'T))
