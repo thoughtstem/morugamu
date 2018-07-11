@@ -4,7 +4,9 @@
          puzzle-card
          rule
          rule-from
-         rule-to)
+         rule-to
+         number!
+         place-num)
 
 (require 2htdp/image
          "./cards.rkt"
