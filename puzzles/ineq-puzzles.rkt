@@ -134,7 +134,7 @@ ineq-cards
                        (S 0))
                    'T))
 
-;Monica puzzle
+;Monica puzzles
 (puzzle-card (rule '(= (3 3))
                    'T))
 
