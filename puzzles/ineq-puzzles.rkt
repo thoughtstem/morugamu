@@ -70,5 +70,8 @@ ineq-cards
 
 (puzzle-card (rule '(< 9 (max (sub 6 4) 1))'F))
 
+(puzzle-card (rule '(> 3 (min (add 6 4) 9))'F))
+
+
 
 
