@@ -21,6 +21,10 @@
   (define-tile max 'max
     #;(bitmap "./themes/emojis/add.png")
     (text "max" 50 "black"))
+  
+  (define-tile ret 'ret
+    (bitmap "./themes/emojis/ret.png"))
+    ;(text "ret" 50 "black")) ;RETURN ICON
 
   
   (list
@@ -70,8 +74,8 @@
 
    (rule-card (rule '(max x y)
                     '(if (< x y)
-                         y
-                         x)))))
+                         (ret y)
+                         (ret x))))))
 
 
 
