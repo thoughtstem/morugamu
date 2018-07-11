@@ -6,8 +6,8 @@
 
 (define theme
   (list
-   (bitmap "./emojis/S.png")
-   (bitmap "./emojis/P.png")
+   (bitmap "./emojis/Next.png")
+   (bitmap "./emojis/Previous.png")
    (bitmap "./emojis/dot.png")
    (bitmap "./emojis/0.png")
    (bitmap "./emojis/add.png")
