@@ -24,7 +24,9 @@
   
   (define-tile ret 'ret
     (bitmap "./themes/emojis/ret.png"))
-    ;(text "ret" 50 "black")) ;RETURN ICON
+
+  (define-tile = '=
+    (bitmap "./themes/emojis/ret.png"))
 
   
   (list
