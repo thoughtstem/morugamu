@@ -169,3 +169,35 @@ ineq-cards
 
 (puzzle-card (rule '(= (add 3 2) (add 2 3))
                    'T))
+
+
+;ethan puzzles
+(puzzle-card (rule '(= 8 (add 4 (P 5)))'T))
+
+
+(puzzle-card (rule '(< 8 (max 8 (P 0)))'T))
+
+ 
+(puzzle-card (rule '(= (< 6 7) (= 4 (P 4)))'F))
+
+
+(puzzle-card (rule '(not (= 2 2))'F))
+
+
+(puzzle-card (rule '(= 4 (sub 1 7))'T))
+
+
+(puzzle-card (rule '(< (min 4 (max 5 3)) (S 4))'T))
+
+
+(puzzle-card (rule '((not <) 2 1)'T))
+
+
+(puzzle-card (rule '(not (and T (or T (not T))))'F))
+
+
+(puzzle-card (rule '(and (not F) (< 8 (P 0)))'T))
+
+
+(puzzle-card (rule '(> (add 4 0) (P 6))'F))
+
