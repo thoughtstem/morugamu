@@ -92,5 +92,24 @@ ineq-cards
 
 (puzzle-card (rule '(= (S 7)
                        (S 8))
+                   'F))
+
+(puzzle-card (rule '(not(< (S 3)
+                        (S 4)))
+                   'F))
+
+(puzzle-card (rule '(= (S 8)
+                       (S 6))
+                   'F))
+
+(puzzle-card (rule '(= (min 0 1)
+                       (S 9))
                    'T))
 
+(puzzle-card (rule '(> (S 9)
+                       (S 8))
+                   'F))
+
+(puzzle-card (rule '(= (S 0)
+                       (S 0))
+                   'T))
