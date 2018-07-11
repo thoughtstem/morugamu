@@ -73,5 +73,24 @@ ineq-cards
 (puzzle-card (rule '(> 3 (min (add 6 4) 9))'F))
 
 
+;Kunal Puzzles
+(puzzle-card (rule '(not(< (S 9)
+                        (S 9)))
+                   'T))
 
+(puzzle-card (rule '(= (S 7)
+                       (S 8))
+                   'T))
+
+(puzzle-card (rule '(= (min 6 5)
+                       (S 8))
+                   'F))
+
+(puzzle-card (rule '(> (S 7)
+                       (S 6))
+                   'T))
+
+(puzzle-card (rule '(= (S 7)
+                       (S 8))
+                   'T))
 
