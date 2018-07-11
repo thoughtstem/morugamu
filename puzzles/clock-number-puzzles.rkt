@@ -228,3 +228,17 @@ clock-numbers-algebra
 (puzzle-card (rule '(S (P (add (sub 3
                         (P 7))
                         (S 1)))) '?)) ;Hard 
+                        
+(define alondras-cards 
+  (number!
+   (list 
+    (puzzle-card (rule '(add (4 (P 2)))
+                       '?))
+                       (puzzle-card (rule '((sub (P (add 5 4))8))
+                       '?))
+                       (puzzle-card (rule '(sub (S 2) (P 3)) 
+                       '?))
+                       (puzzle-card (rule '(sub (sub 2 1) (P 5))
+                       '?)))))
+
+(map place-num alondras-cards)
