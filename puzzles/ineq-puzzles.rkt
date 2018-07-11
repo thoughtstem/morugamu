@@ -133,3 +133,39 @@ ineq-cards
 (puzzle-card (rule '(> = (S 0)
                        (S 0))
                    'T))
+
+;Monica puzzle
+(puzzle-card (rule '(= (3 3))
+                   'T))
+
+(puzzle-card (rule '(= (8 7))
+             'F))
+
+(puzzle-card (rule '(= (add 8 1)
+                       (sub 9 1))
+                   'T))
+
+(puzzle-card (rule '(< (add 5 1)
+                       (sub 8 1))
+                   'T))
+
+(puzzle-card (rule '(< (max (add 2 2)
+                         (sub 2 3))(3))
+                   'F))
+
+(puzzle-card (rule '(< (add 5 1)
+                       (sub 3 5))
+                   'F))
+
+(puzzle-card (rule '(= (7 7))
+                   'T))
+
+(puzzle-card (rule '(< (max (add 4 4)
+                         (sub 2 3))(6))
+                   'F))
+
+(puzzle-card (rule '(= (7 9))
+                   'F))
+
+(puzzle-card (rule '(= (add 3 2) (add 2 3))
+                   'T))
