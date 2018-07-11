@@ -229,6 +229,7 @@ clock-numbers-algebra
                         (P 7))
                         (S 1)))) '?)) ;Hard 
                         
+; EXAMPLE
 (define alondras-cards 
   (number!
    (list 
@@ -242,3 +243,11 @@ clock-numbers-algebra
                        '?)))))
 
 (map place-num alondras-cards)
+
+; CODE FOR NEW CARDS
+;(define cards
+; (number! (list
+;  INSERT PUZZLE CARDS HERE
+; )
+
+;(map place-num cards)
