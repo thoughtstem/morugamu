@@ -29,4 +29,8 @@ ineq-cards
 
 ;Marlon's puzzles
 (puzzle-card (rule '(not (< 0 0))
-             'T))
+             'T)) ;easy
+
+(puzzle-card (rule '(< (add 4 1)
+                       x)
+                       'F))
