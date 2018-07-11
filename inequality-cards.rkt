@@ -77,7 +77,20 @@
    (rule-card (rule '(max x y)
                     '(if (< x y)
                          (ret y)
-                         (ret x))))))
+                         (ret x)))
+              (rule '(ret x)
+                    'x)
+              (rule '(ret y)
+                    'y)
+              )
+
+   
+   
+
+
+
+  )
+  )
 
 
 
