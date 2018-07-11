@@ -13,7 +13,6 @@
 
 (define (render theme)
 
-  
   (define-tile < '<
     (bitmap "./themes/emojis/LessThan.png"))
 
@@ -31,6 +30,9 @@
 
   (define-tile = '=
     (bitmap "./themes/emojis/equals.png"))
+  
+  (define-tile min 'min
+    (bitmap "./themes/emojis/min.png"))
 
   
   (list
@@ -92,7 +94,15 @@
               (rule '(= x y) 'F))
    
    
-
+(rule-card (rule '(min x y)
+                    '(if (< x y)
+                         (ret x)
+                         (ret y)))
+              (rule '(ret x)
+                    'x)
+              (rule '(ret y)
+                    'y)
+              )
 
 
   )
