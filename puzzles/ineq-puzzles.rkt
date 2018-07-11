@@ -44,5 +44,5 @@ ineq-cards
 (puzzle-card (rule '(not (< (max 3 1) (sub (add 5 3) 7)))
                    'T))
 
-(puzzle-card (rule '(< 9 (max (sub (S 5) 4) 1))'T))
+(puzzle-card (rule '(< 9 (max (sub (S 5) 4) 1))'F))
 
