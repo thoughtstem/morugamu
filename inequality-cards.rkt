@@ -29,13 +29,16 @@
   
   (define-tile min 'min
     (bitmap "./themes/emojis/min.png"))
+  
+  (define-tile > '>
+    (bitmap "./themes/emojis/GreaterThan.png"))
 
   
   (list
    (symbol-page)
 
 
-
+;less than
    (rule-card (rule '(< x x) 'F)
            
               (rule '(< x 9) 'T)
@@ -73,9 +76,10 @@
 
               (rule '(< 0 0) 'F)) 
 
-
-
-
+;greater than
+   
+ (rule-card (rule '(> y x) '(< x y)))
+;max
    (rule-card (rule '(max x y)
                     '(if (< x y)
                          (ret y)
@@ -85,11 +89,11 @@
               (rule '(ret y)
                     'y)
               )
-   
+;equals
    (rule-card (rule '(= x x) 'T)
               (rule '(= x y) 'F))
    
-   
+;min   
 (rule-card (rule '(min x y)
                     '(if (< x y)
                          (ret x)
