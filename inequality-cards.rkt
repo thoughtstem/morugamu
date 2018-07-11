@@ -26,7 +26,7 @@
     (bitmap "./themes/emojis/ret.png"))
 
   (define-tile = '=
-    (bitmap "./themes/emojis/ret.png"))
+    (bitmap "./themes/emojis/equals.png"))
 
   
   (list
