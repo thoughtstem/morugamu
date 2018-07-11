@@ -83,7 +83,9 @@
               (rule '(ret y)
                     'y)
               )
-
+   
+   (rule-card (rule '(= x x) 'T)
+              (rule '(= x y) 'F))
    
    
 
