@@ -67,15 +67,33 @@
                       (pen "black" 10 "solid" "round" "bevel")))))
 
 (define (puzzle-card . rules)
-  (increment!)
   (apply
    (curry rule-card
           #:width  BIG-CARD-HEIGHT
           #:height BIG-CARD-WIDTH
-          #:caption (text (string-append "                                             Puzzle " (number->string counter)) 30 "black")
+          #:caption (text "                                        Puzzle" 30 "black")
           #:icon #f)
-   rules))
+   rules)
+  )
 
-(define counter 0)
-(define (increment!)
-      (set! counter (add1 counter)))
+; Takes in list of card images
+; Returns list of pairs: (card, index #)
+
+(define (number! images)
+  (define (helper pointer num)
+    (if (null? pointer)
+        '()
+        (cons (cons (car pointer) num) (helper (cdr pointer) (add1 num)))
+    )
+  )
+  (helper images 1)
+)
+
+; Takes in (card, index #) pair
+; Places # text on top of card
+
+(define (place-num couple)
+  (place-image (text (number->string (cdr couple)) 30 "black")
+               288 20
+               (car couple))
+)
