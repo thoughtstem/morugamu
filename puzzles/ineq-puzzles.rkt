@@ -29,8 +29,19 @@ ineq-cards
 
 ;Marlon's puzzles
 (puzzle-card (rule '(not (< 0 0))
+<<<<<<< HEAD
              'T)) ;easy
 
 (puzzle-card (rule '(< (add 4 1)
                        x)
                        'F))
+=======
+             'T))
+
+;dhakshin puzzle
+(puzzle-card (rule '(< (max 8 6) (S 9))
+                   'T))
+;dhakshin puzzle
+(puzzle-card (rule '(not (< (max 3 1) (sub (add 5 3) 7)))
+                   'T))
+>>>>>>> 0bdfca75e50042faf0d99a3c9bd2c2b2dfd1b166
