@@ -36,6 +36,21 @@ ineq-cards
                        x)
                        'F))
 
+(puzzle-card (rule '(not (< (max 3 2)
+                         (sub 1 9)))
+                   'F))
+
+(puzzle-card (rule '(< (max (add 3 4)
+                         (sub 1 9))
+                       (S 8))
+                   'T))
+
+(puzzle-card (rule '(= (5 5))
+                   'T))
+
+(puzzle-card (rule '(= (add 3 4)
+                       (sub 1 8))
+                   'T))
 
 ;dhakshin puzzle
 (puzzle-card (rule '(< (max 8 6) (S 9))
