@@ -26,3 +26,7 @@ ineq-cards
 
 (puzzle-card (rule '(< (S (S 0)) (S 0))
                    'F))
+
+;Marlon's puzzles
+(puzzle-card (rule '(not (< 0 0))
+             'T))
