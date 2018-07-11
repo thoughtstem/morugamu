@@ -52,6 +52,15 @@ ineq-cards
                        (sub 1 8))
                    'T))
 
+(puzzle-card (rule '(= (min 9 1)
+                       (max 3 1))
+                   'T))
+
+(puzzle-card (rule '(not (< (min 5 6)
+                            (min 7 9)))
+                   'F))
+                 
+
 ;dhakshin puzzle
 (puzzle-card (rule '(< (max 8 6) (S 9))
                    'F))
