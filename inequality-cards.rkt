@@ -20,10 +20,6 @@
   (define-tile max 'max
     (bitmap "./themes/emojis/max.png"))
     ;(text "max" 50 "black"))
-
-  (define-tile min 'min
-    (bitmap "./themes/emojis/min.png"))
-  
   
   (define-tile ret 'ret
     (bitmap "./themes/emojis/ret.png"))
