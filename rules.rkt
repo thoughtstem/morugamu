@@ -81,8 +81,8 @@
 ; Takes in list of card images
 ; Returns list of pairs: (card, index #)
 
-(define (number! images)
-  (define (helper pointer num)
+(define (pair-with-index images)
+  (map list images (range (length images)))(define (helper pointer num)
     (if (null? pointer)
         '()
         (cons (cons (car pointer) num) (helper (cdr pointer) (add1 num)))
@@ -96,6 +96,10 @@
 
 (define (place-num couple)
   (place-image (text (number->string (cdr couple)) 30 "black")
-               288 20
+               300 20
                (car couple))
 )
+
+(define (number-all pairs)
+  (map place-num (pair-with-index pairs))
+  )
