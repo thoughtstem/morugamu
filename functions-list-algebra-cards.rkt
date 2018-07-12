@@ -21,7 +21,10 @@
    (symbol-page))
 
   
-  (rule-card (rule '(len (len len len))
-                   '?)))
+  (rule-card (rule '(len (cons x nil))
+                   '1)
+             (rule '(len (cons x (cons x nil)))
+                         '3)))
+
 
 
