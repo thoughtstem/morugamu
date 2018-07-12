@@ -4,13 +4,14 @@
          puzzle-card
          rule
          rule-from
-         rule-to)
+         rule-to
+         number!
+         place-num)
 
 (require 2htdp/image
          "./cards.rkt"
          "./card-designs.rkt"
-         "./config.rkt"
-         "./util.rkt")
+         "./config.rkt")
 
 (define (scale-to s i)
   (define m (max (image-width i)
@@ -76,3 +77,25 @@
           #:icon #f)
    rules)
   )
+
+; Takes in list of card images
+; Returns list of pairs: (card, index #)
+
+(define (number! images)
+  (define (helper pointer num)
+    (if (null? pointer)
+        '()
+        (cons (cons (car pointer) num) (helper (cdr pointer) (add1 num)))
+    )
+  )
+  (helper images 1)
+)
+
+; Takes in (card, index #) pair
+; Places # text on top of card
+
+(define (place-num couple)
+  (place-image (text (number->string (cdr couple)) 30 "black")
+               288 20
+               (car couple))
+)
