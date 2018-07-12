@@ -13,11 +13,15 @@
 
 (define (render theme)
 
-  (define-tile the-len 'len (first theme))
+  (define-tile len 'len
+    (bitmap "./themes/emojis/length.png"))
+
   
   (list
    (symbol-page)
 
- ))
+  
+  (rule-card (rule '(len x y))
+                   '?)))
 
 
