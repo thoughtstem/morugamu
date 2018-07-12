@@ -18,6 +18,6 @@
   (list
    (symbol-page)
 
-  (rule-card (rule '(len (cons xy
+ ))
 
 
