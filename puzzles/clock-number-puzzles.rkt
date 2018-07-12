@@ -231,6 +231,7 @@ clock-numbers-algebra
                         
 ; EXAMPLE
 (define alondras-cards 
+  (number!
    (list 
     (puzzle-card (rule '(add (4 (P 2)))
                        '?))
@@ -239,13 +240,14 @@ clock-numbers-algebra
                        (puzzle-card (rule '(sub (S 2) (P 3)) 
                        '?))
                        (puzzle-card (rule '(sub (sub 2 1) (P 5))
-                       '?))))
+                       '?)))))
 
-(number-all alondras-cards)
+(map place-num alondras-cards)
 
 ; CODE FOR NEW CARDS
 ;(define cards
-; (list
+; (number! (list
 ;  INSERT PUZZLE CARDS HERE
 ; )
-;(number-all cards)
+
+;(map place-num cards)
