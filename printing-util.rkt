@@ -6,7 +6,8 @@
          2htdp/image
          "./cards.rkt"
          "./card-designs.rkt"
-         "./config.rkt")
+         "./config.rkt"
+         "./util.rkt")
 
 (define (place-num couple)
   (place-image (text (number->string (cdr couple)) 30 "black")
