@@ -4,6 +4,7 @@
   "../card-designs.rkt"
   "../rules.rkt"
   "../util.rkt"
+  "../printing-util.rkt"
   (prefix-in numb: "../clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
 
@@ -232,7 +233,6 @@ clock-numbers-algebra
                         
 ; EXAMPLE
 (define alondras-cards 
-  (number!
    (list 
     (puzzle-card (rule '(add (4 (P 2)))
                        '?))
@@ -241,14 +241,13 @@ clock-numbers-algebra
                        (puzzle-card (rule '(sub (S 2) (P 3)) 
                        '?))
                        (puzzle-card (rule '(sub (sub 2 1) (P 5))
-                       '?)))))
+                       '?))))
 
-(map place-num alondras-cards)
+(number-all alondras-cards)
 
 ; CODE FOR NEW CARDS
 ;(define cards
-; (number! (list
+; (list
 ;  INSERT PUZZLE CARDS HERE
 ; )
-
-;(map place-num cards)
+;(number-all cards)
