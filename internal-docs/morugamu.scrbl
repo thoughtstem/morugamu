@@ -143,32 +143,24 @@ Note the use of the rule-card function.  Here's how it works:
 
 }
 
-@defproc[(number-all [lst list?])
-         (listof image?)]{
-
-This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
-
-}
-
-@defproc[(place-num [list list?])
-         (images?)]{
-
-This takes in a list of images and their corresponding numbers and produces the images with their corresponding numbers placed over them. The function takes a number and converts it into a string that is then placed over the image.
-
-}
 
 
 @subsection{Clock Numbers}
 
-**** Coming soon... ****
+**** COming soon... ****
 
 @subsection{Lists}
 
-**** Coming soon... ****
+**** COming soon... ****
 
 @subsection{Clock++ Numbers}
 
-**** Coming soon... ****
+**** COming soon... ****
+
+
+
+
+
 
 }
 

@@ -18,10 +18,10 @@
 
   
   (list
-   (symbol-page))
+   (symbol-page)
 
   
-  (rule-card (rule '(len (len len len))
+  (rule-card (rule '(len x y))
                    '?)))
 
 
