@@ -18,18 +18,13 @@
 
   
   (list
-   (symbol-page)
+   (symbol-page))
 
   
-<<<<<<< HEAD
   (rule-card (rule '(len (cons x nil))
                    '1)
              (rule '(len (cons x (cons x nil)))
                          '3)))
 
-=======
-  (rule-card (rule '(len x y))
-                   '?)))
->>>>>>> 9834b7a83c461ce7843ee8516ac5e2234efb9a43
 
 
