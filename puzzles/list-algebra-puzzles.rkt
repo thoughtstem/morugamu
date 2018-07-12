@@ -8,8 +8,8 @@
   (prefix-in numb: "../clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt")
   (prefix-in ineq: "../inequality-cards.rkt")
-  (prefix-in list "../list-algebra-cards.rkt")
-  (prefix-in list "../themes/emoji-list-algebra.rkt"))
+  (prefix-in list: "../list-algebra-cards.rkt")
+  (prefix-in list: "../themes/emoji-list-algebra.rkt"))
 
 (define clock-numbers
   (numb:render numb:theme))
@@ -18,10 +18,10 @@
   (bool:render bool:theme))
 
 (define ineq-cards
-  (ineq:render #f))
+  (numb:render numb:theme))
 
 (define list-algebra-cards
-  (ineq:render #f))
+  (list:render list:theme))
 
 
 clock-numbers
