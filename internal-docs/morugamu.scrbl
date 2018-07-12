@@ -131,7 +131,7 @@ TODO: Give an example of the output...
 @defproc[(number-all [lst list?])
          (listof image?)]{
 
-This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images with their respective numbers placed at the top right corner.                    
+This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
 
 }
 
