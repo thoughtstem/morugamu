@@ -125,6 +125,21 @@ Note the use of the render function.  Here's how it works:
 This takes in a theme (TODO: Define what a theme is), and produces a list of images of rule cards and symbols.  The symbols are the first thing in the list and they are arranged in a table to facilitate printing.  The rule cards follow the symbol page.  There may be 1 or more rule cards, depending on the particular algebra being rendered.
 
 TODO: Give an example of the output...
+Here’s an example of creating a rule for a rule card
+@racketblock[
+	(rule '(> y x) '(< x y))
+]
+Note the use of the rule function.  Here's how it works:
+
+ @defproc[(rule) ()]{
+
+}
+Here’s an example of creating a rule card for the boolean algebra card
+@racketblock[
+	(rule-card (rule '(> y x) '(< x y)))
+]
+Note the use of the rule-card function.  Here's how it works:
+@defproc[(rule-card [rule rule?]) ()]{
 
 }
 
@@ -147,7 +162,7 @@ TODO: Give an example of the output...
 
 
 
-
+}
 
 
 
