@@ -33,3 +33,6 @@ clock-numbers
 boolean-algebra
 ineq-cards
 list-algebra-cards
+function-list-cards
+
+
