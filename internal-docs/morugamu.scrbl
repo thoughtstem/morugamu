@@ -135,6 +135,12 @@ This takes in a list of images (i.e. puzzle cards), and numbers them starting fr
 
 }
 
+@defproc[(place-num [list list?])
+         (images?)]{
+
+This takes in a list of images and their corresponding numbers and produces the images with their corresponding numbers placed over them. The function takes a number and converts it into a string that is then placed over the image.
+
+}
 
 
 @subsection{Clock Numbers}
