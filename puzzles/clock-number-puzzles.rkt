@@ -3,6 +3,7 @@
 (require
   "../card-designs.rkt"
   "../rules.rkt"
+  "../util.rkt"
   (prefix-in numb: "../clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
 
