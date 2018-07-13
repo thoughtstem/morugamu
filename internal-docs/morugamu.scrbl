@@ -298,6 +298,7 @@ The number is the name of the file name. It lets us save all the image files in 
 Parameters: List lst, Number num
 Output: void
 
+}
 
 @defproc[(my-save-image [img image?] [num number?])
          ()]{
