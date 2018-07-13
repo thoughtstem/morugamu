@@ -276,3 +276,10 @@ This takes in a list of images and their corresponding numbers and produces the 
 This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
 
 }
+
+@defproc[(my-save-image [img image?] [num number?])
+         ()]{
+
+This function takes in an image and a number, and saves it as "sheet" + num + ".png"                    
+
+}
