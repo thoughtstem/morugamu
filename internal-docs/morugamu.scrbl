@@ -55,7 +55,16 @@ This repository separates some of the above concerns into different files. (This
 ]
 
 
-@section{Defining new Functions (Rule Cards)}
+@section{Util}
+
+As with any project, there are some functions that are so useful that they can be used
+in a variety of contexts.  This section of the docs is reserved for these low-level, high-value
+functions.
+
+
+
+
+@section{Rule Systems}
 
 @require[
   (prefix-in bool: "../boolean-algebra-cards.rkt")
@@ -125,6 +134,10 @@ Note the use of the render function.  Here's how it works:
 This takes in a theme (TODO: Define what a theme is), and produces a list of images of rule cards and symbols.  The symbols are the first thing in the list and they are arranged in a table to facilitate printing.  The rule cards follow the symbol page.  There may be 1 or more rule cards, depending on the particular algebra being rendered.
 
 TODO: Give an example of the output...
+
+}
+
+
 Here’s an example of creating a rule for a rule card
 @racketblock[
 	(rule '(> y x) '(< x y))
@@ -158,11 +171,30 @@ Note the use of the rule-card function.  Here's how it works:
 **** COming soon... ****
 
 
+@section{Puzzles}
+
+As rule systems are created (see above), puzzles can be created.  (TODO: say why we are creating puzzles and how that fits into the larger context of Morugamu)
+
+A puzzle is equivalent to some expression that can be evaluated according to some set of rules.
+
+This section of the docs documents the tools available for creating puzzles.
+
+
+@section{Printing}
+
+As rule systems and puzzles are created (see above), they need to be printed.
+
+With more and more printable materials, the need to automate things like page numberings and
+page layouts becomes more and more important.  This section documents the tools that facilitate
+these kinds of things.
 
 
 
 
-}
+
+
+
+
 
 
 
