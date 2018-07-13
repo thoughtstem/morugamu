@@ -149,7 +149,7 @@ cards will often share the same symbols and theme.  Such sets of cards (or "libr
 }
 
 
-@defproc[(rule-card [rule rule?]) ()]{
+@defproc[(rule-card [rule image?]) ()]{
 
  Here’s an example of creating a rule card for the boolean algebra card
  @racketblock[
