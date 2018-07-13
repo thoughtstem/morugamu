@@ -303,6 +303,14 @@ Output: void
 @defproc[(my-save-image [img image?] [num number?])
          ()]{
 
-This function takes in an image and a number, and saves it as "sheet" + num + ".png"                    
+This function takes in an image and a number, and saves it as "sheet" + num + ".png".
+
+Here's an example: 
+@racketblock[
+(define img (circle 30 "outline" "red"))
+
+(my-save-image img 3)
+]
+This would save the circle as "sheet3.png"
 
 }
