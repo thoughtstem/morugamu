@@ -173,7 +173,7 @@ Here’s an example of creating a rule for a rule card
 ]
 Note the use of the rule structure.  Here's how it works:
 
- @defproc[(rule)(rule '(function in) '(function out))]{
+ @defproc[(rule)()]{
 
 }
 Here’s an example of creating a rule card for the boolean algebra card
@@ -182,6 +182,14 @@ Here’s an example of creating a rule card for the boolean algebra card
 ]
 Note the use of the rule-card function.  Here's how it works:
 @defproc[(rule-card [rule rule?]) ()]{
+
+}
+Here's an example of creating a puzzle card
+@racketblock[
+          (puzzle-card ( rule '(< x y) 'T))
+]
+Note the use of the puzzle-card function. Here's how it works:
+@defproc[(puzzle-card [rule rule?]) ()]{
 
 }
 
