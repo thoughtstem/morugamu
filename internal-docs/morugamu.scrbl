@@ -153,9 +153,14 @@ This specifies that the tiles for S, 0, 1, and 2 are each a different color of c
 Usually, you'll not need to specify images this way, though.  Most rule cards are part of a set of rules that define some kind of mathematically interesting system (e.g. boolean algebra or arithmetic).  These
 cards will often share the same symbols and theme.  Such sets of cards (or "libraries" if you prefer the programming language terminology) are defined in files like boolean-algebra-cards.rkt.
 
+@defproc[(define-tile [sym symbol?] [img image?]) void?]{
 
-
-
+ Here's an example of creating a define-tile card and linking it to an image.
+ @racketblock[
+        (define-tile < '<
+          (bitmap "./themes/emojis/LessThan.png"))
+ ]
+}
 
 @defproc[(rule [ruleVar ('(function in) '(function out))])(rule?)]{
 
@@ -253,14 +258,6 @@ As rule systems are created (see above), puzzles can be created. Puzzles help ch
 A puzzle is equivalent to some expression that can be evaluated according to some set of rules.
 
 This section of the docs documents the tools available for creating puzzles.
-
-Individual tiles can be defined using define-tile. Here's an example
-
-@racketblock[
-        (define-tile < '<
-          (bitmap "./themes/emojis/LessThan.png"))
-]
-Tiles are then used in rule cards and puzzles.
 
 TODO: Doc this..
 
