@@ -84,7 +84,14 @@ Each of the symbols used in the rule card needs to be defined as a "tile".  Then
 
 Here's an example:
 
-(TODO: What to import?)
+Import
+@racketblock[
+ (require "./card-designs.rkt"
+          "./rules.rkt"
+          2htdp/image)
+ ]
+
+Rule Card Code
 
 @racketblock[
   (rule-card (rule '(S 0) '1)
