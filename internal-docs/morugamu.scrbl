@@ -311,3 +311,9 @@ Here's an example:
 This would save the circle as "sheet3.png"
 
 }
+@defproc[(cards->pages [list_of_cards list?])
+         ()]{
+This function takes a list of 9 or less images and turns them into a list of pages that contain 9 or less images
+}                                           
+                                          
+
