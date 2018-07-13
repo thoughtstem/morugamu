@@ -242,9 +242,6 @@ Individual tiles can be defined using define-tile. Here's an example
 ]
 Tiles are then used in rule cards and puzzles.
 
-@defproc[(puzzle-card [rule rule?])
-         image?]{
-
 TODO: Doc this..
 
 }
@@ -253,7 +250,7 @@ Here's an example of creating a puzzle card
           (puzzle-card ( rule '(< x y) 'T))
 ]
 Note the use of the puzzle-card function. Here's how it works:
-@defproc[(puzzle-card [rule rule?]) ()]{
+@defproc[(puzzle-card [rule rule?]) (image)]{
 
 }
 
