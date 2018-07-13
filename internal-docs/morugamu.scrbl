@@ -186,6 +186,13 @@ Note the use of the rule-card function.  Here's how it works:
 
 }
 
+@section{Utilities}
+
+@defproc[(pair-with-index [list list?])
+         (listof list?)]{
+This takes in a list of puzzle card images, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+}
+
 @section{Printing}
 
 As rule systems and puzzles are created (see above), they need to be printed.
@@ -201,3 +208,9 @@ This takes in a list of images and their corresponding numbers and produces the 
 
 }
 
+@defproc[(number-all [lst list?])
+         (listof image?)]{
+
+This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
+
+}
