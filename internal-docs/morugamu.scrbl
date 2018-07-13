@@ -169,7 +169,7 @@ This takes in a list of images (i.e. puzzle cards), and numbers them starting fr
 
 @section{Puzzles}
 
-As rule systems are created (see above), puzzles can be created.  (TODO: say why we are creating puzzles and how that fits into the larger context of Morugamu)
+As rule systems are created (see above), puzzles can be created. Puzzles help challenge your understanding of the rule cards and require you to simplify multiple tiles into one single tile
 
 A puzzle is equivalent to some expression that can be evaluated according to some set of rules.
 
