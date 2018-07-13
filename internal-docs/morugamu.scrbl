@@ -137,7 +137,7 @@ cards will often share the same symbols and theme.  Such sets of cards (or "libr
 
 
 
-@defproc[(rule)(rule '(Function in) '(Function out))]{
+@defproc[(rule [ruleVar ('(function in) '(function out))])(rule?)]{
 
  Here’s an example of creating a rule for a rule card
  @racketblock[
