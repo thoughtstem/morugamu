@@ -69,6 +69,13 @@ This is a fake function.  It's just there to help you document other functions.
 }
 
 
+@defproc[(pair-with-index [list list?])
+         (listof list?)]{
+This takes in a list of puzzle card images, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+}
+
+
+
 @section{Rule Systems}
 
 @require[
@@ -96,7 +103,7 @@ Import
           2htdp/image)
  ]
 
-This would create this rule card:
+Let's suppose we wanted to create the following rule card:
 
 @racketblock[
   (rule-card (rule '(S 0) '1)
@@ -112,16 +119,42 @@ Note that each of the four unique symbols above would need to be defined before 
   (define-tile the-2  '2 (circle 40 "solid" "yellow"))
 ]
 
+This specifies that the tiles for S, 0, 1, and 2 are each a different color of circle.  
 
 Usually, you'll not need to specify images this way, though.  Most rule cards are part of a set of rules that define some kind of mathematically interesting system (e.g. boolean algebra or arithmetic).  These
 cards will often share the same symbols and theme.  Such sets of cards (or "libraries" if you prefer the programming language terminology) are defined in files like boolean-algebra-cards.rkt.
 
-The convention in these files is to export a render function that takes a theme and returns a list of images (a printable symbol sheet and printable rule cards).  The theme can be easily changed as we explore different art styles for the game.
 
-Here's the current documentation for the existing libraries:
 
+
+
+@defproc[(rule)()]{
+
+ Here’s an example of creating a rule for a rule card
+ @racketblock[
+   (rule '(> y x) '(< x y))
+ ]
+
+ 
+
+}
+
+
+@defproc[(rule-card [rule rule?]) ()]{
+
+ Here’s an example of creating a rule card for the boolean algebra card
+ @racketblock[
+ (rule-card (rule '(> y x) '(< x y)))
+ ]
+}
+
+We now examine the various rule systems that have already been created:
 
 @subsection{Boolean Algebra}
+
+The convention in when implementing these rule systems is to export a render function that takes a
+theme and returns a list of images (a printable symbol sheet and printable rule cards).
+The theme can be easily changed as we explore different art styles for the game.
 
 Here's an example of importing the boolean algebra rules, along with a theme, and rendering out those rule cards according to the theme.
 
@@ -139,24 +172,49 @@ Note the use of the render function.  Here's how it works:
 @defproc[(render [theme theme?])
          (listof image?)]{
 
-This takes in a theme (TODO: Define what a theme is), and produces a list of images of rule cards and symbols.  The symbols are the first thing in the list and they are arranged in a table to facilitate printing.  The rule cards follow the symbol page.  There may be 1 or more rule cards, depending on the particular algebra being rendered.
-
-TODO: Give an example of the output...
+This returns a list of images for the tiles and rule cards for the boolean algebra.
 
 }
 
 
 @subsection{Clock Numbers}
 
-**** Coming soon... ****
+@defproc[(render [theme theme?])
+         (listof image?)]{
+
+This returns a list of images for the tiles and rule cards for the clock numbers system.
+
+}
+
+
+@subsection{Inequalities}
+
+Inequalities is implemented on top of boolean algebra and clock numbers.
+
+@defproc[(render [theme theme?])
+         (listof image?)]{
+
+This returns a list of images for the tiles and rule cards for the inequalities system.
+
+}
 
 @subsection{Lists}
 
-**** Coming soon... ****
+@defproc[(render [theme theme?])
+         (listof image?)]{
+
+This returns a list of images for the tiles and rule cards for the list rules system.
+
+}
 
 @subsection{Clock++ Numbers}
 
-**** Coming soon... ****
+@defproc[(render [theme theme?])
+         (listof image?)]{
+
+This returns a list of images for the tiles and rule cards for the clock++ number system.
+
+}
 
 
 @section{Puzzles}
@@ -167,30 +225,14 @@ A puzzle is equivalent to some expression that can be evaluated according to som
 
 This section of the docs documents the tools available for creating puzzles.
 
-Here’s an example of creating a rule for a rule card
-@racketblock[
-	(rule '(> y x) '(< x y))
-]
-Note the use of the rule structure.  Here's how it works:
 
- @defproc[(rule)()]{
+@defproc[(puzzle-card [rule rule?])
+         image?]{
 
-}
-Here’s an example of creating a rule card for the boolean algebra card
-@racketblock[
-	(rule-card (rule '(> y x) '(< x y)))
-]
-Note the use of the rule-card function.  Here's how it works:
-@defproc[(rule-card [rule rule?]) ()]{
+TODO: Doc this..
 
 }
 
-@section{Utilities}
-
-@defproc[(pair-with-index [list list?])
-         (listof list?)]{
-This takes in a list of puzzle card images, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
-}
 
 @section{Printing}
 
