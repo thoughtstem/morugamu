@@ -173,7 +173,7 @@ Here’s an example of creating a rule for a rule card
 ]
 Note the use of the rule structure.  Here's how it works:
 
- @defproc[(rule)()]{
+ @defproc[(rule)(rule '(function in) '(function out))]{
 
 }
 Here’s an example of creating a rule card for the boolean algebra card
