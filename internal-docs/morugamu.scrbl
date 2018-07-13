@@ -71,8 +71,28 @@ This is a fake function.  It's just there to help you document other functions.
 @defproc[(split-by [lst list?] [n number?])
          (list of lists?)]{
                            
-The split-by function takes in a list and splits it into an equal number of sublists. Note that this function requires the list length to be a multiple of the number you put in.                  
+The split-by function takes in a list and splits it into sublists of n. If there is a remainder, the remainder will be put in sublist
 
+Let's say you have a list of 6 letters, and you want to split it into sublists of three letters. Here's how: 
+@racketblock[
+(define lst '(a b c d e f))
+
+(split-by lst 3)
+]
+This would return '((a b c) (d e f))
+
+Let's say you have a list of 5 letters, and you want to split it into sublists of three letters. Here's how:
+@racketblock[
+(define lst '(a b c d e))
+
+(split-by lst 3)
+]
+This would return '((a b c) (d e))
+}
+
+@defproc[(pair-with-index [list list?])
+         (listof list?)]{
+This takes in a list of puzzle card images, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
 }
 
 @defproc[(pair-with-index [list list?])
