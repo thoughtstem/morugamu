@@ -231,6 +231,13 @@ A puzzle is equivalent to some expression that can be evaluated according to som
 
 This section of the docs documents the tools available for creating puzzles.
 
+Individual tiles can be defined using define-tile. Here's an example
+
+@racketblock[
+        (define-tile < '<
+          (bitmap "./themes/emojis/LessThan.png"))
+]
+Tiles are then used in rule cards and puzzles.
 
 @defproc[(puzzle-card [rule rule?])
          image?]{
