@@ -179,9 +179,9 @@ Here’s an example of creating a rule for a rule card
 @racketblock[
 	(rule '(> y x) '(< x y))
 ]
-Note the use of the rule function.  Here's how it works:
+Note the use of the rule structure.  Here's how it works:
 
- @defproc[(rule) ()]{
+ @defproc[(rule)()]{
 
 }
 Here’s an example of creating a rule card for the boolean algebra card
