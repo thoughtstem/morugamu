@@ -89,16 +89,19 @@ Each of the symbols used in the rule card needs to be defined as a "tile".  Then
 
 Here's an example:
 
-(TODO: What to import?)
+Import
+@racketblock[
+ (require "./card-designs.rkt"
+          "./rules.rkt"
+          2htdp/image)
+ ]
+
+This would create this rule card:
 
 @racketblock[
   (rule-card (rule '(S 0) '1)
              (rule '(S 1) '2))
 ]
-
-This would create this rule card:
-
-**** COming soon... ****
 
 Note that each of the four unique symbols above would need to be defined before this rule card can be constructed:
 
@@ -143,39 +146,6 @@ TODO: Give an example of the output...
 }
 
 
-Here’s an example of creating a rule for a rule card
-@racketblock[
-	(rule '(> y x) '(< x y))
-]
-Note the use of the rule function.  Here's how it works:
-
- @defproc[(rule) ()]{
-
-}
-Here’s an example of creating a rule card for the boolean algebra card
-@racketblock[
-	(rule-card (rule '(> y x) '(< x y)))
-]
-Note the use of the rule-card function.  Here's how it works:
-@defproc[(rule-card [rule rule?]) ()]{
-
-}
-
-@defproc[(number-all [lst list?])
-         (listof image?)]{
-
-This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
-
-}
-
-@defproc[(place-num [list list?])
-         (images?)]{
-
-This takes in a list of images and their corresponding numbers and produces the images with their corresponding numbers placed over them. The function takes a number and converts it into a string that is then placed over the image.
-
-}
-
-
 @subsection{Clock Numbers}
 
 **** Coming soon... ****
@@ -191,12 +161,36 @@ This takes in a list of images and their corresponding numbers and produces the 
 
 @section{Puzzles}
 
-As rule systems are created (see above), puzzles can be created.  (TODO: say why we are creating puzzles and how that fits into the larger context of Morugamu)
+As rule systems are created (see above), puzzles can be created. Puzzles help challenge your understanding of the rule cards and require you to simplify multiple tiles into one single tile
 
 A puzzle is equivalent to some expression that can be evaluated according to some set of rules.
 
 This section of the docs documents the tools available for creating puzzles.
 
+Here’s an example of creating a rule for a rule card
+@racketblock[
+	(rule '(> y x) '(< x y))
+]
+Note the use of the rule structure.  Here's how it works:
+
+ @defproc[(rule)()]{
+
+}
+Here’s an example of creating a rule card for the boolean algebra card
+@racketblock[
+	(rule-card (rule '(> y x) '(< x y)))
+]
+Note the use of the rule-card function.  Here's how it works:
+@defproc[(rule-card [rule rule?]) ()]{
+
+}
+
+@section{Utilities}
+
+@defproc[(pair-with-index [list list?])
+         (listof list?)]{
+This takes in a list of puzzle card images, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+}
 
 @section{Printing}
 
@@ -206,4 +200,16 @@ With more and more printable materials, the need to automate things like page nu
 page layouts becomes more and more important.  This section documents the tools that facilitate
 these kinds of things.
 
+@defproc[(place-num [list list?])
+         (images?)]{
 
+This takes in a list of images and their corresponding numbers and produces the images with their corresponding numbers placed over them. The function takes a number and converts it into a string that is then placed over the image.
+
+}
+
+@defproc[(number-all [list list?])
+         (listof image?)]{
+
+This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
+
+}
