@@ -77,7 +77,10 @@ The split-by function takes in a list and splits it into an equal number of subl
 
 @defproc[(pair-with-index [list list?])
          (listof list?)]{
-This takes in a list of puzzle card images, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+This takes in a list, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+
+For example, if a list of puzzle cards was inputted into this function, a list of lists would be produced in that each sublist would contain the puzzle card with its respective index. 
+
 }
 
 
@@ -263,7 +266,7 @@ With more and more printable materials, the need to automate things like page nu
 page layouts becomes more and more important.  This section documents the tools that facilitate
 these kinds of things.
 
-@defproc[(number-all [list list?])
+@defproc[(number-all [list listof image?])
          (listof image?)]{
 
 This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
