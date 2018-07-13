@@ -290,6 +290,15 @@ This takes in a list of images (i.e. puzzle cards), and numbers them starting fr
 
 }
 
+@defproc[(save-sheets [lst list?] [num number?])
+         ()]{
+
+This funtion uses a list of sheet images and saves them recursively. If number is less than the length of the list, save-image function is called again and the sheet is incremented
+The number is the name of the file name. It lets us save all the image files in order without overwriting the previus ones
+Parameters: List lst, Number num
+Output: void
+
+
 @defproc[(my-save-image [img image?] [num number?])
          ()]{
 
