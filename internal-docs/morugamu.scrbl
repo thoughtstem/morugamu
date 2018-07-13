@@ -208,7 +208,7 @@ This takes in a list of images and their corresponding numbers and produces the 
 
 }
 
-@defproc[(number-all [lst list?])
+@defproc[(number-all [list list?])
          (listof image?)]{
 
 This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
