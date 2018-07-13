@@ -35,14 +35,13 @@ And so on.   There are lots of ways to think about this project.  All in all, th
 Remember that you can think of Morugamu as either a game or a programming language.  Here's the mapping of ideas:
 
 @itemlist[
-          @item{Identifiers      = Symbols/Emojis/etc}
-          @item{Function named F = All Rule Cards with Symbol F}
-          @item{Expression       = A Puzzle Card}
-          @item{Library          = A collection of rule cards}
-          @item{Program          = A collection of rule cards and a puzzle card}
-          @item{Runtime          = Playtime}
-          @item{Interpreter      = Metarules}
-]
+ @item{Identifiers      = Symbols/Emojis/etc}
+ @item{Function named F = All Rule Cards with Symbol F}
+ @item{Expression       = A Puzzle Card}
+ @item{Library          = A collection of rule cards}
+ @item{Program          = A collection of rule cards and a puzzle card}
+ @item{Runtime          = Playtime}
+ @item{Interpreter      = Metarules}]
 
 (Side note: this programming language is roughly isomorphic to the Lisp-family language called Scheme.  There are just a couple of small differences: the use of icons, and the patternmatching rules.) 
 
@@ -61,7 +60,13 @@ As with any project, there are some functions that are so useful that they can b
 in a variety of contexts.  This section of the docs is reserved for these low-level, high-value
 functions.
 
+@defproc[(example-function [param1 param1-type?]
+                           [param2 param2-type?])
+         output-type?]{
 
+This is a fake function.  It's just there to help you document other functions.
+
+}
 
 
 @section{Rule Systems}
