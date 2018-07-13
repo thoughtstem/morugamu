@@ -24,10 +24,10 @@
   (rule-card (rule '(len (cons x nil))
                    '1)
              (rule '(len (cons x (cons x nil)))
-                         '3)))
+                         '3))
 
-  (rule-card (rule '(len x y))
-                   '?))
+  (rule-card (rule '(len x y)
+                   '?))))
 
 
 
