@@ -138,23 +138,6 @@ TODO: Give an example of the output...
 }
 
 
-Here’s an example of creating a rule for a rule card
-@racketblock[
-	(rule '(> y x) '(< x y))
-]
-Note the use of the rule function.  Here's how it works:
-
- @defproc[(rule) ()]{
-
-}
-Here’s an example of creating a rule card for the boolean algebra card
-@racketblock[
-	(rule-card (rule '(> y x) '(< x y)))
-]
-Note the use of the rule-card function.  Here's how it works:
-@defproc[(rule-card [rule rule?]) ()]{
-
-}
 
 @defproc[(number-all [lst list?])
          (listof image?)]{
@@ -192,6 +175,23 @@ A puzzle is equivalent to some expression that can be evaluated according to som
 
 This section of the docs documents the tools available for creating puzzles.
 
+Here’s an example of creating a rule for a rule card
+@racketblock[
+	(rule '(> y x) '(< x y))
+]
+Note the use of the rule function.  Here's how it works:
+
+ @defproc[(rule) ()]{
+
+}
+Here’s an example of creating a rule card for the boolean algebra card
+@racketblock[
+	(rule-card (rule '(> y x) '(< x y)))
+]
+Note the use of the rule-card function.  Here's how it works:
+@defproc[(rule-card [rule rule?]) ()]{
+
+}
 
 @section{Printing}
 
