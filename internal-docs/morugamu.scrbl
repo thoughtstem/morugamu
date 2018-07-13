@@ -91,16 +91,12 @@ Import
           2htdp/image)
  ]
 
-Rule Card Code
+This would create this rule card:
 
 @racketblock[
   (rule-card (rule '(S 0) '1)
              (rule '(S 1) '2))
 ]
-
-This would create this rule card:
-
-**** COming soon... ****
 
 Note that each of the four unique symbols above would need to be defined before this rule card can be constructed:
 
