@@ -14,24 +14,24 @@
 (define (render theme)
 
   (define-tile < '<
-    (bitmap "./themes/emojis/LessThan.png"))
+    (bitmap "../themes/emojis/LessThan.png"))
 
 
   (define-tile max 'max
-    (bitmap "./themes/emojis/max.png"))
+    (bitmap "../themes/emojis/max.png"))
     ;(text "max" 50 "black"))
   
   (define-tile ret 'ret
-    (bitmap "./themes/emojis/ret.png"))
+    (bitmap "../themes/emojis/ret.png"))
 
   (define-tile = '=
-    (bitmap "./themes/emojis/equals.png"))
+    (bitmap "../themes/emojis/equals.png"))
   
   (define-tile min 'min
-    (bitmap "./themes/emojis/min.png"))
+    (bitmap "../themes/emojis/min.png"))
   
   (define-tile > '>
-    (bitmap "./themes/emojis/GreaterThan.png"))
+    (bitmap "../themes/emojis/GreaterThan.png"))
 
   
   (list

@@ -8,7 +8,7 @@
 (require (rename-in "./card-designs.rkt"
                     [render-symbol design-1]))
 
-(require "./config.rkt")
+(require "../util/config.rkt")
 
 
 

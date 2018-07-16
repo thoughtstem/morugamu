@@ -9,7 +9,7 @@
          set-symbol-map!)
 
 (require 2htdp/image)
-(require "./config.rkt")
+(require "../util/config.rkt")
 
 (define (scale-to s i)
   (define m (max (image-width i)

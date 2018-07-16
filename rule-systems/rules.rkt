@@ -2,11 +2,14 @@
 
 (provide rule-card
          puzzle-card
-         rule)
+         rule
+         rule-from
+         rule-to)
 
 (require 2htdp/image
          "./cards.rkt"
-         "./config.rkt")
+         "./card-designs.rkt"
+         "../util/config.rkt")
 
 (define (scale-to s i)
   (define m (max (image-width i)
@@ -39,17 +42,24 @@
 (define (rule-card #:width (width BIG-CARD-WIDTH)
                    #:height (height BIG-CARD-HEIGHT)
                    #:caption (caption (text "Rules" 30 "black"))
+                   #:icon (icon #t)
                    . rules )
   (define inner
     (scale 0.25
          (apply (make-safe above)
                 (add-between (map render-rule rules) spacer))))
 
-
+  (define first-rule-from (rule-from (first rules)))
+  (define symbol (if (list? first-rule-from)
+                         (first first-rule-from)
+                         first-rule-from))
 
   (place-image
-   caption
-   70 30
+   (beside (if icon
+               (scale 0.25 (render-symbol symbol))
+               empty-image)
+           caption)
+   60 20
    (overlay (scale-to (- width 20) inner)
            (rectangle width
                       height
@@ -61,8 +71,7 @@
    (curry rule-card
           #:width  BIG-CARD-HEIGHT
           #:height BIG-CARD-WIDTH
-          #:caption (text "Puzzle" 30 "black"))
-   rules))
-
-
-
+          #:caption (text "                                        Puzzle" 30 "black")
+          #:icon #f)
+   rules)
+)

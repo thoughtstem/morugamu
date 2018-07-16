@@ -2,12 +2,12 @@
 
 (provide render)
 
-(require "./card-designs.rkt"
-         "./rules.rkt"
+(require "../rule-systems/card-designs.rkt"
+         "../rule-systems/rules.rkt"
          2htdp/image)
 
 (module+ test
-  (require (prefix-in numb: "./themes/emoji-clock-arithmetic.rkt"))
+  (require (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
 
   (render numb:theme))
 
