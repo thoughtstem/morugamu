@@ -1,13 +1,13 @@
 #lang racket
 
 (require
-  "../card-designs.rkt"
-  "../rules.rkt"
-  (prefix-in bool: "../boolean-algebra-cards.rkt")
+  "../rule-systems/card-designs.rkt"
+  "../rule-systems/rules.rkt"
+  (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
   (prefix-in bool: "../themes/emoji-boolean-algebra.rkt")
-  (prefix-in numb: "../clock-number-cards.rkt")  
+  (prefix-in numb: "../rule-systems/clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt")
-  (prefix-in ineq: "../inequality-cards.rkt"))
+  (prefix-in ineq: "../rule-systems/inequality-cards.rkt"))
 
 (define clock-numbers
   (numb:render numb:theme))

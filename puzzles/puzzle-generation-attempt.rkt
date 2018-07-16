@@ -1,9 +1,9 @@
 #lang racket
 
 (require
-  "../card-designs.rkt"
-  "../rules.rkt"
-  (prefix-in numb: "../clock-number-cards.rkt")  
+  "../rule-systems/card-designs.rkt"
+  "../rule-systems/rules.rkt"
+  (prefix-in numb: "../rule-systems/clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
 
 (define clock-numbers-algebra
