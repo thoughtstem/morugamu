@@ -17,8 +17,8 @@
   ;             300 20
   ;             (car couple)))
 (overlay/offset (text (number->string (cdr couple)) 30 "black")
-                300 20
-         (car couple)
+                (+ (-(/ (image-width (car couple)) 2)) 20) (- (/ (image-height (car couple)) 2) 15)
+                (car couple)
   ))
 
 ;Takes in a list of (images?), numbers each, and then places the number on the image
