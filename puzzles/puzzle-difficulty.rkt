@@ -1,12 +1,16 @@
 #lang racket
 
+
 (provide make-graph)
+; Imports a required package .... "called" ....
+(require racket/list)
 
-(require racket/list) ;needed library
+; Imports a required package called plot for the visual graph. 
+(require plot)
 
-(require plot) ;needed for any type of graph
 
-(define mylist (list '(and T(or F T(not T F))) ;list of a list - mylist contains data set from other group. should be updated with more puzzles as they are created
+; This creates a list of puzzles (boolean, clock, etc)
+(define mylist (list '(and T(or F T(not T F))) 
                        '(or F(not T))
                        '(and(and F F)(or T (and T T)))
                        '(and(not (or T F))(and T (or F T)))
@@ -38,6 +42,7 @@
                        '(not(or(or F F)(and F F)))
                        '(not(and T(and T(or T F))))
                        '(or (not(not(not F)))(not(not(not T))))
+                       '(or (not(not(not F)))(not(not(not T))))
                        '(or T(not (and T F)))
                        '(not(or(or F F))(and F(not F)))
                        '(and(not F)(not(or T F)))
@@ -54,33 +59,41 @@
                        '(not(not(and F(and (or T T)F))))
                        '(not(and(and T(and T (or F T)))))))
 
-(define (make-graph l)  ;defines the function to produce the entire graph with given list 'l'.
+; This is a function that makes a graph given a list of puzzles, l.
 
-(define levels ;define levels as a list to save results of lambda function below
+(define (make-graph l)
+  
+; Define levels as an updated list without duplicates.
+  
+(define levels
+  
+; Map iterates through every element in a list, and does a single function to each element.  
+(map (lambda (i) 
+       
+       ; This takes the length of each element. Flatten ignores parantheses to help determine length.
+         (length (flatten i)))
+     
+       ; Removes any duplicate elements within the list.
+       (remove-duplicates l))) 
 
-(map (lambda (i) ;map applies to all elements in the list, lambda is used to take in arguement and procedure  
-
-         (length (flatten i))) ;flatten ignored syntax and takes number of words ie AND, OR, T, F etc. used to determine difficulty 
-
-       (remove-duplicates l)));removes all duplicates i
 
 
-; 11 is max difficulty of the puzzles encountered in the current dataset
 
-(define out-of 11)
-
-(define breaks '((0 4) (5 8) (9 15))) ;used as groupings in graph. must be 2 numbers ie 0-4, 5-8 etc. can have more groupings of two
+ ;Defines intervals of diffficulty for the graph. This must be two numbers. 
+(define breaks '((0 4) (5 8) (9 15))) 
 
 (define (label l)
+  ; This sets up the formatting for the intervals defined earlier.
+  (format "~a-~a" (first l) (second l)))
 
-  (format "~a-~a" (first l) (second l))) ;correct version of formatting
-
-(define (buckets l) ;procedure for creating graph
-
+  
+ ; This defines and places the elements in the correct interval or "bucket".
+(define (buckets l)
+  
   (let ((sorted (sort l <)))
 
-    (for/list ([b breaks])
-
+    (for/list ([b breaks])   
+      
           (vector (label b)
 
            (count (lambda (x) (and 
@@ -91,7 +104,10 @@
 
                levels)))))
 
-(plot ;actually plot the graph
+
+
+; This plots the graph as a discrete histogram given buckets and levels lists.
+(plot 
 
  (list
 
@@ -99,7 +115,9 @@
 
   (buckets levels)))
 
- #:out-file "hist.png" ;additional info, how to name title, x-axis, Y-axis, etc
+; This allows us to add labels for each part of the graph. 
+
+#:out-file "hist.png"
 
 #:title "Plot of difficulty ratings and amount it occurs"
 
@@ -107,5 +125,10 @@
 
 #:y-label "# of occurances"))
 
+
+; This actually calls/runs the 'make-graph' function that we have made. 
 (module+ test
-  (make-graph mylist))
+(make-graph mylist))
+
+
+
