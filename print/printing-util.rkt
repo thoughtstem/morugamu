@@ -11,11 +11,13 @@
          "../util/config.rkt"
          "../util/util.rkt")
 
+;Called by the number-all function...takes in a pair (image, number) and then puts the number on the image
 (define (place-num couple)
   (place-image (text (number->string (cdr couple)) 30 "black")
                300 20
                (car couple)))
 
+;Takes in a list of (images?), numbers each, and then places the number on the image
 (define (number-all pairs)
   (map place-num (pair-with-index pairs)))
 
