@@ -12,7 +12,7 @@ What are we doing here?  There are lots of ways to answer that question.
 
 One answer is that we're making a board game, and we're using Racket to help.
 
-Another answer is that we're creating a new programming language -- one whose runtime environment is a table top and a human "computer".
+Another answer is that we're creating a new programming language -- one whose runtime environment is a table top and a human "computer."
 
 Another answer is that we're trying to change the way computer science is taught -- by starting with the mathematical/algebraic basics that often get missed in traditional education (even at the university level!).
 
@@ -22,7 +22,7 @@ Another answer is that we're trying to make a game where you don't have to under
 
 Another answer is that we're trying to get a product into stores by Christmas this year.
 
-Another answer is that we're trying to create a teaching tool that works without computers, that can be used in any school or coffee shop around the world.
+Another answer is that we're trying to create a teaching tool that works without computers and that can be used in any school or coffee shop around the world.
 
 Another answer is that we're trying to create something that perfectly blends two things: fun and education.
 
@@ -43,7 +43,7 @@ Remember that you can think of Morugamu as either a game or a programming langua
  @item{Runtime          = Playtime}
  @item{Interpreter      = Metarules}]
 
-(Side note: this programming language is roughly isomorphic to the Lisp-family language called Scheme.  There are just a couple of small differences: the use of icons, and the patternmatching rules.) 
+(Side note: this programming language is roughly isomorphic to the Lisp-family language called Scheme.  There are just a couple of small differences: the use of icons and the patternmatching rules.) 
 
 This repository separates some of the above concerns into different files. (This will definitely change as the repository grows.)
 
@@ -71,15 +71,35 @@ This is a fake function.  It's just there to help you document other functions.
 @defproc[(split-by [lst list?] [n number?])
          (list of lists?)]{
                            
-The split-by function takes in a list and splits it into an equal number of sublists. Note that this function requires the list length to be a multiple of the number you put in.                  
+The split-by function takes in a list and splits it into sublists of n. If there is a remainder, the remainder will be put in sublist.
 
+Let's say you have a list of 6 letters, and you want to split it into sublists of three letters. Here's how: 
+@racketblock[
+(define lst '(a b c d e f))
+
+(split-by lst 3)
+]
+This would return '((a b c) (d e f))
+
+Let's say you have a list of 5 letters, and you want to split it into sublists of three letters. Here's how:
+@racketblock[
+(define lst '(a b c d e))
+
+(split-by lst 3)
+]
+This would return '((a b c) (d e))
 }
 
 @defproc[(pair-with-index [list list?])
          (listof list?)]{
-This takes in a list, and assigns a index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+This takes in a list of puzzle card images and assigns an index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+}
 
-For example, if a list of puzzle cards was inputted into this function, a list of lists would be produced in that each sublist would contain the puzzle card with its respective index. 
+@defproc[(pair-with-index [list list?])
+         (listof list?)]{
+This takes in a list and assigns an index to each of them. The index isn't added to the card itself as an image but a list of lists is made with each sublist containing the image and the index number.
+
+For example, if a list of puzzle cards were inputted into this function, a list of lists would be produced in that each sublist would contain the puzzle card with its respective index. 
 
 }
 
@@ -101,7 +121,7 @@ A rule card looks like this:
 
 @second[ba-cards]
 
-Each of the symbols used in the rule card needs to be defined as a "tile".  Then the rule card can be constructed by specifying a list of rules.
+Each of the symbols used in the rule card needs to be defined as a "tile."  Then the rule card can be constructed by specifying a list of rules.
 
 Here's an example:
 
@@ -133,13 +153,18 @@ This specifies that the tiles for S, 0, 1, and 2 are each a different color of c
 Usually, you'll not need to specify images this way, though.  Most rule cards are part of a set of rules that define some kind of mathematically interesting system (e.g. boolean algebra or arithmetic).  These
 cards will often share the same symbols and theme.  Such sets of cards (or "libraries" if you prefer the programming language terminology) are defined in files like boolean-algebra-cards.rkt.
 
+@defproc[(define-tile [sym symbol?] [img image?]) void?]{
 
-
-
+ Here's an example of creating a define-tile card and linking it to an image:
+ @racketblock[
+        (define-tile < '<
+          (bitmap "./themes/emojis/LessThan.png"))
+ ]
+}
 
 @defproc[(rule [ruleVar ('(function in) '(function out))])(rule?)]{
 
- Here’s an example of creating a rule for a rule card
+ Here’s an example of creating a rule for a rule card:
  @racketblock[
    (rule '(> y x) '(< x y))
  ]
@@ -151,7 +176,7 @@ cards will often share the same symbols and theme.  Such sets of cards (or "libr
 
 @defproc[(rule-card [rule image?]) (image)]{
 
- Here’s an example of creating a rule card for the boolean algebra card
+ Here’s an example of creating a rule card for the boolean algebra card:
  @racketblock[
  (rule-card (rule '(> y x) '(< x y)))
  ]
@@ -165,7 +190,7 @@ The convention in when implementing these rule systems is to export a render fun
 theme and returns a list of images (a printable symbol sheet and printable rule cards).
 The theme can be easily changed as we explore different art styles for the game.
 
-Here's an example of importing the boolean algebra rules, along with a theme, and rendering out those rule cards according to the theme.
+Here's an example of importing the boolean algebra rules, along with a theme, and rendering out those rule cards according to the theme:
 
 @racketblock[
 	(require
@@ -228,24 +253,16 @@ This returns a list of images for the tiles and rule cards for the clock++ numbe
 
 @section{Puzzles}
 
-As rule systems are created (see above), puzzles can be created. Puzzles help challenge your understanding of the rule cards and require you to simplify multiple tiles into one single tile
+As rule systems are created (see above), puzzles can be created. Puzzles help challenge your understanding of the rule cards and require you to simplify multiple tiles into one single tile.
 
 A puzzle is equivalent to some expression that can be evaluated according to some set of rules.
 
 This section of the docs documents the tools available for creating puzzles.
 
-Individual tiles can be defined using define-tile. Here's an example
-
-@racketblock[
-        (define-tile < '<
-          (bitmap "./themes/emojis/LessThan.png"))
-]
-Tiles are then used in rule cards and puzzles.
-
 TODO: Doc this..
 
 }
-Here's an example of creating a puzzle card
+Here's an example of creating a puzzle card:
 @racketblock[
           (puzzle-card ( rule '(< x y) 'T))
 ]
@@ -266,13 +283,41 @@ these kinds of things.
 @defproc[(number-all [list listof image?])
          (listof image?)]{
 
-This takes in a list of images (i.e. puzzle cards), and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
+This takes in a list of images (i.e. puzzle cards) and numbers them starting from one.  It produces a list of the same images, each with its corresponding number now placed at the top right corner.                    
+
+}
+
+@defproc[(save-sheets [lst list?] [num number?])
+         ()]{
+
+This function uses a list of sheet images and saves them recursively. If num is less than the length of the list, the function is called again and num is incremented.
+Num is part of the file name. This function lets us save multiple files with different names without randomizing.
 
 }
 
 @defproc[(my-save-image [img image?] [num number?])
          ()]{
 
-This function takes in an image and a number, and saves it as "sheet" + num + ".png"                    
+This function takes in an image and a number and saves it as "sheet" + num + ".png".
+
+Here's an example: 
+@racketblock[
+(define img (circle 30 "outline" "red"))
+
+(my-save-image img 3)
+]
+This would save the circle as "sheet3.png"
 
 }
+
+@defproc[(cards->pages [list_of_cards listof images?])
+         (listof image?)]{
+This function takes a list of 9 or less images and turns them into a list of pages that contains 9 or less images.
+}
+
+@defproc[(9images->page [list_of_images listof images?])
+         (image?)]{
+This function turns a list of 9 card images into an image of a page.
+}
+                                          
+
