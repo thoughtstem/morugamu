@@ -22,11 +22,13 @@
 
 
 (define cards
-  (cards->pages
+  ;(cards->pages ;BROKEN???
    (number-all (append (rest (bool:render bool:theme))
                        (rest (numb:render numb:theme))
                        (rest (list:render list:theme))
-                       (rest (ineq:render #f))))))
+                       (rest (ineq:render #f))))
+;  )
+)
 
 
 (define tiles

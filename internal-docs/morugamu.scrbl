@@ -108,7 +108,7 @@ For example, if a list of puzzle cards were inputted into this function, a list 
 @section{Rule Systems}
 
 @require[
-  (prefix-in bool: "../boolean-algebra-cards.rkt")
+  (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
 ]
 
 @require[
