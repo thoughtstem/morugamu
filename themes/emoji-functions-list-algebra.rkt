@@ -1,7 +1,7 @@
 #lang racket
 
 (require 2htdp/image
-         "../functions-list-algebra-cards.rkt")
+         "../rule-systems/functions-list-algebra-cards.rkt")
 
 (provide theme)
 
