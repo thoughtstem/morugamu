@@ -2,11 +2,11 @@
 
 (require
   2htdp/image
-  "../card-designs.rkt"
-  "../rules.rkt"
-  (prefix-in bool: "../boolean-algebra-cards.rkt")
+  "../rule-systems/card-designs.rkt"
+  "../rule-systems/rules.rkt"
+  (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
   (prefix-in bool: "../themes/emoji-boolean-algebra.rkt")
-  (prefix-in numb: "../clock-number-cards.rkt")
+  (prefix-in numb: "../rule-systems/clock-number-cards.rkt")
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
 
 (define boolean-algebra
