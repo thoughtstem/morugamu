@@ -1,9 +1,9 @@
 #lang racket
 
 (require
-  "../card-designs.rkt"
-  "../rules.rkt"
-  (prefix-in bool: "../boolean-algebra-cards.rkt")
+  "../rule-systems/card-designs.rkt"
+  "../rule-systems/rules.rkt"
+  (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
   (prefix-in bool: "../themes/emoji-boolean-algebra.rkt"))
 
 (define boolean-algebra
