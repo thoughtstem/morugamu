@@ -7,4 +7,4 @@
 
 (define theme
   (list
-   (bitmap "../themes/emojis/length.png")))
+   (bitmap "./emojis/length.png")))
