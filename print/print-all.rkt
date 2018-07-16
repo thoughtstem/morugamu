@@ -27,7 +27,7 @@
                        (rest (numb:render numb:theme))
                        (rest (list:render list:theme))
                        (rest (ineq:render #f))))
-;  )
+  ;)
 )
 
 
