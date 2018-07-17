@@ -1,9 +1,9 @@
 #lang racket
 
 (require
-  "../card-designs.rkt"
-  "../rules.rkt"
-  (prefix-in numb: "../clock-number-cards.rkt")  
+  "../rule-systems/card-designs.rkt"
+  "../rule-systems/rules.rkt"
+  (prefix-in numb: "../rule-systems/clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
 
 (define clock-numbers-algebra
@@ -12,15 +12,16 @@
 clock-numbers-algebra
 
 ;Defining the two-input operators as lists
-(define two-op-bool (list 'and 'or))
+(define two-op-bool   (list 'and 'or))
 (define two-op-clock '(add sub))
 
 
 ;Function rand-element
 ;randomly returns one item from the specified list (list-in)
 (define (rand-element list-in) 
-  (first (shuffle list-in) )
-  )
+  (first (shuffle list-in) ))
+
+
 
 ;Generate either an 'and or an 'or and put that in the variable output
 ;Simon random number generator: ,(+ 0 (random 10))
