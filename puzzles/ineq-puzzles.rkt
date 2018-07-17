@@ -19,10 +19,10 @@
 (define ineq-cards
   (ineq:render #f))
 
-(provide puzzle-expressions
-         puzzle-deck)
+(provide puzzle-expressions1
+         puzzle-deck1)
 
-(define puzzle-expressions
+(define puzzle-expressions1
   (list
 
    '((< (S (S 0)) (S 0)) F)
@@ -123,6 +123,6 @@
 
    ))
 
-(define puzzle-deck (map expression->puzzle-card puzzle-expressions))
+(define puzzle-deck1 (map expression->puzzle-card puzzle-expressions1))
 
 
