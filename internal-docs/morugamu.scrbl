@@ -105,7 +105,7 @@ For example, if a list of puzzle cards were inputted into this function, a list 
 
 @defproc[(expression->puzzle-card [exp exp?])
          (puzzle-card?)]{
-WE NEED TO FIGURE OUT WHAT THIS DOES
+This takes in an expression then calls the puzzle-card function. It creates a puzzle card based on the expression.
 
 }
 
