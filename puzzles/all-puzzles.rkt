@@ -9,7 +9,9 @@
   
   (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
   (prefix-in bool: "../themes/emoji-boolean-algebra.rkt")
-  (prefix-in bool: "./boolean-algebra-puzzles.rkt"))
+  (prefix-in bool: "./boolean-algebra-puzzles.rkt")
+  (prefix-in bool: "./ineq-puzzles.rkt")
+  )
 
 (module+ test
   (make-graph bool:puzzle-expressions))

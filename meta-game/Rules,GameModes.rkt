@@ -14,7 +14,7 @@ Puzzle cards (Easy, Medium, Hard)(Like the one pictured below)
 
 Rule Cards(like the one picture below)
 @require[
-         (prefix-in bool: "../boolean-algebra-cards.rkt")]
+         (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")]
 @require[
          (prefix-in bool: "../themes/emoji-boolean-algebra.rkt")]
 @define[ba-cards (bool:render bool:theme)]
