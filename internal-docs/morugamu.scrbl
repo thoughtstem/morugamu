@@ -103,7 +103,11 @@ For example, if a list of puzzle cards were inputted into this function, a list 
 
 }
 
+@defproc[(expression->puzzle-card [exp exp?])
+         (puzzle-card?)]{
+WE NEED TO FIGURE OUT WHAT THIS DOES
 
+}
 
 @section{Rule Systems}
 

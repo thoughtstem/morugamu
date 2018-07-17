@@ -16,7 +16,14 @@
 (module+ test
   (make-graph bool:puzzle-expressions))
 
+(module+ test
+  (make-graph bool:puzzle-expressions1))
+
 (define all-puzzles
-  (append bool:puzzle-deck)
+  (list
+   '(append bool: puzzle-deck)
+   '(append bool: puzzle-deck1)
   ;Add more puzzles here
-  )
+  ))
+
+all-puzzles
