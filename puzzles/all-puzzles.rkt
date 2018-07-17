@@ -26,3 +26,4 @@
   ;Add more puzzles here
   ))
 
+all-puzzles
