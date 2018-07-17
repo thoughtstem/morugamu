@@ -2,7 +2,7 @@
 
 
 (provide make-graph)
-; Imports a required package .... "called" ....
+; Imports a required package for list functions. 
 (require racket/list)
 
 ; Imports a required package called plot for the visual graph. 
