@@ -8,7 +8,8 @@
   (prefix-in bool: "../themes/emoji-boolean-algebra.rkt")
   (prefix-in numb: "../rule-systems/clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt")
-  (prefix-in ineq: "../rule-systems/inequality-cards.rkt"))
+  (prefix-in ineq: "../rule-systems/inequality-cards.rkt")
+  (prefix-in ineq: "../themes/emoji-inequality.rkt"))
 
 (define clock-numbers
   (numb:render numb:theme))
@@ -17,7 +18,7 @@
   (bool:render bool:theme))
 
 (define ineq-cards
-  (ineq:render #f))
+  (ineq:render ineq:theme))
 
 (provide puzzle-expressions1
          puzzle-deck1)
