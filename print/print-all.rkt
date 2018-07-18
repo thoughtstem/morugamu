@@ -5,10 +5,12 @@
   "../rule-systems/card-designs.rkt"
   "../rule-systems/rules.rkt"
   "./printing-util.rkt"
+  "../puzzles/puzzle-util.rkt"
   
   (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
   (prefix-in bool: "../themes/emoji-boolean-algebra.rkt")
   (prefix-in bool: "../puzzles/boolean-algebra-puzzles.rkt")
+  (prefix-in bool: "../puzzles/all-puzzles.rkt")
   
   (prefix-in numb: "../rule-systems/clock-number-cards.rkt")
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt")
@@ -26,7 +28,7 @@
   )
 
 
-(define puzzles
+#;(define puzzles
  
   (list bool:puzzle-deck
         numb:puzzle-deck2
@@ -35,7 +37,7 @@
   ;)
 ))
 
-(define cards
+#;(define cards
   (cards->pages
    (list (number-all (append (rest (bool:render bool:theme))                 
                        (rest (numb:render numb:theme))
@@ -44,10 +46,18 @@
 
                       
 
-(define tiles
+#;(define tiles
   (list (first (bool:render bool:theme))
          (first (numb:render numb:theme))
          (first (list:render list:theme))
          )) 
 
-(append tiles cards puzzles)
+#;(append tiles cards puzzles)
+
+(define print-all-puzzles
+  (append
+   bool:all-puzzles))
+
+(define print-all-puzzles-deck (map expression->puzzle-card print-all-puzzles))
+
+print-all-puzzles-deck
