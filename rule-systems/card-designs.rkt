@@ -4,6 +4,9 @@
          ;symbol-page
          lparen
          rparen
+         get-rparen
+         get-lparen
+         get-all-symbols
          define-tile
          define-meta-tile
          set-symbol-map!)

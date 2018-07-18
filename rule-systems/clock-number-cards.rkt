@@ -85,7 +85,9 @@
 
   
   (list
-   
+   (get-rparen)
+   (get-lparen)
+   (get-all-symbols)
 
 
 
