@@ -65,7 +65,7 @@
   lparen)
 
 (define (get-all-symbols)
-  all-symbols)
+  (all-symbols))
 ;end of accessor functions
 
 #|
