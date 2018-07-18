@@ -54,6 +54,7 @@
 (define (row i n)
   (apply beside (map (thunk* i) (range n))))
 
+;start of accessor functions
 (define (get-rparen)
   rparen)
 
@@ -62,6 +63,7 @@
 
 (define (get-all-symbols)
   all-symbols)
+;end of accessor functions
 
 #|
 (define (symbol-page)
