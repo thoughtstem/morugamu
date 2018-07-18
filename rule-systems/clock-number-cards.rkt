@@ -16,21 +16,19 @@
 
 (define (render theme)
 
+  (define-tile < '<
+  #;(bitmap "./themes/emojis/add.png")
+  (text "<" 50 "black"))
 
-  (define dot (third theme))
+(define dot (third theme))
 
+  (define-tile the-successor  'S   (first theme))
 
-  (define-tile the-successor  'S
-    (first theme))
+  (define-tile the-previous   'P   (second theme))
 
-  (define-tile the-previous  'P
-    (second theme))
+  (define-tile the-0          '0   (fourth theme))
 
-  (define-tile the-0 '0
-    (fourth theme))
-
-  (define-tile the-1 '1
-    dot)
+  (define-tile the-1          '1    dot)
 
   (define-tile the-2 '2
     (beside dot dot))
@@ -77,12 +75,6 @@
   (define-tile the-sub  'sub
     (sixth theme))
 
-  (define-tile < '<
-  #;(bitmap "./themes/emojis/add.png")
-  (text "<" 50 "black"))
-
-
-
   
   (list
    
@@ -127,7 +119,8 @@
                     'x)
               (rule '(sub x y)
                     '(sub (P x) (P y))))
-   ))
+   )
+  )
 
 
 
