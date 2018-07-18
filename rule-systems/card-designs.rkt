@@ -1,11 +1,19 @@
 #lang racket
 
 (provide render-symbol
+<<<<<<< HEAD
          symbol-page
          lparen
          rparen
          get-lparen
          get-rparen
+=======
+        ; symbol-page
+         lparen
+         rparen
+         get-rparen
+         get-lparen
+>>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
          get-all-symbols
          define-tile
          define-meta-tile
@@ -57,6 +65,20 @@
 (define (row i n)
   (apply beside (map (thunk* i) (range n))))
 
+<<<<<<< HEAD
+=======
+;start of accessor functions
+(define (get-rparen)
+  rparen)
+
+(define (get-lparen)
+  lparen)
+
+(define (get-all-symbols)
+  (all-symbols))
+;end of accessor functions
+
+>>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
 
 (define (symbol-page)
   (apply above
@@ -64,7 +86,11 @@
           (list 
            (row lparen 6)
            (row rparen 6))
+<<<<<<< HEAD
           (map (curryr row 6) (all-symbols)))))
+=======
+          (map (curryr row 6) (all-symbols))))) 
+>>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
 
 (define-tile the-x  'x
   (square 50 "solid" "green"))

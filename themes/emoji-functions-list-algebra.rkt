@@ -1,10 +1,11 @@
 #lang racket
 
-(require 2htdp/image
-         "../rule-systems/functions-list-algebra-cards.rkt")
+(require 2htdp/image)
 
 (provide theme)
 
 (define theme
   (list
-   (bitmap "./emojis/length.png")))
+   (bitmap "./emojis/length.png")
+   (bitmap "./emojis/cons.png")
+   (bitmap "./emojis/nil.png")))

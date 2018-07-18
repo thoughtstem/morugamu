@@ -41,6 +41,7 @@
   (define-tile >= '>= (seventh theme))
   (define-tile <= '<= (eighth theme))
   
+<<<<<<< HEAD
   (define dot (third theme))
 
   (define-tile the-if 'if (first theme))
@@ -58,6 +59,12 @@
 
   (define-tile the-3 '3
     (above dot (beside dot dot)))
+=======
+  (list
+   (get-rparen)
+   (get-lparen)
+   (get-all-symbols)
+>>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
 
   (define-tile the-4 '4
     (above (beside dot dot) (beside dot dot)))

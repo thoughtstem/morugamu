@@ -2,8 +2,7 @@
 
 (provide theme)
 
-(require 2htdp/image
-         "../rule-systems/boolean-algebra-cards.rkt")
+(require 2htdp/image)
 
 
 (define theme

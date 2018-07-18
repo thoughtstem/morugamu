@@ -7,6 +7,10 @@
 
          2htdp/image)
 
+(module+ test
+  (require (prefix-in numb: "../themes/emoji-list-algebra.rkt"))
+
+  (render numb:theme))
 
 (define (icon s)
   (text s 50 "black"))
@@ -17,9 +21,12 @@
   (define-tile the-nil  'nil  (second theme))
   (define-tile the-head 'head (third theme))
   (define-tile the-tail 'tail (fourth theme))
+
   
-  (list
-   (symbol-page)
+ (flatten (list
+   (get-rparen)
+   (get-lparen)
+   (get-all-symbols)
 
 
    (rule-card (rule 'x
@@ -29,6 +36,6 @@
                     'x)
 
               (rule '(tail (cons x y))
-                    'y))))
+                    'y)))))
 
 

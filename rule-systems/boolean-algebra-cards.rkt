@@ -2,10 +2,14 @@
 
 (provide render)
 
-(require "./card-designs.rkt"
-         "./rules.rkt"
+(require "../rule-systems/card-designs.rkt"
+         "../rule-systems/rules.rkt"
          2htdp/image)
 
+(module+ test
+  (require (prefix-in bool: "../themes/emoji-boolean-algebra.rkt"))
+
+  (render bool:theme))
 
 (define (icon s)
   (text s 50 "black"))
@@ -30,9 +34,11 @@
              (rule '(if F x y)
                    'y))
 
-
+(flatten
   (list
-   ;(symbol-page)
+   (get-rparen)
+   (get-lparen)
+   (get-all-symbols)
 
 
    ;Transformation rules
@@ -70,4 +76,4 @@
 
    
 
-))
+)))
