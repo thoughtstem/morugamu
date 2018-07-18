@@ -1,7 +1,7 @@
 #lang racket
 
 (provide render-symbol
-         ;symbol-page
+        ; symbol-page
          lparen
          rparen
          get-rparen
@@ -65,17 +65,17 @@
   lparen)
 
 (define (get-all-symbols)
-  all-symbols)
+  (all-symbols))
 ;end of accessor functions
 
-#|
+
 (define (symbol-page)
   (apply above
          (append
           (list 
            (row lparen 6)
            (row rparen 6))
-          (map (curryr row 6) (all-symbols))))) |#
+          (map (curryr row 6) (all-symbols))))) 
 
 (define-tile the-x  'x
   (square 50 "solid" "green"))
