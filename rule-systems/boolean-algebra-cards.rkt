@@ -32,7 +32,9 @@
 
 
   (list
-   (symbol-page)
+   (get-rparen)
+   (get-lparen)
+   (get-all-symbols)
 
 
    ;Transformation rules

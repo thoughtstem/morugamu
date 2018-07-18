@@ -103,6 +103,26 @@ For example, if a list of puzzle cards were inputted into this function, a list 
 
 }
 
+@defproc[(expression->puzzle-card [exp exp?])
+         (puzzle-card?)]{
+This takes in an expression then calls the puzzle-card function. It creates a puzzle card based on the expression.
+
+For example, let's say you call the expression->puzzle-card function with a boolean algebra expression.
+@racketblock[
+
+ (expression->puzzle-card '(and (not T) F))
+
+]
+Or, try using a different expression:
+@racketblock[
+
+ (expression->puzzle-card '(and T F))
+
+]
+
+ Either function call will create puzzle cards. Different puzzle cards will be created based on the different boolean algebra expressions that are input into the function.
+
+}
 
 
 @section{Rule Systems}

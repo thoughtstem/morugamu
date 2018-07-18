@@ -13,29 +13,33 @@
 
 (define (render theme)
 
-  (define-tile < '<
-    (bitmap "../themes/emojis/LessThan.png"))
+  (define-tile < '< (first theme))
+    ;(bitmap "../themes/emojis/LessThan.png"))
+    
 
-
-  (define-tile max 'max
-    (bitmap "../themes/emojis/max.png"))
+  (define-tile max 'max (second theme))
+    ;(bitmap "../themes/emojis/max.png"))
     ;(text "max" 50 "black"))
   
-  (define-tile ret 'ret
-    (bitmap "../themes/emojis/ret.png"))
+  (define-tile ret 'ret (third theme))
+    ;(bitmap "../themes/emojis/ret.png"))
 
-  (define-tile = '=
-    (bitmap "../themes/emojis/equals.png"))
+  (define-tile = '= (fourth theme))
+    ;(bitmap "../themes/emojis/equals.png"))
   
-  (define-tile min 'min
-    (bitmap "../themes/emojis/min.png"))
+  (define-tile min 'min (fifth theme))
+    ;(bitmap "../themes/emojis/min.png"))
   
-  (define-tile > '>
-    (bitmap "../themes/emojis/GreaterThan.png"))
+  (define-tile > '> (sixth theme))
+    ;(bitmap "../themes/emojis/GreaterThan.png"))
 
+  (define-tile >= '>= (seventh theme))
+  (define-tile <= '<= (eighth theme))
   
   (list
-   (symbol-page)
+   (get-rparen)
+   (get-lparen)
+   (get-all-symbols)
 
 
 ;less than
