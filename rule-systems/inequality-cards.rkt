@@ -33,6 +33,8 @@
   (define-tile > '> (sixth theme))
     ;(bitmap "../themes/emojis/GreaterThan.png"))
 
+  (define-tile >= '>= (seventh theme))
+  (define-tile <= '<= (eighth theme))
   
   (list
    (symbol-page)

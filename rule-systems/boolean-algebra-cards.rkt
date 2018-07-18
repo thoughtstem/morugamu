@@ -32,7 +32,7 @@
 
 
   (list
-   (symbol-page)
+   ;(symbol-page)
 
 
    ;Transformation rules

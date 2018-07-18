@@ -1,7 +1,7 @@
 #lang racket
 
 (provide render-symbol
-         symbol-page
+         ;symbol-page
          lparen
          rparen
          define-tile
@@ -54,13 +54,14 @@
 (define (row i n)
   (apply beside (map (thunk* i) (range n))))
 
+#|
 (define (symbol-page)
   (apply above
          (append
           (list 
            (row lparen 6)
            (row rparen 6))
-          (map (curryr row 6) (all-symbols)))))
+          (map (curryr row 6) (all-symbols))))) |#
 
 (define-tile the-x  'x
   (square 50 "solid" "green"))
