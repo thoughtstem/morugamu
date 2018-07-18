@@ -54,6 +54,15 @@
 (define (row i n)
   (apply beside (map (thunk* i) (range n))))
 
+(define (get-rparen)
+  rparen)
+
+(define (get-lparen)
+  lparen)
+
+(define (get-all-symbols)
+  all-symbols)
+
 #|
 (define (symbol-page)
   (apply above
