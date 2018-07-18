@@ -6,8 +6,8 @@
 
 ;Called by the number-all function...takes in a pair (image, number) and then puts the number on the image
 
-(define rwidth 300)
-(define rheight 387)
+(define rwidth 500)
+(define rheight 350)
 
 
 (overlay/offset (text "12" 30 "black")
