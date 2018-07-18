@@ -84,7 +84,7 @@
 
 
   
-  (list
+  (flatten (list
    (get-rparen)
    (get-lparen)
    (get-all-symbols)
@@ -129,7 +129,7 @@
                     'x)
               (rule '(sub x y)
                     '(sub (P x) (P y))))
-   ))
+   )))
 
 
 
