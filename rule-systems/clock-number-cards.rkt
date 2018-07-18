@@ -16,7 +16,7 @@
 
 (define (render theme)
 
-<<<<<<< HEAD
+;<<<<<<< HEAD
   (define-tile < '<
   #;(bitmap "./themes/emojis/add.png")
   (text "<" 50 "black"))
@@ -25,12 +25,12 @@
 
   (define-tile the-successor  'S   (first theme))
 
-=======
-  (define dot (third theme))
+;=======
+  (define 1dot (third theme))
 
-  (define-tile the-successor  'S   (first theme))
+  (define-tile 1the-successor  'S   (first theme))
 
->>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
+;>>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
   (define-tile the-previous   'P   (second theme))
 
   (define-tile the-0          '0   (fourth theme))
@@ -128,12 +128,12 @@
                     'x)
               (rule '(sub x y)
                     '(sub (P x) (P y))))
-<<<<<<< HEAD
+;<<<<<<< HEAD
    )
   )
-=======
-   )))
->>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
+;=======
+   )
+;>>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
 
 
 
