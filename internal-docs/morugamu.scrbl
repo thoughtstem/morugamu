@@ -68,6 +68,34 @@ This is a fake function.  It's just there to help you document other functions.
 
 }
 
+
+@defproc[(safe-1 [f procedure?])
+         procedure?]{
+
+This makes a function that normally requires 2 arguments to be safe for calling on 1 argument.
+
+For example, this is usually an error:
+
+@racketblock[
+  (beside (circle 30 "solid" "red"))
+]
+
+This is not an error:
+
+@racketblock[
+  ((safe-1 beside) (circle 30 "solid" "red"))
+]
+
+This is most useful in conjunction with apply:
+
+@racketblock[
+  (apply (safe-1 beside) list-of-images)
+]
+
+You now don't have to worry about handling the case when the list has only one element.
+
+}
+
 @defproc[(split-by [lst list?] [n number?])
          (list of lists?)]{
                            
@@ -332,7 +360,7 @@ This would save the circle as "sheet3.png"
 
 @defproc[(cards->pages [list_of_cards listof images?])
          (listof image?)]{
-This function takes a list of 9 or less images and turns them into a list of pages that contains 9 or less images.
+This function takes a list of images and turns them into a list of pages that contains 9 or less images.
 }
 
 @defproc[(9images->page [list_of_images listof images?])

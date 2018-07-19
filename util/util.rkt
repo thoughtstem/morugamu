@@ -2,6 +2,13 @@
 
 (provide pair-with-index)
 (provide split-by)
+(provide safe-1)
+
+(define (safe-1 f)
+  (lambda (x . xs)
+    (if (empty? xs)
+        x
+        (apply f (cons x xs)))))
 
 ; Takes in list of card images
 ; Returns list of pairs: (card, index #)
