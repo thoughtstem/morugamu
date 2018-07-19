@@ -4,18 +4,20 @@
 (plot-new-window? #t)
 
 (plot (list (discrete-histogram
-               '(#(g1 2) #(g2 0.8) #(g3 3.5)
-                 #(g4 0.85) #(g5 0.8) #(g6 0.75)
-                 #(g7 5) #(g8 1.5) #(g9 1)
-                 #(g10 5.9))
+               '(#(Rise-of-the-Necromancers 4.2) #(Paradox 2.6) #(Exile-Sun 1.8)
+                 #(Monster-Derby 1) #(Cosmic-Balance 3) #(Guilds-of-Cadwallon 0.5)
+                 #(Rivet-Wars 2.5) #(4-the-Birds 1.1) #(Fireteam-Zero 3)
+                 #(Evolution:CLIMATE 2))
                #:skip 2 #:x-min 0
                #:label "$ Asked For")
               (discrete-histogram
-               '(#(g1 2) #(g2 0.8) #(g3 3.5)
-                 #(g4 0.85) #(g5 0.8) #(g6 0.75)
-                 #(g7 5) #(g8 1.5) #(g9 1)
-                 #(g10 5.9))
+               '(#(Rise-of-the-Necromancers 6.6) #(Paradox 4.6) #(Exile-Sun 2.3)
+                 #(Monster-Derby 1) #(Cosmic-Balance 3.5) #(Guilds-of-Cadwallon 11.7)
+                 #(Rivet-Wars 58.2) #(4-the-Birds 1.7) #(Fireteam-Zero 20.7)
+                 #(Evolution:CLIMATE 33.7))
                #:skip 2 #:x-min 1
                #:label "$ Received" #:color 2 #:line-color 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
         #:title "Board Games Funded Via Kickstarter")
+
+;Note:4 the Birds was a Kickstarter staff pick
