@@ -1,15 +1,23 @@
 #lang racket
 
-(provide render)
+(provide
+ render)
 
 (require "./card-designs.rkt"
          "./rules.rkt"
          2htdp/image)
 
 
-(module+ test
-  (require (prefix-in ineq: "../themes/emoji-inequality.rkt"))
-  (render ineq:theme))
+
+#|  *********************************************
+       this file is not supposed to print to console
+       if the other card files run into error
+       also remove the render and module+ parts
+***********************************************
+
+|#
+
+
 
 ;Basic symbols
 
@@ -41,61 +49,11 @@
   (define-tile >= '>= (seventh theme))
   (define-tile <= '<= (eighth theme))
   
-<<<<<<< HEAD
-  (define dot (third theme))
-
-  (define-tile the-if 'if (first theme))
-
- (define-tile the-false  'F   (tenth theme))
-
-  (define-tile the-true   'T   (ninth theme))
-
-  (define-tile the-0          '0   (fourth theme))
-
-  (define-tile the-1          '1    dot)
-
-  (define-tile the-2 '2
-    (beside dot dot))
-
-  (define-tile the-3 '3
-    (above dot (beside dot dot)))
-=======
-  (list
-   (get-rparen)
-   (get-lparen)
-   (get-all-symbols)
->>>>>>> b281fde6f6053f5766f035b77a5ed3eb1eb49908
-
-  (define-tile the-4 '4
-    (above (beside dot dot) (beside dot dot)))
-
-  (define-tile the-5 '5
-    (above (beside dot dot)
-           dot
-           (beside dot dot)))
-
-  (define-tile the-6 '6
-    (beside (above dot dot dot)
-            (above dot dot dot)))
-
-  (define-tile the-7 '7
-    (beside (above dot dot dot)
-            dot
-            (above dot dot dot))
-    #;(text "7" 40 "black"))
-
-  (define-tile the-8 '8
-    (beside (above dot dot dot)
-            (above dot dot)
-            (above dot dot dot)))
-
-  (define-tile the-9 '9
-    (beside (above dot dot dot)
-            (above dot dot dot)
-            (above dot dot dot)))
-
-
   
+
+
+ 
+
 
    (flatten (list
     (get-rparen)
@@ -211,6 +169,6 @@
 
 ;greater than or equal to
 (rule-card (rule '(>= y x) '(<= x y)))
-)
-  ))
+))
+  )
   

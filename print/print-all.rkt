@@ -26,6 +26,7 @@
   )
 
 
+
 (define puzzles
  
   (list bool:puzzle-deck
@@ -37,10 +38,10 @@
 
 (define cards
   (cards->pages
-   (list (number-all (append (rest (bool:render bool:theme))                 
+   (list (append (rest (bool:render bool:theme))                 
                        (rest (numb:render numb:theme))
                        (rest (list:render list:theme))
-                       )))))
+                       ))))
 
                       
 

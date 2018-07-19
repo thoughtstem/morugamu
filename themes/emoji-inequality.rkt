@@ -15,7 +15,6 @@
     (bitmap "./emojis/GreaterThan.png")
     (bitmap "./emojis/GreaterThanOrEqualTo.png")
     (bitmap "./emojis/LessThanOrEqualTo.png")
-    (bitmap "./emojis/true.png")
-    (bitmap "./emojis/false.png")
-
+    
+    
     ))

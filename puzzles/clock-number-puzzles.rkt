@@ -446,7 +446,10 @@
 
  (define puzzle-deck2 (map expression->puzzle-card puzzle-expressions2))
 
-puzzle-deck2
+
+
+(module+ test
+  puzzle-deck2)
 
 ;Hard
 

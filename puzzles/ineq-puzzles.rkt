@@ -78,9 +78,9 @@
 
    '((= (min 3 6) (S 8)) )
 
-   '((< = (S 9) (S 9)) )
+   '((<= (S 9) (S 9)) )
 
-   '((> = (S 0) (S 0)) )
+   '((>= (S 0) (S 0)) )
 
    '((= (3 3)))
 
@@ -126,4 +126,4 @@
 
 (define puzzle-deck1 (map expression->puzzle-card puzzle-expressions1))
 
-puzzle-deck1
+(module+ test puzzle-deck1)
