@@ -1,16 +1,13 @@
 #lang racket
 
-(require redex)
-(module+ test (require rackunit))
+(provide boolean-algebra-lang
+         boolean-algebra-lang-red
+         boolean-algebra-lang-eval)
 
-(define-language base-lang
-  (e   ::=
-       (bop e e)
-       (op e))
-  (bop ::=
-       bnoop  )
-  (op  :=
-       noop))
+(require redex)
+
+(require "./base-lang.rkt")
+
 
 (define-extended-language boolean-algebra-lang base-lang
   (e   .... bv)
