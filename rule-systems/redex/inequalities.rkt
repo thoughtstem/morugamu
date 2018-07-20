@@ -46,6 +46,30 @@
   [(<~ 1 number_1) F]
   [(<~ number_1 0) F])
 
+;Copy-pasted the code for '<' and then just reversed the Ts and Fs
+(define-metafunction eval-inequalities-lang
+  >~ : n n -> bv
+  [(>~ number_1 number_1) F]
+  [(>~ number_1 9) F]
+  [(>~ 9 number_1) T]
+  [(>~ number_1 8) F]
+  [(>~ 8 number_1) T]
+  [(>~ number_1 7) F]
+  [(>~ 7 number_1) T]
+  [(>~ number_1 6) F]
+  [(>~ 6 number_1) T]
+  [(>~ number_1 5) F]
+  [(>~ 5 number_1) T]
+  [(>~ number_1 4) F]
+  [(>~ 4 number_1) T]
+  [(>~ number_1 3) F]
+  [(>~ 3 number_1) T]
+  [(>~ number_1 2) F]
+  [(>~ 2 number_1) T]
+  [(>~ number_1 1) F]
+  [(>~ 1 number_1) T]
+  [(>~ number_1 0) T])
+
 
 (define _inequalities-lang-red
   (reduction-relation
@@ -71,7 +95,9 @@
 
 (module+ test
   (traces inequalities-lang-red
-          (term (< 2 (add 1 2)))))
+          (term (< 2 (add 1 2))))
+  #|(traces inequalities-lang-red
+          (term (> 2 (add 1 2))))|#)
 
 
 
