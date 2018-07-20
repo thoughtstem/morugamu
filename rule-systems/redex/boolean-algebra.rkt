@@ -6,13 +6,12 @@
 
 (require redex)
 
-(require "./base-lang.rkt")
 
-
-(define-extended-language boolean-algebra-lang base-lang
-  (e   .... bv)
-  (op  .... not)
-  (bop .... and or)
+(define-language boolean-algebra-lang
+  (ba-e  (and ba-e ba-e)
+      (or ba-e ba-e)
+      (not ba-e)
+      bv)
   (bv T F))
 
 
@@ -21,9 +20,9 @@
   (E hole
      (not E)
      (and bv E)
-     (and E e)
+     (and E ba-e)
      (or bv E)
-     (or E e)))
+     (or E ba-e)))
 
 
 (define-metafunction boolean-algebra-lang-eval
@@ -49,7 +48,7 @@
 (define boolean-algebra-lang-red
   (reduction-relation
    boolean-algebra-lang-eval
-   #:domain e
+   #:domain ba-e
    (--> (in-hole E (not bv))        (in-hole E (not~ bv)) not)
    
    (--> (in-hole E (and bv_1 bv_2)) (in-hole E (and~ bv_1 bv_2)) and)

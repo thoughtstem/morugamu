@@ -3,19 +3,20 @@
 
 (require redex)
 
-(require "./base-lang.rkt"
-         "./boolean-algebra.rkt"
+(require "./boolean-algebra.rkt"
          "./clock-numbers.rkt")
 
 (define-union-language _inequalities-lang boolean-algebra-lang clock-numbers-lang)
 
 (define-extended-language inequalities-lang _inequalities-lang
-  (bop .... < ; > <= >= =
+  (in-e cn-e
+        ba-e
+        (< cn-e cn-e)
        ))
 
 (define-extended-language _eval-inequalities-lang  inequalities-lang
   (E hole
-     (< e E) (< E e)))
+     (< in-e E) (< E in-e)))
 
 (define-union-language eval-inequalities-lang
   _eval-inequalities-lang
@@ -49,7 +50,7 @@
 (define _inequalities-lang-red
   (reduction-relation
    eval-inequalities-lang
-   #:domain e
+   #:domain in-e
    (--> (in-hole E (< n_1 n_2)) (in-hole E (<~ n_1 n_2)) <)))
 
 
