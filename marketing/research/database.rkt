@@ -22,3 +22,9 @@
 	0.0002 2.1 0.062 1.5 4.3 21.9 0.2 190.6 0.7 3.3 0.8 0.1
 	3 4 29.2 71.3 51.7 3.8 1.1 0.1 6.5 3 25.9
 ))
+
+(display (string-append "Game List" (number->string (length board-game-list))))
+
+(display (string-append "    Asked List" (number->string(length money-asked))))
+
+(display (string-append "    Recieved List" (number->string(length money-received))))
