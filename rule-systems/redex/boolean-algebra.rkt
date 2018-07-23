@@ -8,9 +8,11 @@
 
 
 (define-language boolean-algebra-lang
-  (ba-e  (and ba-e ba-e)
-      (or ba-e ba-e)
-      (not ba-e)
+  (out-bool ba-e)
+  (ba-e
+      (and out-bool out-bool)
+      (or out-bool out-bool)
+      (not out-bool)
       bv)
   (bv T F))
 
@@ -19,10 +21,10 @@
 (define-extended-language boolean-algebra-lang-eval boolean-algebra-lang
   (E hole
      (not E)
-     (and bv E)
-     (and E ba-e)
-     (or bv E)
-     (or E ba-e)))
+     (and out-bool E)
+     (and E out-bool)
+     (or out-bool E)
+     (or E out-bool)))
 
 
 (define-metafunction boolean-algebra-lang-eval
@@ -50,13 +52,14 @@
    boolean-algebra-lang-eval
    #:domain ba-e
    (--> (in-hole E (not bv))        (in-hole E (not~ bv)) not)
-   
    (--> (in-hole E (and bv_1 bv_2)) (in-hole E (and~ bv_1 bv_2)) and)
    (--> (in-hole E (or  bv_1 bv_2)) (in-hole E (or~  bv_1 bv_2))  or)))
 
 
 
 (module+ test
+  (traces boolean-algebra-lang-red
+          (term (and T F)))
   (traces boolean-algebra-lang-red
           (term (and (or F T) (and T F)))))
 

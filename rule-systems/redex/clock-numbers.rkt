@@ -7,15 +7,22 @@
 (require redex)
 
 (define-language clock-numbers-lang
-  (cn-e  (bop cn-e cn-e)
-         (op cn-e)
+  (out-num cn-e)
+  (cn-e  (bop out-num out-num)
+         (op out-num)
          n)
   (n   0 1 2 3 4 5 6 7 8 9)
   (op  S P)
   (bop add sub))
 
 (define-extended-language clock-numbers-lang-eval  clock-numbers-lang
-  (E hole (S E) (P E) (add cn-e E) (add E cn-e) (sub n E) (sub E cn-e)))
+  (E hole
+     (S E)
+     (P E)
+     (add out-num E)
+     (add E out-num)
+     (sub out-num E)
+     (sub E out-num)))
 
 (define-metafunction clock-numbers-lang-eval
   S~ : n -> n
