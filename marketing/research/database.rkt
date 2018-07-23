@@ -1,7 +1,77 @@
 #lang racket
 
 (define board-game-list
-  (list "Vanguard of War" "Era of Kingdoms" "Reign Ed" "The Game of Crimps" "Game to Pick a Game" "Crown of Aragon" "Darkness Incarnate" "Absolutism" "Startropolis" "Miremarsh" "MYTH" "Dinosaur Island" "Trogdor" "Jetpack Joyride" "Shady Agents" "Wreck Raiders" "Over the Edge" "Rurik Dawn of Kiev" "SPQF" "Demon City" "Dark Matter" "HeartBeat Pride Dice" "Bat Cup" "Dragon Realms" "Nunami" "The Acts Board Game" "The Villagers" "Infinity D4" "Thug Life" "John Silence" "Rise of the Necromancers" "Paradox" "Exile Sun" "Monster Derby" "Cosmic Balance" "Guilds of Cadwallon" "Rivet Wars" "4 the Birds" "Fireteam Zero 3" "Evolution:CLIMATE 2" "BatmanTM Gotham City Chronicles" "Zombicide: Black Plague" "Shadows of Brimstone" "Tudor" "Kitchen Rush: Piece of Cake" "Eclipse: Second Dawn for the Galaxy" "Space: 1889" "THE FANTASY TRIP" "Snag the Flag" "Unicorns and Zombies" "Play Trumps Politics" "Manipulate" "Drunk In The Trunk" "No Pun Included" "Ian Brodys Quartermaster General" "Sorcerer City" "Transit City" "Hellboy" "Deus Lo Vult" "Soccer City" "Coding Farmers" "Inequality opoly" "Immortality" "Lunarchitects" "The Island Of El Dorado" "Trogdor Sword and Sorcery" "Tiki" "Apocalypse Galactic Arena" "Bellum of Mutants and Men" "Gloomhaven MourneQuest" "Galaxy Defenders"))
+  (list "Vanguard of War"
+        "Era of Kingdoms"
+        "Reign Ed"
+        "The Game of Crimps"
+        "Game to Pick a Game"
+        "Crown of Aragon"
+        "Darkness Incarnate"
+        "Absolutism"
+        "Startropolis"
+        "Miremarsh"
+        "MYTH"
+        "Dinosaur Island"
+        "Trogdor"
+        "Jetpack Joyride"
+        "Shady Agents"
+        "Wreck Raiders"
+        "Over the Edge"
+        "Rurik Dawn of Kiev"
+        "SPQF"
+        "Demon City"
+        "Dark Matter"
+        "HeartBeat Pride Dice"
+        "Bat Cup"
+        "Dragon Realms"
+        "Nunami"
+        "The Acts Board Game"
+        "The Villagers"
+        "Infinity D4"
+        "Thug Life"
+        "John Silence"
+        "Rise of the Necromancers"
+        "Paradox"
+        "Exile Sun"
+        "Monster Derby"
+        "Cosmic Balance"
+        "Guilds of Cadwallon"
+        "Rivet Wars"
+        "4 the Birds"
+        "Fireteam Zero 3"
+        "Evolution:CLIMATE 2"
+        "BatmanTM Gotham City Chronicles"
+        "Zombicide: Black Plague"
+        "Shadows of Brimstone"
+        "Tudor"
+        "Kitchen Rush: Piece of Cake"
+        "Eclipse: Second Dawn for the Galaxy"
+        "Space: 1889"
+        "THE FANTASY TRIP"
+        "Snag the Flag"
+        "Unicorns and Zombies"
+        "Play Trumps Politics"
+        "Manipulate"
+        "Drunk In The Trunk"
+        "No Pun Included"
+        "Ian Brodys Quartermaster General"
+        "Sorcerer City"
+        "Transit City"
+        "Hellboy"
+        "Deus Lo Vult"
+        "Soccer City"
+        "Coding Farmers"
+        "Inequality opoly"
+        "Immortality"
+        "Lunarchitects"
+        "The Island Of El Dorado"
+        "Trogdor Sword and Sorcery"
+        "Tiki"
+        "Apocalypse Galactic Arena"
+        "Bellum of Mutants and Men"
+        "Gloomhaven MourneQuest"
+        "Galaxy Defenders"))
 
 (define money-asked 
   (list 2 0.8 3.5 0.85 0.8 0.75 5 1.5 1 5.9
@@ -25,6 +95,6 @@
 
 (display (string-append "Game List" (number->string (length board-game-list))))
 
-(display (string-append "    Asked List" (number->string(length money-asked))))
+(display (string-append "    Asked List" (number->string (length money-asked))))
 
-(display (string-append "    Recieved List" (number->string(length money-received))))
+(display (string-append "    Recieved List" (number->string (length money-received))))
