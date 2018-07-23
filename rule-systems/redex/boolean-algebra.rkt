@@ -32,10 +32,10 @@
 
 (define-metafunction boolean-algebra-lang-eval
   and~ : bv bv -> bv
+  [(and~ T T) T]
   [(and~ T F) F]
   [(and~ F T) F]
-  [(and~ F F) F]
-  [(and~ T T) T])
+  [(and~ F F) F])
 
 (define-metafunction boolean-algebra-lang-eval
   or~ : bv bv -> bv

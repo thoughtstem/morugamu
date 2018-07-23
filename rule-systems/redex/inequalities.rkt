@@ -1,5 +1,8 @@
 #lang racket
 
+(provide inequalities-lang
+         inequalities-lang-red
+         eval-inequalities-lang)
 
 (require redex)
 
@@ -11,8 +14,7 @@
 (define-extended-language inequalities-lang _inequalities-lang
   (in-e cn-e
         ba-e
-        (< cn-e cn-e)
-       ))
+        (< cn-e cn-e)))
 
 (define-extended-language _eval-inequalities-lang  inequalities-lang
   (E hole
@@ -72,6 +74,11 @@
 (module+ test
   (traces inequalities-lang-red
           (term (< 2 (add 1 2)))))
+
+
+
+
+
 
 
 
