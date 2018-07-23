@@ -2,6 +2,8 @@
 
 (require plot)
 (plot-new-window? #t)
+(parameterize ([plot-x-tick-label-anchor 'top-right]
+               [plot-x-tick-label-angle 30])
 
 (plot (list (discrete-histogram
                '(#(g1 2) #(g2 0.8) #(g3 3.5)
@@ -18,4 +20,4 @@
                #:skip 2 #:x-min 1
                #:label "$ Received" #:color 2 #:line-color 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
-        #:title "Board Games Funded Via Kickstarter")
+        #:title "Board Games Funded Via Kickstarter"))

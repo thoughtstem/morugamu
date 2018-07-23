@@ -2,7 +2,8 @@
 
 (require plot)
 (plot-new-window? #t)
-
+(parameterize ([plot-x-tick-label-anchor 'top-right]
+               [plot-x-tick-label-angle 30])
 (plot (list (discrete-histogram
                '(#(Vanguard-of-War 2) #(Era-of-Kingdoms 0.8) #(Reign-Ed.2 3.5)
                  #(The-Game-of-Crimps 0.85) #(Game-to-Pick-a-Game 0.8) #(Crown-of-Aragon 0.75)
@@ -18,6 +19,6 @@
                #:skip 2 #:x-min 1
                #:label "$ Received" #:color 2 #:line-color 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
-        #:title "Board Games Funded Via Kickstarter")
+        #:title "Board Games Funded Via Kickstarter"))
 
 ;Note about the "Absolutism" game: full name is Absolutism: Surviving Dictatorship
