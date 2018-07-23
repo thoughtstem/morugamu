@@ -2,7 +2,8 @@
 
 (require plot)
 (plot-new-window? #t)
-
+(parameterize ([plot-x-tick-label-anchor 'top-right]
+               [plot-x-tick-label-angle 40])
 (plot (list (discrete-histogram
                '(#(BatmanTM-Gotham-City-Chronicles 500) #(Zombicide:-Black-Plague 125) #(Shadows-of-Brimstone 30)
                  #(Tudor 10) #(Kitchen-Rush:-Piece-of-Cake 20) #(Eclipse:-Second-Dawn-for-the-Galaxy 150)
@@ -18,6 +19,6 @@
                #:skip 2 #:x-min 1
                #:label "$ Received" #:color 2 #:line-color 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
-        #:title "Board Games Funded Via Kickstarter")
+        #:title "Board Games Funded Via Kickstarter"))
 
 

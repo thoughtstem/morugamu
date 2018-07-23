@@ -2,7 +2,8 @@
 
 (require plot)
 (plot-new-window? #t)
-
+(parameterize ([plot-x-tick-label-anchor 'top-right]
+               [plot-x-tick-label-angle 40])
 (plot (list (discrete-histogram
                '(#(Rise-of-the-Necromancers 4.2) #(Paradox 2.6) #(Exile-Sun 1.8)
                  #(Monster-Derby 1) #(Cosmic-Balance 3) #(Guilds-of-Cadwallon 0.5)
@@ -18,6 +19,6 @@
                #:skip 2 #:x-min 1
                #:label "$ Received" #:color 2 #:line-color 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
-        #:title "Board Games Funded Via Kickstarter")
+        #:title "Board Games Funded Via Kickstarter"))
 
 ;Note:4 the Birds was a Kickstarter staff pick

@@ -4,7 +4,8 @@
 (plot-new-window? #t)
 
 ;Team 2+2=5 Games
-
+(parameterize ([plot-x-tick-label-anchor 'top-right]
+               [plot-x-tick-label-angle 40])
 (plot (list (discrete-histogram
                '(#(Play-Trumps-Politics 1) #(Manipulate 1.9) #(Drunk-In-The-Trunk .1)
                  #(No-Pun-Included .5) #(Ian-Brodys-Quartermaster-General 2.6) #(Sorcerer-City 3.0)
@@ -21,4 +22,4 @@
                #:skip 2 #:x-min 1
                #:label "$ Received" #:color 2 #:line-color 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
-        #:title "Board Games Funded Via Kickstarter")
+        #:title "Board Games Funded Via Kickstarter"))
