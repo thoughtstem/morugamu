@@ -1,5 +1,9 @@
 #lang racket
 
+(provide board-game-list)
+(provide money-asked)
+(provide money-received)
+
 (define board-game-list
   (list "Vanguard of War" "Era of Kingdoms" "Reign Ed" "The Game of Crimps" "Game to Pick a Game" "Crown of Aragon" "Darkness Incarnate" "Absolutism" "Startropolis" "Miremarsh"
         "MYTH" "Dinosaur Island" "Trogdor" "Jetpack Joyride" "Shady Agents" "Wreck Raiders" "Over the Edge" "Rurik Dawn of Kiev" "SPQF" "Demon City"
