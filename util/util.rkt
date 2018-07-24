@@ -3,7 +3,6 @@
 (provide pair-with-index)
 (provide split-by)
 (provide safe-1)
-(provide pair-list)
 
 (define (safe-1 f)
   (lambda (x . xs)
@@ -32,6 +31,3 @@
   (if (<= (length lst) n)
       (list lst)
       (cons (take lst n) (split-by (drop lst n) n))))
-
-(define (pair-list l1 l2)
-(map format l1 l2))

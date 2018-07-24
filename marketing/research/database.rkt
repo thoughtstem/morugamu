@@ -65,4 +65,9 @@ Raiders" "Over the Edge" "Rurik Dawn of Kiev" "SPQF" "Demon City"
         0.8 0.1 3 4 29.2 71.3 51.7 3.8 1.1 0.1
         6.5 3 25.9
 ))
+<<<<<<< HEAD
 >>>>>>> 5e76f2a86c4c5466c06ef74e7e24a816b1675537
+=======
+
+(map list board-game-list money-asked money-received)
+>>>>>>> 0d10f91d35f909c40bbd07732141687c80b9fbe7

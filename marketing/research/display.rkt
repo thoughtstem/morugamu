@@ -5,11 +5,11 @@
   "../../util/util.rkt"
   "./database.rkt")
 
-(define vector-asked
-  (list->vector (pair-list board-game-list money-asked)))
+;(define vector-asked
+;  (list->vector (pair-list board-game-list money-asked)))
 
-(define vector-received
-  (list->vector (pair-list board-game-list money-received)))
+;(define vector-received
+;  (list->vector (pair-list board-game-list money-received)))
 
 (plot-new-window? #t)
 
