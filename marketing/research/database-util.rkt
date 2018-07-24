@@ -3,7 +3,7 @@
 (provide get-index)
 (require "database.rkt")
 
-;Function to get index of any game in the list. Returns -1 if not found.
+; Function to get index of any game in the list. Returns -1 if not found.
 (define (get-index game)
   (define (recSearch n query)
     (if (>= n (length board-game-list))
@@ -16,6 +16,7 @@
   )
 
 ; Query Function #1: received >= asked
+; @param data = database list
 (define (received-more data)
 	(cond
           [(null? data) '()]
@@ -28,6 +29,7 @@
 )
 
 ; Query Function #2: received >= $1,000,000
+; @param data = database list
 (define (greater-than-million data)
 	(cond
           [(null? data) '()]
@@ -39,4 +41,7 @@
          )
 )
 
+; Test lines
 (get-index "Dinosaur Island")
+(greater-than-million board-game-list)
+
