@@ -1,16 +1,19 @@
 #lang racket
 
-(define (get-index game lst)
+(provide get-index)
+(require "database.rkt")
+
+;Function to get index of any game in the list. Returns -1 if not found.
+(define (get-index game)
   (define (recSearch n query)
-    (if (> n (length lst))
-    -1
-      '())
-    (if (string=? (string-downcase query) (string-downcase (list-ref (list-ref lst n) 0)))
-    n
-    (recSearch (+ n 1) query))
-    )
+    (if (>= n (length board-game-list))
+        -1
+    (if (string=? (string-downcase query) (string-downcase (list-ref (list-ref board-game-list n) 0)))
+        n
+        (recSearch (+ n 1) query))
+    ))
   (recSearch 0 game)
-)
+  )
 
 ; Query Function #1: received >= asked
 (define (received-more data)
