@@ -1,353 +1,331 @@
 #lang racket
 
 (require
-  "../card-designs.rkt"
-  "../rules.rkt"
-  (prefix-in bool: "../boolean-algebra-cards.rkt")
+  "./puzzle-util.rkt"
+  (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
   (prefix-in bool: "../themes/emoji-boolean-algebra.rkt"))
 
 (define boolean-algebra
   (bool:render bool:theme))
 
+(provide puzzle-expressions
+         puzzle-deck)
+
+(define puzzle-expressions
+  (list
+
+   '(and T
+         (or F T(not T F)))
+
+   '(or F
+        (not T))
+
+   '(and
+     (and F F)
+     (or T (and T T)))
 
 
-;More puzzles here...
-(puzzle-card (rule '(and T
+   '(and
+     (not (or T F))
+     (and T (or F T)))
 
-                         (or F T(not T F)))
-                         '?))
+   '(not
+     (not
+      (and F
+           (and (or T T)
+                F))))
 
+   '(or F T)
 
+   '(and T
+         (or F F))
 
-(puzzle-card (rule '(or F
-                        (not T))
-                   '?))
+   '(or T
+        (not F))
 
-;adding my puzzle here...
-(puzzle-card (rule '(and
-                     (and F F)
-                     (or T (and T T)))
-                   '?))
+   '(not
+     (or T
+         (not T)))
 
+   '(or
+     (not
+      (and T F))
+     (or F
+         (and F T)))
 
-(puzzle-card (rule '(and
-                     (not (or T F))
-                     (and T (or F T)))
-                   '?))
+   '(not
+     (not
+      (not T)))
 
-(puzzle-card (rule '(not
-                     (not
-                      (and F
-                           (and (or T T)
-                                F))))
-                   '?))
+   '(and
+     (or F
+         (not F))
+     (or T
+         (not F)))
 
-(puzzle-card (rule '(or F T)
-                   '?))
+   '(or
+     (not F) 
+     (and
+      (and T T)
+      F))
 
-(puzzle-card (rule '(and T
-                         (or F F))
-                   '?))
+   '(not
+     (or
+      (and T
+           (and F F))
+      T))
 
-(puzzle-card (rule '(or T
-                        (not F))
-                   '?))
+   '(or F
+        (and F (or T T)))
 
-(puzzle-card (rule '(not
-                     (or T
-                         (not T)))
-                   '?))
+   '(not
+     (not
+      (and
+       (or F F)
+       T)))
 
-(puzzle-card (rule '(or
-                     (not
-                      (and T F))
-                     (or F
-                         (and F T)))
-                   '?))
+   '(or T
+        (and T
+             (or F T)))
 
-(puzzle-card (rule '(not
-                     (not
-                      (not T)))
-                   '?))
+   '(and
+     (not
+      (and T T))
+     (not (and F F)))
 
-(puzzle-card (rule '(and
-                     (or F
-                         (not F))
-                     (or T
-                         (not F)))
-                   '?))
+   '(or
+     (not T)
+     (and
+      (not F)
+      F))
 
-(puzzle-card (rule '(or
-                     (not F) 
-                     (and
-                      (and T T)
-                      F))
-                   '?))
+   '(or
+     (not (not T))
+     (not (not F)))
 
-(puzzle-card (rule '(not
-                     (or
-                      (and T
-                           (and F F))
-                      T))
-                   '?))
+   '(or (and T F)
+        (and T T))
 
-(puzzle-card (rule '(or F
-                        (and F (or T T)))
-                   '?))
+   '(and
+     (not T)
+     (or (not T)
+         (and T T)))
+   
+   '(and
+     (or (not T) T)
+     (and T (not F)))
+   
+   '(and
+     (not
+      (not F))
+     (not (not T)))
+   
+   '(not
+     (and F
+          (or F T)))
 
-(puzzle-card (rule '(not
-                     (not
-                      (and
-                       (or F F)
-                       T)))
-                   '?))
+   
+   '(and
+     (or F (and
+            (or F T) F)))
+   
+   '(and T
+         (or
+          (and
+           (not F) F)
+          (not T)))
+   
+  '(or
+    (and T T)
+    (not T))
+                      
+  '(not
+    (or
+     (and T F)
+     (and F F)))
+                      
+  '(or
+    (not
+     (not F))
+    (not F))
+                      
+  '(not
+    (or
+     (and
+      T
+      (or F T))
+     (not F)))
+                      
+  '(not
+    (and T (not
+            (or F (and T T)))))
+                      
 
-(puzzle-card (rule '(or T
-                        (and T
-                             (or F T)))
-                   '?))
+  ;1
+  '(or
+    (or T T)
+    (or
+     (or F F)
+     T))
+                      
 
-(puzzle-card (rule '(and
-                     (not
-                      (and T T))
-                     (not (and F F)))
-                   '?))
+  ;2
+  '(and F
+        (and F
+             (and T T)))
+                      
 
-(puzzle-card (rule '(or
-                     (not T)
-                     ((and
-                       (not F)
-                       (F))))
-                   '?))
+  ;3
+  '(not
+    (or
+     (or F F)
+     (and F F)))
+                      
 
-(puzzle-card (rule ' (or
-                      (not(not(T)))
-                      (not (not (F))))
-                   '?))
+  ;4
+  ' (not
+     (and T
+          (and T
+               (or T F))))
+                      
 
-(puzzle-card (rule ' (or (and T F)
-                         (and T T))
-                   '?))
+  ;5
+  '
+  (or (not
+       (not
+        (not F)))
+      (not
+       (not
+        (not T))))
+                      
 
-(puzzle-card (rule ' (and
-                      (not T)
-                      (or ((not) T)
-                          (and T T)))
-                   '?))
-(puzzle-card (rule '(and
-                     (or (not T) T)
-                     (and T (not F)))
-                   '?))
-(puzzle-card (rule '(and
-                     (not
-                      (not F))
-                     (not (not T))) '?))
-(puzzle-card (rule '(not
-                     (and F
-                          (or F T)))
-                   '?))
-(puzzle-card (rule '(and
-                     (or F (and
-                            (or F T)F))
-                     T) '?))
-(puzzle-card (rule '(and T
-                         (or
-                          (and
-                           (not F) F)
-                          (not T))) '?))
-(puzzle-card (rule '(or
-                     (and T T)
-                     (not T))
-                   '?))
-(puzzle-card (rule '(not
-                     (or
-                      (and T F)
-                      (and F F)))
-                   '?))
-(puzzle-card (rule '(or
-                     (not
-                      (not F))
-                     (not F))
-                   '?))
-(puzzle-card (rule '(not
-                     (or
-                      (and
-                       (T)
-                       (or F T))
-                      (not F)))
-                   '?))
-(puzzle-card (rule '(not
-                     (and T (not
-                             (or F (and T T)))))
-                   '?))
+  '(or T
+       (not 
+        (and T F)))
+                      
 
-;1
-(puzzle-card (rule '(or
-                     (or T T)
-                     (or
-                      (or F F)
-                      T))
-                   '?))
+  '(not
+    (or
+     (or F F))
+    (and F
+         (not F)))
+                      
 
-;2
-(puzzle-card (rule '(and F
-                         (and F
-                              (and T T)))
-                   '?))
+  ' (and
+     (not F)
+     (not
+      (or T F)))
+                      
 
-;3
-(puzzle-card (rule '(not
-                     (or
-                      (or F F)
-                      (and F F)))
-                   '?))
+  ' (not
+     (or
+      (or T F))
+     (and T
+          (not
+           (and T T))))
+                      
 
-;4
-(puzzle-card (rule '
-                   (not
-                    (and T
-                         (and T
-                              (or T F))))
-                   '?))
-
-;5
-(puzzle-card (rule '
-                   (or (not
-                        (not
-                         (not F)))
-                       (not
-                        (not
-                         (not T))))
-                   '?))
-
-(puzzle-card (rule '(or T
-                        (not 
-                         (and T F)))
-                   '?))
-
-(puzzle-card (rule '(not
-                     (or
-                      (or F F))
-                     (and F
-                          (not F)))
-                   '?))
-
-(puzzle-card (rule ' (and
-                      (not F)
-                      (not
-                       (or T F)))
-                   '?))
-
-(puzzle-card (rule ' (not
-                      (or
-                       (or T F))
-                      (and T
-                           (not
-                            (and T T))))
-                   '?))
-
-(puzzle-card (rule ' (or
-                      (or
-                       (and T F)
-                       (or T F))
-                      (and
-                       (or T F)
-                       (not T)))
-                   '?))
+  ' (or
+     (or
+      (and T F)
+      (or T F))
+     (and
+      (or T F)
+      (not T)))
+                      
 
 
 
-(puzzle-card (rule ' (and
-                      (not
-                       (or T)
-                       (and T F))
-                      (and
-                       (and T F)
-                       (or F)))
-                   '?))
+  ' (and
+     (not
+      (or T)
+      (and T F))
+     (and
+      (and T F)
+      (or F)))
+                      
 
 
-(puzzle-card (rule ' (not
-                      (and
-                       (or
-                        (not T)
-                        (not F))
-                       (and
-                        (not F)
-                        (not F))))
-                   ' ?))
+  ' (not
+     (and
+      (or
+       (not T)
+       (not F))
+      (and
+       (not F)
+       (not F))))
 
 
 
-(puzzle-card (rule ' (not
-                      (or
-                       (and T F)
-                       (or T F))
-                      (and
-                       (not T F)
-                       (not T)))
-                   ' ?))
+  ' (not
+     (or
+      (and T F)
+      (or T F))
+     (and
+      (not T F)
+      (not T)))
 
 
-(puzzle-card (rule ' (and
-                      (not F)
-                      (not
-                       (or T F)))
-                   ' ?))
+  ' (and
+     (not F)
+     (not
+      (or T F)))
 
                    
-(puzzle-card (rule ' (or 
-                      (and T F)
-                      (or 
-                       (or 
+  ' (or 
+     (and T F)
+     (or 
+      (or 
 
-                        (or T F))))
-                      '?))
+       (or T F))))
+                      
 
-(puzzle-card (rule ' (not
-                      (or
-                       (and T F)
-                       (or T F))
-                      (and
-                       (not T F)
-                       (not T)))
-                   ' ?))
+  ' (not
+     (or
+      (and T F)
+      (or T F))
+     (and
+      (not T F)
+      (not T)))
 
-(puzzle-card (rule ' (or
-                      (or
-                       (or F)
-                       (and F T))
-                      (and
-                       (and T F)
-                       (or F)))
-                   '?))
+  ' (or
+     (or
+      (or F)
+      (and F T))
+     (and
+      (and T F)
+      (or F)))
+                      
 
 
-;Puzzles
+  ;Puzzles
 
-(puzzle-card (rule '(and
-                     (not (or T F))
-                     (and T (or F T)))
-                   '?))
+  '(and
+    (not (or T F))
+    (and T (or F T)))
+                      
 
-(puzzle-card (rule '(not
-                     (not
-                      (and F
-                           (and (or T T)
-                                F))))
-                   '?))
+  '(not
+    (not
+     (and F
+          (and (or T T)
+               F))))
+                      
 
-(puzzle-card (rule '(not
-                     (and
-                      (and T
-                           (and T (or F T)))))
-                   '?))
+  '(not
+    (and
+     (and T
+          (and T (or F T)))))
+                      
 
-(puzzle-card (rule ' (and
-                      (and
-                       (or T F)
-                       (and T F))
-                       (or
-                        (and T F)
-                        (not F)))
-                      '?))
+  '(and
+    (and
+     (or T F)
+     (and T F))
+    (or
+     (and T F)
+     (not F)))
+  ))
+
+
+(define puzzle-deck (map expression->puzzle-card puzzle-expressions))

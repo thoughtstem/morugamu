@@ -1,174 +1,61 @@
 #lang racket
 
 (provide
- render)
+ render
+ generate)
 
 (require "./card-designs.rkt"
          "./rules.rkt"
-         2htdp/image)
+         "./redex/rule-grabber.rkt"
+         "./redex/inequalities.rkt"
+         
+         2htdp/image
+         redex)
+
+(module+ test
+  (require (prefix-in bool: "../themes/emoji-boolean-algebra.rkt"))
+  (require (prefix-in bool: "./boolean-algebra-cards.rkt"))
+
+  (require (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
+  (require (prefix-in numb: "./clock-number-cards.rkt"))
+  
+  (require (prefix-in ineq: "../themes/emoji-inequality.rkt"))
+
+  (bool:render bool:theme)
+  (numb:render numb:theme)
+  (render ineq:theme))
 
 
+(define (generate difficulty)
+  (generate-term inequalities-lang e difficulty))
 
-#|  *********************************************
-       this file is not supposed to print to console
-       if the other card files run into error
-       also remove the render and module+ parts
-***********************************************
-
-|#
-
-
-
-;Basic symbols
-
-(define (icon s)
-  (text s 50 "black"))
 
 (define (render theme)
 
   (define-tile < '< (first theme))
-    ;(bitmap "../themes/emojis/LessThan.png"))
-    
-
-  (define-tile max 'max (second theme))
-    ;(bitmap "../themes/emojis/max.png"))
-    ;(text "max" 50 "black"))
-  
+  (define-tile max 'max (second theme)) 
   (define-tile ret 'ret (third theme))
-    ;(bitmap "../themes/emojis/ret.png"))
-
-  (define-tile = '= (fourth theme))
-    ;(bitmap "../themes/emojis/equals.png"))
-  
-  (define-tile min 'min (fifth theme))
-    ;(bitmap "../themes/emojis/min.png"))
-  
+  (define-tile = '= (fourth theme)) 
+  (define-tile min 'min (fifth theme)) 
   (define-tile > '> (sixth theme))
-    ;(bitmap "../themes/emojis/GreaterThan.png"))
-
   (define-tile >= '>= (seventh theme))
   (define-tile <= '<= (eighth theme))
   
-  
-
-
+  ;Gross
+  (define-tile if 'if (text "if" 24 'black))
  
+  (flatten (list
+            (get-all-symbols)
 
+            (redex-to-rule-card (take (rules-for '<) 5))
+            (redex-to-rule-card (take (drop (rules-for '<) 5) 5))
+            (redex-to-rule-card (take (drop (rules-for '<) 10) 5))
+            (redex-to-rule-card (take (drop (rules-for '<) 15) 5))
 
-   (flatten (list
-    (get-rparen)
-    (get-lparen)
-    (get-all-symbols)
-    
-;less than
-   (rule-card (rule '(< x x) 'F)
-           
-              (rule '(< x 9) 'T)
-              (rule '(< 9 x) 'F)
-           
-              (rule '(< x 8) 'T)
-              (rule '(< 8 x) 'F)
-              )
-   
-   (rule-card (rule '(< x 7) 'T)
-              (rule '(< 7 x) 'F)
-
-              (rule '(< x 6) 'T)
-              (rule '(< 6 x) 'F)
-
-              (rule '(< x 5) 'T)
-              )
-
-   (rule-card (rule '(< 5 x) 'F)
-
-              (rule '(< x 4) 'T)
-              (rule '(< 4 x) 'F)
-
-              (rule '(< x 3) 'T)
-              (rule '(< 3 x) 'F)
-
-              )
-
-
-   (rule-card (rule '(< x 2) 'T)
-              (rule '(< 2 x) 'F)
-
-              (rule '(< x 1) 'T)
-              (rule '(< 1 x) 'F)
-
-              (rule '(< 0 0) 'F)) 
-
-;greater than
-   
- (rule-card (rule '(> y x) '(< x y)))
-;max
-   (rule-card (rule '(max x y)
-                    '(if (< x y)
-                         (ret y)
-                         (ret x)))
-              (rule '(ret x)
-                    'x)
-              (rule '(ret y)
-                    'y)
-              )
-;equals
-   (rule-card (rule '(= x x) 'T)
-              (rule '(= x y) 'F))
-   
-;min   
-(rule-card (rule '(min x y)
-                    '(if (< x y)
-                         (ret x)
-                         (ret y)))
-              (rule '(ret x)
-                    'x)
-              (rule '(ret y)
-                    'y)
-              )
-
-
-  
-
-;less than or equal to
-(rule-card (rule '(<= x x) 'T)
-           
-              (rule '(<= x 9) 'T)
-              (rule '(<= 9 x) 'T)
-           
-              (rule '(<= x 8) 'T)
-              (rule '(<= 8 x) 'F)
-              )
-
-  (rule-card (rule '(<= x 7) 'T)
-              (rule '(<= 7 x) 'F)
-
-              (rule '(<= x 6) 'T)
-              (rule '(<= 6 x) 'F)
-
-              (rule '(<= x 5) 'T)
-              )
-
-   (rule-card (rule '(<= 5 x) 'F)
-
-              (rule '(<= x 4) 'T)
-              (rule '(<= 4 x) 'F)
-
-              (rule '(<= x 3) 'T)
-              (rule '(<= 3 x) 'F)
-              )
-
-   (rule-card (rule '(<= x 2) 'T)
-              (rule '(<= 2 x) 'F)
-
-              (rule '(<= x 1) 'T)
-              (rule '(<= 1 x) 'F)
-
-              (rule '(<= 0 0) 'T)) 
-
-
-
-;greater than or equal to
-(rule-card (rule '(>= y x) '(<= x y)))
-))
-  )
+            (redex-to-rule-card (rules-for '>))
+            (redex-to-rule-card (rules-for 'max))
+            (redex-to-rule-card (rules-for '=)) 
+            (redex-to-rule-card (rules-for 'min))
+            (redex-to-rule-card (rules-for '<=))
+            (redex-to-rule-card (rules-for '>=)))))
   

@@ -5,8 +5,10 @@
          clock-numbers-lang-eval)
 
 (require redex)
+(require "./rule-grabber.rkt")
 
 (define-language clock-numbers-lang
+  (e out-num)
   (out-num cn-e)
   (cn-e  (bop out-num out-num)
          (op out-num)
@@ -24,7 +26,7 @@
      (sub out-num E)
      (sub E out-num)))
 
-(define-metafunction clock-numbers-lang-eval
+(define-metafunction+ clock-numbers-lang-eval
   S~ : n -> n
   [(S~ 0) 1]
   [(S~ 1) 2]
@@ -37,7 +39,7 @@
   [(S~ 8) 9]
   [(S~ 9) 0])
 
-(define-metafunction clock-numbers-lang-eval
+(define-metafunction+ clock-numbers-lang-eval
   P~ : n -> n
   [(P~ 0) 9]
   [(P~ 1) 0]
@@ -50,12 +52,12 @@
   [(P~ 8) 7]
   [(P~ 9) 8])
 
-(define-metafunction clock-numbers-lang-eval
+(define-metafunction+ clock-numbers-lang-eval
   add~ : n n -> cn-e
   [(add~ n_1 0) n_1]
   [(add~ n_1 n_2) (add (S n_1) (P n_2))])
 
-(define-metafunction clock-numbers-lang-eval
+(define-metafunction+ clock-numbers-lang-eval
   sub~ : n n -> cn-e
   [(sub~ n_1 0) n_1]
   [(sub~ n_1 n_2) (sub (P n_1) (P n_2))])
@@ -63,7 +65,7 @@
 (define clock-numbers-lang-red
   (reduction-relation
    clock-numbers-lang-eval
-   #:domain cn-e
+   #:domain e ;cn-e
    (--> (in-hole E (S n)) (in-hole E (S~ n)) S)
    (--> (in-hole E (P n)) (in-hole E (P~ n)) P)
    (--> (in-hole E (add n_1 n_2)) (in-hole E (add~ n_1 n_2)) add)

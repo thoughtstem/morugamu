@@ -37,8 +37,8 @@
 ;Collect all the puzzles together
 (define puzzles
   (append bool:puzzle-deck
-          numb:puzzle-deck2
-          ineq:puzzle-deck1))
+          numb:puzzle-deck
+          ineq:puzzle-deck))
 
 
 ;Collect all the rules+symbols together
@@ -47,10 +47,10 @@
           (numb:render numb:theme)
           (ineq:render ineq:theme)))
 
-
 ;Filter the symbols from the rules
 (define symbols
-  (keep-symbols rules-and-symbols))
+  (append (list (get-rparen) (get-lparen))
+          (keep-symbols rules-and-symbols)))
 
 (define rules
   (keep-rules rules-and-symbols))

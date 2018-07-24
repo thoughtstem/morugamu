@@ -91,3 +91,16 @@
 (define-tile the-b  'b
   (square 50 "solid" "yellow"))
 
+
+(define-tile the-n_1  'n_1
+  (square 50 "solid" "green"))
+
+(define-tile the-n_2  'n_2
+  (square 50 "solid" "red"))
+
+(define-tile the-number_1  'number_1
+  (square 50 "solid" "green"))
+
+(define-tile the-number_2  'number_2
+  (square 50 "solid" "red"))
+

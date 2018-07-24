@@ -4,7 +4,8 @@
          puzzle-card
          rule
          rule-from
-         rule-to)
+         rule-to
+         redex-to-rule-card)
 
 (require 2htdp/image
          "./cards.rkt"
@@ -75,3 +76,10 @@
           #:icon #f)
    rules)
 )
+
+
+(define (redex-to-rule-line d)
+  (rule (first d) (second d)))
+
+(define (redex-to-rule-card d)
+  (apply rule-card (map redex-to-rule-line d)))

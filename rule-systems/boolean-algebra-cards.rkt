@@ -1,18 +1,22 @@
 #lang racket
 
-(provide render)
+(provide render
+         generate)
 
-(require "../rule-systems/card-designs.rkt"
-         "../rule-systems/rules.rkt"
-         2htdp/image)
+(require "./card-designs.rkt"
+         "./rules.rkt"
+         "./redex/boolean-algebra.rkt"
+         "./redex/rule-grabber.rkt"
+         2htdp/image
+         redex)
 
 (module+ test
   (require (prefix-in bool: "../themes/emoji-boolean-algebra.rkt"))
 
   (render bool:theme))
 
-(define (icon s)
-  (text s 50 "black"))
+(define (generate difficulty)
+  (generate-term boolean-algebra-lang e difficulty))
 
 (define (render theme)
   
@@ -25,55 +29,12 @@
   (define-tile the-prompt  '?
     (text "?" 40 "black"))
 
-  (define-tile if 'if
-    #;(bitmap "./themes/emojis/add.png")
-    (text "if" 50 "black"))
-
-  (rule-card (rule '(if T x y)
-                   'x)
-             (rule '(if F x y)
-                   'y))
-
 (flatten
   (list
-   (get-rparen)
-   (get-lparen)
    (get-all-symbols)
 
-
-   ;Transformation rules
-
-   (rule-card (rule '(and T T)
-                    'T)
-
-              (rule '(and T F)
-                    'F)
-
-              (rule '(and F T)
-                    'F)
-
-              (rule '(and F F)
-                    'F))
+   (redex-to-rule-card (rules-for 'and))
+   (redex-to-rule-card (rules-for 'or))
+   (redex-to-rule-card (rules-for 'not)))))
 
 
-   (rule-card (rule '(or T T)
-                    'T)
-
-              (rule '(or T F)
-                    'T)
-
-              (rule '(or F T)
-                    'T)
-
-              (rule '(or F F)
-                    'F))
-
-   (rule-card (rule '(not T)
-                    'F)
-
-              (rule '(not F)
-                    'T))
-
-   
-
-)))
