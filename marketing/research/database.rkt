@@ -1,5 +1,9 @@
 #lang racket
 
+(provide board-game-list)
+(provide money-asked)
+(provide money-received)
+
 (define board-game-list
 <<<<<<< HEAD
   (list "Vanguard of War" "Era of Kingdoms" "Reign Ed" "The Game of Crimps" "Game to
