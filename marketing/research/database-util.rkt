@@ -39,4 +39,4 @@
          )
 )
 
-(get-index "Dinosaur Island" board-game-list)
+(get-index "Dinosaur Island")
