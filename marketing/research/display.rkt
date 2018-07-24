@@ -5,11 +5,11 @@
   "../../util/util.rkt"
   "./database.rkt")
 
-;(define vector-asked
-;  (list->vector (pair-list board-game-list money-asked)))
+(define vector-asked
+  (map list->vector (element0&1->lst board-game-list)))
 
-;(define vector-received
-;  (list->vector (pair-list board-game-list money-received)))
+(define vector-received
+  (map list->vector (element0&2->lst board-game-list)))
 
 (plot-new-window? #t)
 
@@ -17,11 +17,11 @@
                [plot-x-tick-label-angle 30])
 
 (plot (list (discrete-histogram
-               '(vector-asked)
+               vector-asked
                #:skip 3 #:x-min 0
                #:label "$ Asked For")
               (discrete-histogram
-               '(vector-received)
+               vector-received
                #:skip 3 #:x-min 1
                #:label "$ Received" #:color 2 #:line-color 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
