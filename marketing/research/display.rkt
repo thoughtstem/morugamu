@@ -14,7 +14,7 @@
 (plot-new-window? #t)
 
 (parameterize ([plot-x-tick-label-anchor 'top-right]
-               [plot-x-tick-label-angle 30])
+               [plot-x-tick-label-angle 50])
 
 (plot (list (discrete-histogram
                vector-asked
