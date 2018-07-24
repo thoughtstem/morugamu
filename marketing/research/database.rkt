@@ -1,73 +1,80 @@
 #lang racket
 
 (provide board-game-list)
-(provide money-asked)
-(provide money-received)
 
 (define board-game-list
-<<<<<<< HEAD
-  (list "Vanguard of War" "Era of Kingdoms" "Reign Ed" "The Game of Crimps" "Game to
-  	Pick a Game" "Crown of Aragon" "Darkness Incarnate" "Absolutism"
-  	"Startropolis" "Miremarsh"
-        "MYTH" "Dinosaur Island" "Trogdor" "Jetpack Joyride" "Shady Agents" "Wreck 
-Raiders" "Over the Edge" "Rurik Dawn of Kiev" "SPQF" "Demon City"
-        "Dark Matter" "HeartBeat Pride Dice" "Bat Cup" "Dragon Realms" "Nunami" "The
- Acts Board Game" "The Villagers" "Infinity D4" "Thug Life" "John
- Silence"
-        "Rise of the Necromancers" "Paradox" "Exile Sun" "Monster Derby" "Cosmic
- Balance" "Guilds of Cadwallon" "Rivet Wars" "4 the Birds" "Fireteam
- Zero 3" "Evolution:CLIMATE 2"
-        "BatmanTM Gotham City Chronicles" "Zombicide: Black Plague" "Shadows of
- Brimstone" "Tudor" "Kitchen Rush: Piece of Cake" "Eclipse: Second Dawn
- for the Galaxy" "Space: 1889" "THE FANTASY TRIP" "Snag the Flag" "Unicorns and Zombies"
-        "Play Trumps Politics" "Manipulate" "Drunk In The Trunk" "No Pun Included"
- "Ian Brodys Quartermaster General" "Sorcerer City" "Transit City"
- "Hellboy" "Deus Lo Vult" "Soccer City"
-        "Coding Farmers" "Inequality opoly" "Immortality" "Lunarchitects" "The Island
- Of El Dorado" "Trogdor" "Sword and Sorcery" "Tiki" "Apocalypse Galactic
- Arena" "Bellum of Mutants and Men"
-        "Gloomhaven" "MourneQuest" "Galaxy Defenders"
-))
-=======
-  (list "Vanguard of War" "Era of Kingdoms" "Reign Ed" "The Game of Crimps" "Game to Pick a Game" "Crown of Aragon" "Darkness Incarnate" "Absolutism" "Startropolis" "Miremarsh"
-        "MYTH" "Dinosaur Island" "Trogdor" "Jetpack Joyride" "Shady Agents" "Wreck Raiders" "Over the Edge" "Rurik Dawn of Kiev" "SPQF" "Demon City"
-        "Dark Matter" "HeartBeat Pride Dice" "Bat Cup" "Dragon Realms" "Nunami" "The Acts Board Game" "The Villagers" "Infinity D4" "Thug Life" "John Silence"
-        "Rise of the Necromancers" "Paradox" "Exile Sun" "Monster Derby" "Cosmic Balance" "Guilds of Cadwallon" "Rivet Wars" "4 the Birds" "Fireteam Zero 3" "Evolution:CLIMATE 2"
-        "BatmanTM Gotham City Chronicles" "Zombicide: Black Plague" "Shadows of Brimstone" "Tudor" "Kitchen Rush: Piece of Cake" "Eclipse: Second Dawn for the Galaxy" "Space: 1889" "THE FANTASY TRIP" "Snag the Flag" "Unicorns and Zombies"
-        "Play Trumps Politics" "Manipulate" "Drunk In The Trunk" "No Pun Included" "Ian Brodys Quartermaster General" "Sorcerer City" "Transit City" "Hellboy" "Deus Lo Vult" "Soccer City"
-        "Coding Farmers" "Inequality opoly" "Immortality" "Lunarchitects" "The Island Of El Dorado" "Trogdor" "Sword and Sorcery" "Tiki" "Apocalypse Galactic Arena" "Bellum of Mutants and Men"
-        "Gloomhaven" "MourneQuest" "Galaxy Defenders"))
->>>>>>> 5e76f2a86c4c5466c06ef74e7e24a816b1675537
+(list '("Vanguard of War" 2 12.3)
+  '("Era of Kingdoms" 0.8 0.85)
+  '("Reign Ed" 3.5 2.1)
+  '("The Game of Crimps" 0.85 0.28)
+  '("Game to Pick a Game" 0.8 1.8)
+  '("Crown of Aragon" 0.75 0.19)
+  '("Darkness Incarnate" 5 0)
+  '("Absolutism" 1.5 0.39)
+  '("Startropolis" 1 3.69)
+  '("Miremarsh" 5.9 9.9)
+  '("MYTH" 4 92.6)
+  '("Dinosaur Island" 2.3 204.5)
+  '("Trogdor" 7.5 46.2)
+  '("Jetpack Joyride" 0.8 8.19)
+  '("Shady Agents" 16.58 17.7)
+  '("Wreck Raiders" 0.76 4.5)
+  '("Over the Edge" 5 8)
+  '("Rurik Dawn of Kiev" 5 7.14)
+  '("SPQF" 1 2)
+  '("Demon City" 2.3 3.45)
+  '("Dark Matter" 2.5 1.3)
+  '("HeartBeat Pride Dice" 3 7.8)
+  '("Bat Cup" 1.9 2.8)
+  '("Dragon Realms" 0.78 0.72)
+  '("Nunami" 5.27 1.16)
+  '("The Acts Board Game" 0.4 0.27)
+  '("The Villagers" 0.13 1)
+  '("Infinity D4" 1 0.9)
+  '("Thug Life" 5 0.97)
+  '("John Silence" 1 0.39)
+  '("Rise of the Necromancers" 4.2 6.6)
+  '("Paradox" 2.6 4.6)
+  '("Exile Sun" 1.8 2.3)
+  '("Monster Derby" 1 1)
+  '("Cosmic Balance" 3 3.5)
+  '("Guilds of Cadwallon" 0.5 11.7)
+  '("Rivet Wars" 2.5 58.2)
+  '("4 the Birds" 1.1 1.7)
+  '("Fireteam Zero 3" 3 20.7)
+  '("Evolution:CLIMATE 2" 2 33.7)
+  '("BatmanTM Gotham City Chronicles" 50 440.3)
+  '("Zombicide: Black Plague" 12.5 407.9)
+  '("Shadows of Brimstone" 3 134.1)
+  '("Tudor" 1 10.8)
+  '("Kitchen Rush: Piece of Cake" 2 8.2)
+  '("Eclipse: Second Dawn for the Galaxy" 15 59.7)
+  '("Space: 1889" 2.2 10.8)
+  '("THE FANTASY TRIP" 2 4.3)
+  '("Snag the Flag" 0.6 0.3)
+  '("Unicorns and Zombies" 1.2 0.4)
+  '("Play Trumps Politics" 1 0.0002)
+  '("Manipulate" 1.9 2.1)
+  '("Drunk In The Trunk" 0.1 0.062)
+  '("No Pun Included" 0.5 1.5)
+  '("Ian Brodys Quartermaster General" 2.6 4.3)
+  '("Sorcerer City" 3 21.9)
+  '("Transit City" 0.9 0.2)
+  '("Hellboy" 13.1 190.6)
+  '("Deus Lo Vult" 3 0.7)
+  '("Soccer City" 2.9 3.3)
+  '("Coding Farmers" 0.6 0.8)
+  '("Inequality opoly" 1.7 0.1)
+  '("Immortality" 0.19 3)
+  '("Lunarchitects" 3 4)
+  '("The Island Of El Dorado" 2 29.2)
+  '("Trogdor" 7.5 71.3)
+  '("Sword and Sorcery" 7.5 51.7)
+  '("Tiki" 1.5 3.8)
+  '("Apocalypse Galactic Arena" 0.8 1.1)
+  '("Bellum of Mutants and Men" 0.8 0.1)
+  '("Gloomhaven" 3.8 6.5)
+  '("MourneQuest" 2.8 3)
+  '("Galaxy Defenders" 4 25.9)
 
-(define money-asked 
-  (list 2 0.8 3.5 0.85 0.8 0.75 5 1.5 1 5.9
-	4 2.3 7.5 0.8 16.58 0.76 5 5 1 2.3 
-	2.5 3 1.9 0.78 5.27 0.4 0.13 1 5 1
-	4.2 2.6 1.8 1 3 0.5 2.5 1.1 3 2
-	50 12.5 3 1 2 15 2.2 2 0.6 1.2
-	1 1.9 0.1 0.5 2.6 3 0.9 13.1 3 2.9
-        0.6 1.7 0.19 3 2 7.5 7.5 1.5 0.8 0.8
-        3.8 2.8 4
 ))
-
-(define money-received
-  (list 12.3 0.85 2.1 0.28 1.8 0.19 0 0.39 3.69 9.9
-	92.6 204.5 46.2 8.19 17.7 4.5 8 7.14 2 3.45 
-	1.3 7.8 2.8 0.72 1.16 0.27 1 0.9 0.97 0.39
-	6.6 4.6 2.3 1 3.5 11.7 58.2 1.7 20.7 33.7
-	440.3 407.9 134.1 10.8 8.2 59.7 10.8 4.3 0.3 0.4 
-<<<<<<< HEAD
-	0.0002 2.1 0.062 1.5 4.3 21.9 0.2 190.6 0.7 3.3 0.8 0.1
-	3 4 29.2 71.3 51.7 3.8 1.1 0.1 6.5 3 25.9
-))
-=======
-	0.0002 2.1 0.062 1.5 4.3 21.9 0.2 190.6 0.7 3.3
-        0.8 0.1 3 4 29.2 71.3 51.7 3.8 1.1 0.1
-        6.5 3 25.9
-))
-<<<<<<< HEAD
->>>>>>> 5e76f2a86c4c5466c06ef74e7e24a816b1675537
-=======
-
-(map list board-game-list money-asked money-received)
->>>>>>> 0d10f91d35f909c40bbd07732141687c80b9fbe7
