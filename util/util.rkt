@@ -3,8 +3,7 @@
 (provide pair-with-index)
 (provide split-by)
 (provide safe-1)
-(provide element0&1->lst)
-(provide element0&2->lst)
+(provide elements->lst)
 
 (define (safe-1 f)
   (lambda (x . xs)
@@ -34,19 +33,11 @@
       (list lst)
       (cons (take lst n) (split-by (drop lst n) n))))
 
-(define (element0&1->lst lst)
-  (map get-elements0&1 lst))
+(define (elements->lst lst num1 num2)
+  (map (curryr get-elements num1 num2) lst))
 
-(define (get-elements0&1 lst)
-  (define elem1 (list-ref lst 0))
-  (define elem2 (list-ref lst 1))
+(define (get-elements lst num1 num2)
+  (define elem1 (list-ref lst num1))
+  (define elem2 (list-ref lst num2))
   (list elem1 elem2))
 
-(define (element0&2->lst lst)
-  (map get-elements0&2 lst))
-
-(define (get-elements0&2 lst)
-  (define elem1 (list-ref lst 0))
-  (define elem2 (list-ref lst 2))
-  (list elem1 elem2))
-  
