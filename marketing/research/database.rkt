@@ -35,3 +35,5 @@
         0.8 0.1 3 4 29.2 71.3 51.7 3.8 1.1 0.1
         6.5 3 25.9
 ))
+
+(map list board-game-list money-asked money-received)
