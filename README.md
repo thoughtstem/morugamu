@@ -1,21 +1,18 @@
-# morugamu
+# Morugamu
 
-The most awesome summer intern project of 2018!
+The most awesome summer intern project of 2018! :smiley:
 
 Docs can be found in 
 
 ```
-internal-docs/morugamu/index.html
+internal-docs/morugamu.html
 ```
-
-
 Step 1.  Make a github account!  Ask someone (Stephen) to add you to this repository. 
-
 
 Step 2. Get the code:
 
 ```
-git clone git@github.com:thoughtstem/morugamu.git
+git clone https://github.com/thoughtstem/morugamu.git
 cd morugamu
 git branch YOUR-NAME
 git checkout YOUR-NAME
