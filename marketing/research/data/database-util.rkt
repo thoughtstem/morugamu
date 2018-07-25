@@ -33,7 +33,7 @@
 	(cond
           [(null? data) '()]
           [else (define elem1 (first data))
-                (if (>= (list-ref elem1 2) (list-ref elem1 1))
+                (if (>= (game:$received elem1) (game:$asked-for elem1))
                     (cons elem1 (received-more (rest data)))
                     (received-more (rest data))
                 )]))
