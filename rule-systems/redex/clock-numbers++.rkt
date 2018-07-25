@@ -18,19 +18,33 @@
   list-lang-eval)
 
 (define-metafunction+ clock-numbers++-lang
-  S++~ : e -> e
+  S++~ : any -> any
   [(S++~ (cons 9 any_1)) (cons 0 (S++~ any_1))]
   [(S++~ (cons number_1 any_1)) (cons (S~ number_1) any_1)]
-  [(S++~ any_1) (S~ any_1)]
-  )
+  [(S++~ any_1) (S~ any_1)])
 
 
-(define clock-numbers++-red
+(define _clock-numbers++-red
   (reduction-relation
    clock-numbers++-lang-eval
-   #:domain e 
+   #:domain any
    (--> (in-hole E (S any_1))  (in-hole E (S++~ any_1)) S++)))
 
+
+(define extended-list-lang-red
+  (extend-reduction-relation list-lang-red
+                             clock-numbers++-lang-eval))
+
+(define clock-numbers++-red
+  (union-reduction-relations _clock-numbers++-red
+                             extended-list-lang-red))
+
 (module+ test
+  #;(traces clock-numbers++-red
+            (term (head (cons (cons 5 nil) nil))))
+  (traces clock-numbers++-red
+          (term (S (cons 4 (cons 0 nil)))))
   (traces clock-numbers++-red
           (term (S (cons 9 (cons 0 nil))))))
+
+

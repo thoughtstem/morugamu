@@ -114,33 +114,33 @@
   [(<~ number_1 0) F])
 
 (define-metafunction+ eval-inequalities-lang
-  <=~ : n n -> in-e
+  <=~ : any any -> any
   [(<=~ number_1 number_2) (or (= number_1 number_2)
                                (< number_1 number_2))])
 
 (define-metafunction+ eval-inequalities-lang
-  >~ : n n -> in-e
+  >~ : any any -> any
   [(>~ number_1 number_2) (< number_2 number_1)])
 
 (define-metafunction+ eval-inequalities-lang
-  >=~ : n n -> in-e
+  >=~ : any any -> any
   [(>=~ number_1 number_2) (or (= number_1 number_2)
                                (> number_1 number_2))])
 
 (define-metafunction+ eval-inequalities-lang
-  max~ : n n -> e
+  max~ : any any -> any
   [(max~ number_1 number_2) (if (> number_1 number_2)
                                 number_1
                                 number_2)])
 
 (define-metafunction+ eval-inequalities-lang
-  min~ : n n -> in-e
+  min~ : any any -> any
   [(min~ number_1 number_2) (if (> number_1 number_2)
                                 number_2
                                 number_1)])
 
 (define-metafunction+ eval-inequalities-lang
-  if~ : e e e -> e
+  if~ : any any any -> any
   [(if~ T any_1 any_2) any_1]
   [(if~ F any_1 any_2) any_2])
 
@@ -182,7 +182,7 @@
                              extended-clock-numbers-lang-red
                              #;extended-if-lang-red))
 
-(module+ test
+#;(module+ test
   #;(traces inequalities-lang-red
           (term (if (> 3 4) 3 4)))
   #;(traces inequalities-lang-red
@@ -192,7 +192,7 @@
   #;(traces inequalities-lang-red
             (term (if (< 2 3) 5 6))))
 
-#;(module+ test
+(module+ test
   
   (traces inequalities-lang-red
           (term (< 2 4)))

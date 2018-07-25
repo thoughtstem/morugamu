@@ -9,8 +9,8 @@
 
 
 (define-language list-lang
-  (out-list l (tail l))
   (e l-e)
+  (out-list l (tail l))
   (l-e l
        (head l)
        (tail l))
@@ -24,18 +24,18 @@
 
 
 (define-metafunction+ list-lang-eval
-  head~ : e -> e
+  head~ : any -> any
   [(head~ (cons any_1 any_2)) any_1])
 
 (define-metafunction+ list-lang-eval
-  tail~ : e -> e
+  tail~ : any -> any
   [(tail~ (cons any_1 any_2)) any_2])
 
 
 (define list-lang-red
   (reduction-relation
    list-lang-eval
-   #:domain e
+   #:domain any
    (--> (in-hole E (head any_1)) (in-hole E (head~ any_1)) head)
    (--> (in-hole E (tail any_1)) (in-hole E (tail~ any_1)) tail)))
 
