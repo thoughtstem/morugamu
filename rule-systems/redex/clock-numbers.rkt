@@ -28,7 +28,7 @@
      (sub E out-num)))
 
 (define-metafunction+ clock-numbers-lang-eval
-  S~ : n -> n
+  S~ : any -> any
   [(S~ 0) 1]
   [(S~ 1) 2]
   [(S~ 2) 3]
@@ -41,7 +41,7 @@
   [(S~ 9) 0])
 
 (define-metafunction+ clock-numbers-lang-eval
-  P~ : n -> n
+  P~ : any -> any
   [(P~ 0) 9]
   [(P~ 1) 0]
   [(P~ 2) 1]
@@ -54,19 +54,19 @@
   [(P~ 9) 8])
 
 (define-metafunction+ clock-numbers-lang-eval
-  add~ : n n -> cn-e
+  add~ : any any -> any
   [(add~ n_1 0) n_1]
   [(add~ n_1 n_2) (add (S n_1) (P n_2))])
 
 (define-metafunction+ clock-numbers-lang-eval
-  sub~ : n n -> cn-e
+  sub~ : any any -> any
   [(sub~ n_1 0) n_1]
   [(sub~ n_1 n_2) (sub (P n_1) (P n_2))])
 
 (define clock-numbers-lang-red
   (reduction-relation
    clock-numbers-lang-eval
-   #:domain e ;cn-e
+   #:domain any
    (--> (in-hole E (S n)) (in-hole E (S~ n)) S)
    (--> (in-hole E (P n)) (in-hole E (P~ n)) P)
    (--> (in-hole E (add n_1 n_2)) (in-hole E (add~ n_1 n_2)) add)
