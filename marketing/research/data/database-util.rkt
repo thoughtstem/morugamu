@@ -14,10 +14,15 @@
 ; Converts a string title into an index by looking in the game:table
 ; and finding the row whose title matches the given title
 (define (title->index title)
-  (game:id
-  (first
-   (memf (title-is title)
-         (game:table)))))
+  (define index-list
+    (memf (title-is title)
+         (game:table)))
+
+   (cond
+   [(false? index-list) #f]
+   [else (game:id
+  (first index-list))]
+   ))
 
 (define (title-is title)
   (λ(g)
