@@ -79,4 +79,4 @@
         '(67 Ares-Games Sword-and-Sorcery)
         '(68 Florian-Oz-Editions Tiki)
         '(69 Storyception-Games Apocalypse-Galactic-Arena)
-        '(70 Van-Hammock-Games-llc. Bellum-of-Mutants-and-Men))))
+        '(70 Van-Hammock-Games-llc. Bellum-of-Mutants-and-Men)))
