@@ -388,15 +388,34 @@ data in various ways.  The docs for those functions are below:
 
 @subsection{Database Utilities}
 
+@defproc[(received-greater-than [amount integer?] [data list?])
+	(listof list?)]{
+This function takes in an amount ($) and a database list. It returns all row entries for which the amount received is greater than or equal to the input amount.
+}
+
+@defproc[(received-less-than [amount integer?] [data list?])
+	(listof list?)]{
+This function takes in an amount ($) and a database list. It returns all row entries for which the amount received is less than the input amount.
+}
+
 @defproc[(row-from-id [id string?] [data list?])
 	(list?)]{
-This function takes in an ID string and database list. It searches the database for the ID and returns the corresponding row of data as a list. If the ID cannot be found in the database, the function returns -1.
-}
+This function takes in an ID string and database list. It searches the database for the ID and returns the corresponding row of data as a list. If the ID cannot be found in the database, the function returns -1. Here’s an example:
+
+@racketblock[
+(row-from-id “Dinosaur-Island” (game:table))
+>> (Dinosaur-Island “Dinosaur Island” 2.3 204.5)
+]}
 
 @defproc[(row-from-title [title string?] [data list?])
 	(list?)]{
-This function takes in a title string and database list. It searches the database for the title and returns the corresponding row of data as a list. If the title cannot be found in the database, the function returns -1.
-}
+This function takes in a title string and database list. It searches the database for the title and returns the corresponding row of data as a list. If the title cannot be found in the database, the function returns -1. Here’s an example:
+
+@racketblock[
+(row-from-title “Soccer City” (game:table))
+>> (Soccer-City “Soccer City” 2.9 3.3)
+]}
+
 
 @defproc[(title->index [string game:id?])
          (game:id?)]{
@@ -404,10 +423,10 @@ This function allows an index of a game to be returned given a string input of t
 This function looks through the game table until a matching string is found. 
 }
 
-@defproc[(row-from-id [id ID?] [data database-list?])
-          (row?)]{
-This function takes an ID as well as a database list and returns the row associated
-with the given ID. 
+
+@defproc[(table)
+(list?)]{
+This is a function that contains a list of lists documenting the id, the name, and the company size of the gaming companies on kickstarter.
 }
 
 
