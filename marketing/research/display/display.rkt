@@ -2,7 +2,7 @@
 
 (require
   plot
-  "display-utils.rkt"
+  "display-util.rkt"
   "../../../util/util.rkt"
   "../data/games/database.rkt")
 
