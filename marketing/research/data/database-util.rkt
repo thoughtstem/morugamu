@@ -82,6 +82,15 @@
               elem1
               (row-from-title title (rest data)))]))
 
+(define (sort-by-name data)
+  (sort data #:key second string<?))
+
+(define (sort-by-ask data)
+  (sort data #:key third >))
+
+(define (sort-by-receive data)
+  (sort data #:key fourth >))
+
 ; Test lines
 (module+ test
   (title->index "Vanguard of War")
@@ -89,5 +98,8 @@
   (row-from-id "Dinosaur-Island" (game:table))
   (received-greater-than 1000000 (game:table))
   (row-from-id "Dinosaur-Island" (game:table))
-  (row-from-title "Zombicide: Black Plague" (game:table)))
+  (row-from-title "Zombicide: Black Plague" (game:table))
+  (sort-by-name (game:table))
+  (sort-by-ask (game:table))
+  (sort-by-receive (game:table)))
 
