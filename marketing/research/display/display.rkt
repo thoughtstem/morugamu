@@ -2,7 +2,7 @@
 
 (require
   plot
-  "../../util/util.rkt"
+  "../../../util/util.rkt"
   "../data/games/database.rkt")
 
 (define vector-asked
