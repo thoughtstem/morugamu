@@ -6,10 +6,10 @@
   "../data/games/database.rkt")
 
 (define vector-asked
-  (map list->vector (elements->lst board-game-list 0 1)))
+  (map list->vector (elements->lst (table) 1 2)))
 
 (define vector-received
-  (map list->vector (elements->lst board-game-list 0 2)))
+  (map list->vector (elements->lst (table) 1 3)))
 
 (plot-new-window? #t)
 
