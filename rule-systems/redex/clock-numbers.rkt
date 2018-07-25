@@ -3,7 +3,8 @@
 (provide clock-numbers-lang
          clock-numbers-lang-red
          clock-numbers-lang-eval
-         S~)
+         S~
+         P~)
 
 (require redex)
 (require "./rule-grabber.rkt")
