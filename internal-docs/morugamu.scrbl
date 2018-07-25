@@ -152,6 +152,12 @@ Or, try using a different expression:
 
 }
 
+@defproc[(elements->lst [lst list?] [num1 index1?] [num2 index2?])
+         (list?)] {
+This expression takes in a list and two indexes and creates a list of the elements at those indexes.
+
+}
+
 
 @section{Rule Systems}
 
@@ -228,12 +234,6 @@ cards will often share the same symbols and theme.  Such sets of cards (or "libr
  @racketblock[
  (rule-card (rule '(> y x) '(< x y)))
  ]
-}
-
-@defproc[(elements->lst [lst list?] [num1 index1?] [num2 index2?])
-         (list?)] {
-This expression takes in a list and two indexes and creates a list of the elements at those indexes.
-
 }
 
 We now examine the various rule systems that have already been created:
