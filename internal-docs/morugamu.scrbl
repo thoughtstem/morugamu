@@ -153,7 +153,7 @@ Or, try using a different expression:
 }
 
 @defproc[(elements->lst [lst list?] [num1 index1?] [num2 index2?])
-         (list?)] {
+         (list?)]{
 This expression takes in a list and two indexes and creates a list of the elements at those indexes.
 
 }
