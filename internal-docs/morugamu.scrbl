@@ -410,6 +410,11 @@ This function takes an ID as well as a database list and returns the row associa
 with the given ID. 
 }
 
+@defproc[(table)
+(list?)]{
+This is a function that contains a list of lists documenting the id, the name, and the company size of the gaming companies on kickstarter.
+}
+
 
 @subsection{Display Utilities}
 
