@@ -382,12 +382,12 @@ data in various ways.  The docs for those functions are below:
 @subsection{Database Utilities}
 
 @defproc[(row-from-id [id string?] [data list?])
-	(list?)]{
+	list?]{
 This function takes in an ID string and database list. It searches the database for the ID and returns the corresponding row of data as a list. If the ID cannot be found in the database, the function returns -1.
 }
 
 @defproc[(row-from-title [title string?] [data list?])
-	(list?)]{
+	list?]{
 This function takes in a title string and database list. It searches the database for the title and returns the corresponding row of data as a list. If the title cannot be found in the database, the function returns -1.
 }
 
