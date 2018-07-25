@@ -81,7 +81,6 @@
             (redex-to-rule-card (take (drop (rules-for 'S) 5) 5))
             (redex-to-rule-card (take (rules-for 'P) 5))
             (redex-to-rule-card (take (drop (rules-for 'P) 5) 5))
-
             (redex-to-rule-card (rules-for 'add))
             (redex-to-rule-card (rules-for 'sub)))))
 

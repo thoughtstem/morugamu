@@ -78,6 +78,6 @@
 
 (module+ test
   (traces clock-numbers-lang-red
-          (term (add 1 2))
+          (term (S (S (add 1 2))))
           #;(term (add 4 (P (sub 9 (S 4)))))))
 

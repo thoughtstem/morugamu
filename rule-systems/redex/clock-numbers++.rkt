@@ -20,11 +20,12 @@
 (define-union-language clock-numbers++-lang
   _clock-numbers++-lang
   list-lang
-  clock-numbers-lang )
-
+  clock-numbers-lang)
 
 (define-extended-language _clock-numbers++-lang-eval clock-numbers++-lang
-  (E hole))
+  (E hole
+     (S E)
+     (P E)))
 
 (define-union-language clock-numbers++-lang-eval
   _clock-numbers++-lang-eval
@@ -48,8 +49,12 @@
   (reduction-relation
    clock-numbers++-lang-eval
    #:domain any
-   (--> (in-hole E (S any_1))  (in-hole E (S++~ any_1)) S)
-   (--> (in-hole E (P any_1))  (in-hole E (P++~ any_1)) P)))
+   
+   (--> (in-hole E (S nil))  (in-hole E (S++~ nil)) S-nil)
+   (--> (in-hole E (S (cons any_1 any_2)))  (in-hole E (S++~ (cons any_1 any_2))) S)
+   
+   (--> (in-hole E (P nil))  (in-hole E (P++~ nil)) P-nil)
+   (--> (in-hole E (P (cons any_1 any_2)))  (in-hole E (P++~ (cons any_1 any_2))) P)))
 
 
 (define extended-list-lang-red
@@ -61,8 +66,10 @@
                              extended-list-lang-red))
 
 (module+ test
+  #;(traces clock-numbers++-red
+          (term (S (P (cons 3 nil)))))
   (traces clock-numbers++-red
-          (term (S (cons 4 (cons 0 nil)))))
+          (term (S (P (cons 4 (cons 0 nil))))))
   (traces clock-numbers++-red
           (term (S (cons 9 (cons 0 nil)))))
   (traces clock-numbers++-red

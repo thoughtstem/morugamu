@@ -6,15 +6,16 @@
          "./rules.rkt"
          "./redex/list-algebra.rkt"
          "./redex/rule-grabber.rkt"
-         2htdp/image)
+         2htdp/image
+         redex)
 
 (module+ test
   (require (prefix-in list: "../themes/emoji-list-algebra.rkt"))
 
   (render list:theme))
 
-(define (icon s)
-  (text s 50 "black"))
+(define (generate difficulty)
+  (generate-term list-lang e difficulty))
 
 (define (render theme)
 
