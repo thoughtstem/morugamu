@@ -2,9 +2,11 @@
 
 (require
   plot
+  "display-utils.rkt"
   "../../../util/util.rkt"
   "../data/games/database.rkt")
 
+;Plotting Games Database
 (define vector-asked
   (map list->vector (elements->lst (table) 1 2)))
 
@@ -16,13 +18,8 @@
 (parameterize ([plot-x-tick-label-anchor 'top-right]
                [plot-x-tick-label-angle 50])
 
-(plot (list (discrete-histogram
-               vector-asked
-               #:skip 3 #:x-min 0
-               #:label "$ Asked For")
-              (discrete-histogram
-               vector-received
-               #:skip 3 #:x-min 1
-               #:label "$ Received" #:color 2 #:line-color 2))
+(plot
+ (list (data->histogram vector-asked 3 0 "$ Asked For" 0 0)
+       (data->histogram vector-received 3 1 "$ Received" 2 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
         #:title "Board Games Funded Via Kickstarter"))
