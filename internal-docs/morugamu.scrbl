@@ -381,7 +381,9 @@ data in various ways.  The docs for those functions are below:
 
 @subsection{Database Utilities}
 
-@defproc[(data->histogram [data-vector listof vector?] [skip-num number?] [x-min number?] [label string?] [color number?] [line-color number?])
+@subsection{Display Utilities}
+
+@defproc[(data->histogram [data-vector listof-vector?] [skip-num number?] [x-min number?] [label string?] [color number?] [line-color number?])
          (discrete-histogram?)]{
 This function returns a discrete histogram to plot, when given a list of vectors plus other info.
 }
