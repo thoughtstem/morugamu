@@ -152,6 +152,12 @@ Or, try using a different expression:
 
 }
 
+@defproc[(elements->lst [lst list?] [num1 index1?] [num2 index2?])
+         (list?)]{
+This expression takes in a list and two indexes and creates a list of the elements at those indexes.
+
+}
+
 
 @section{Rule Systems}
 
@@ -257,6 +263,7 @@ Note the use of the render function.  Here's how it works:
 This returns a list of images for the tiles and rule cards for the boolean algebra.
 
 }
+
 
 
 @subsection{Clock Numbers}
@@ -379,5 +386,68 @@ on the Kickstarter crowd funding platform.
 We have a dataset for board games and for companies and various query functions for slicing the
 data in various ways.  The docs for those functions are below:
 
+@subsection{Database Utilities}
 
+@defproc[(received-greater-than [amount integer?] [data list?])
+	(listof list?)]{
+This function takes in an amount ($) and a database list. It returns all row entries for which the amount received is greater than or equal to the input amount.
+}
+
+@defproc[(received-less-than [amount integer?] [data list?])
+	(listof list?)]{
+This function takes in an amount ($) and a database list. It returns all row entries for which the amount received is less than the input amount.
+}
+
+@defproc[(row-from-id [id string?] [data list?])
+	(list?)]{
+This function takes in an ID string and database list. It searches the database for the ID and returns the corresponding row of data as a list. If the ID cannot be found in the database, the function returns -1. Here’s an example:
+
+@racketblock[
+(row-from-id “Dinosaur-Island” (game:table))
+>> (Dinosaur-Island “Dinosaur Island” 2.3 204.5)
+]}
+
+@defproc[(row-from-title [title string?] [data list?])
+	(list?)]{
+This function takes in a title string and database list. It searches the database for the title and returns the corresponding row of data as a list. If the title cannot be found in the database, the function returns -1. Here’s an example:
+
+@racketblock[
+(row-from-title “Soccer City” (game:table))
+>> (Soccer-City “Soccer City” 2.9 3.3)
+]}
+
+
+@defproc[(title->index [string game:id?])
+         (game:id?)]{
+This function allows an index of a game to be returned given a string input of the name of the game.
+This function looks through the game table until a matching string is found. 
+}
+
+
+@defproc[(table)
+(list?)]{
+This is a function that contains a list of lists documenting the id, the name, and the company size of the gaming companies on kickstarter.
+}
+
+
+@subsection{Display Utilities}
+
+@defproc[(data->histogram [data-vector listof-vector?] [skip-num number?] [x-min number?] [label string?] [color number?] [line-color number?])
+         (discrete-histogram?)]{
+This function returns a discrete histogram to plot, when given a list of vectors plus other info.
+Here's an example:
+
+@racketblock[
+(define vector-asked
+  (map list->vector (elements->lst (game:table) 1 2)))
+
+(plot-new-window? #t)
+
+(parameterize ([plot-x-tick-label-anchor 'top-right]
+               [plot-x-tick-label-angle 50])
+
+(plot
+ (data->histogram vector-asked 3 0 "$ Asked For" 0 0)
+ #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
+ #:title "Board Games Funded Via Kickstarter"))]}
 

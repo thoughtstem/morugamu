@@ -33,6 +33,7 @@
       (list lst)
       (cons (take lst n) (split-by (drop lst n) n))))
 
+;Gets two elements of each list in a list and groups them in a list
 (define (elements->lst lst num1 num2)
   (map (curryr get-elements num1 num2) lst))
 
