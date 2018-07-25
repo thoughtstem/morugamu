@@ -82,11 +82,11 @@
               elem1
               (row-from-title title (rest data)))]))
 
-
 ; Test lines
 (module+ test
   (title->index "Vanguard of War")
   (received-greater-than 1000000 (game:table)))
 
 (row-from-id "Dinosaur-Island" (game:table))
+(row-from-title "Zombicide: Black Plague" (game:table))
 
