@@ -16,13 +16,11 @@
 (define (title->index title)
   (define index-list
     (memf (title-is title)
-         (game:table)))
-
-   (cond
-   [(false? index-list) #f]
-   [else (game:id
-  (first index-list))]
-   ))
+          (game:table)))
+  (cond
+    [(false? index-list) #f]
+    [else (game:id
+           (first index-list))]))
 
 (define (title-is title)
   (λ(g)
@@ -98,7 +96,8 @@
 
 ; Test lines
 (module+ test
-  (title->index "Vanguard ofWar") ; Gives error
+  (title->index "Vanguard ofWar")
+  (title->index "Vanguard of War") 
   (received-greater-than 1000000 (game:table))
   (row-from-id "Dinosaur-Island" (game:table))
   (received-greater-than 1000000 (game:table))
