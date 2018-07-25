@@ -379,5 +379,5 @@ on the Kickstarter crowd funding platform.
 We have a dataset for board games and for companies and various query functions for slicing the
 data in various ways.  The docs for those functions are below:
 
-
+@subsection{Database Utilities}
 
