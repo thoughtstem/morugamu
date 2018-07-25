@@ -369,3 +369,15 @@ This function turns a list of 9 card images into an image of a page.
 }
                                           
 
+
+
+@section{Market Research}
+
+There's a set of tools we're building for examining the success of other board games and companies
+on the Kickstarter crowd funding platform.
+
+We have a dataset for board games and for companies and various query functions for slicing the
+data in various ways.  The docs for those functions are below:
+
+
+

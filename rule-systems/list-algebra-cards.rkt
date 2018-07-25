@@ -4,13 +4,14 @@
 
 (require "./card-designs.rkt"
          "./rules.rkt"
-
+         "./redex/list-algebra.rkt"
+         "./redex/rule-grabber.rkt"
          2htdp/image)
 
 (module+ test
-  (require (prefix-in numb: "../themes/emoji-list-algebra.rkt"))
+  (require (prefix-in list: "../themes/emoji-list-algebra.rkt"))
 
-  (render numb:theme))
+  (render list:theme))
 
 (define (icon s)
   (text s 50 "black"))
@@ -22,20 +23,14 @@
   (define-tile the-head 'head (third theme))
   (define-tile the-tail 'tail (fourth theme))
 
-  
- (flatten (list
-   (get-rparen)
-   (get-lparen)
-   (get-all-symbols)
+  (flatten (list
+            (get-all-symbols)
+
+            (redex-to-rule-card (rules-for 'head))
+            (redex-to-rule-card (rules-for 'tail)))))
 
 
-   (rule-card (rule 'x
-                    '(cons x nil)))
 
-   (rule-card (rule '(head (cons x y))
-                    'x)
 
-              (rule '(tail (cons x y))
-                    'y)))))
 
 

@@ -104,3 +104,9 @@
 (define-tile the-number_2  'number_2
   (square 50 "solid" "red"))
 
+(define-tile the-any_1  'any_1
+  (square 50 "solid" "green"))
+
+(define-tile the-any_2  'any_2
+  (square 50 "solid" "red"))
+
