@@ -386,5 +386,22 @@ data in various ways.  The docs for those functions are below:
 @defproc[(data->histogram [data-vector listof-vector?] [skip-num number?] [x-min number?] [label string?] [color number?] [line-color number?])
          (discrete-histogram?)]{
 This function returns a discrete histogram to plot, when given a list of vectors plus other info.
+Here's an example:
+
+@racketblock[
+(define vector-asked
+  (map list->vector (elements->lst (game:table) 1 2)))
+
+(plot-new-window? #t)
+
+(parameterize ([plot-x-tick-label-anchor 'top-right]
+               [plot-x-tick-label-angle 50])
+
+(plot
+ (data->histogram vector-asked 3 0 "$ Asked For" 0 0)
+ #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
+ #:title "Board Games Funded Via Kickstarter"))
+]
+
 }
 
