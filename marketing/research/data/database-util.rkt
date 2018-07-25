@@ -38,15 +38,16 @@
                     (received-more (rest data))
                 )]))
 
-; Query Function #2: received >= $1,000,000
+; Query Function #2: received >= input $ amount
+; @param amount = integer
 ; @param data = database list
-(define (greater-than-million data)
+(define (received-greater-than amount data)
 	(cond
           [(null? data) '()]
           [else (define elem1 (first data))
-                (if (>= (game:$received elem1) 100)  ; units are in tens of thousands
-                    (cons elem1 (greater-than-million (rest data)))
-                    (greater-than-million (rest data)))]))
+                (if (>= (game:$received elem1) (/ amount 10000))  ; units are in tens of thousands
+                    (cons elem1 (received-greater-than amount (rest data)))
+                    (received-greater-than amount (rest data)))]))
 
 ; Query Function #3: returns entire row from given ID
 ; @param id = String
@@ -63,7 +64,7 @@
 ; Test lines
 (module+ test
   (title->index "Vanguard of War")
-  (greater-than-million (game:table)))
+  (received-greater-than 1000000 (game:table)))
 
 (row-from-id "Dinosaur-Island" (game:table))
 
