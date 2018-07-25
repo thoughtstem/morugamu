@@ -14,6 +14,7 @@
 
 ; Converts a string title into an index by looking in the game:table
 ; and finding the row whose title matches the given title
+;fails if title is not found
 (define (title->index title)
   (first
    (memf (title-is title)
@@ -93,7 +94,7 @@
 
 ; Test lines
 (module+ test
-  (title->index "Vanguard of War")
+  (title->index "Vanguard ofWar") ;fails
   (received-greater-than 1000000 (game:table))
   (row-from-id "Dinosaur-Island" (game:table))
   (received-greater-than 1000000 (game:table))

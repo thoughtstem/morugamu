@@ -400,8 +400,5 @@ Here's an example:
 (plot
  (data->histogram vector-asked 3 0 "$ Asked For" 0 0)
  #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
- #:title "Board Games Funded Via Kickstarter"))
-]
-
-}
+ #:title "Board Games Funded Via Kickstarter"))]}
 
