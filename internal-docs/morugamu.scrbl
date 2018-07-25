@@ -230,6 +230,12 @@ cards will often share the same symbols and theme.  Such sets of cards (or "libr
  ]
 }
 
+@defproc[(elements->lst [lst list?] [num1 index1?] [num2 index2?])
+         (list?)] {
+This expression takes in a list and two indexes and creates a list of the elements at those indexes.
+
+}
+
 We now examine the various rule systems that have already been created:
 
 @subsection{Boolean Algebra}
@@ -257,6 +263,7 @@ Note the use of the render function.  Here's how it works:
 This returns a list of images for the tiles and rule cards for the boolean algebra.
 
 }
+
 
 
 @subsection{Clock Numbers}
@@ -389,6 +396,18 @@ This function takes in an ID string and database list. It searches the database 
 @defproc[(row-from-title [title string?] [data list?])
 	(list?)]{
 This function takes in a title string and database list. It searches the database for the title and returns the corresponding row of data as a list. If the title cannot be found in the database, the function returns -1.
+}
+
+@defproc[(title->index [string game:id?])
+         (game:id?)]{
+This function allows an index of a game to be returned given a string input of the name of the game.
+This function looks through the game table until a matching string is found. 
+}
+
+@defproc[(row-from-id [id ID?] [data database-list?])
+          (row?)]{
+This function takes an ID as well as a database list and returns the row associated
+with the given ID. 
 }
 
 
