@@ -51,13 +51,13 @@
 ; Query Function #3: returns entire row from given ID
 ; @param id = String
 ; @param data = database list
-(define (get-row id data) 
+(define (row-from-id id data) 
   (cond
     [(null? data) -1]
     [else (define elem1 (first data))
           (if (equal? (string->symbol id) (game:id elem1))
               elem1
-              (get-row id (rest data)))]))
+              (row-from-id id (rest data)))]))
 
 
 ; Test lines
@@ -65,5 +65,5 @@
   (title->index "Vanguard of War")
   (greater-than-million (game:table)))
 
-(get-row "Dinosaur-Island" (game:table))
+(row-from-id "Dinosaur-Island" (game:table))
 
