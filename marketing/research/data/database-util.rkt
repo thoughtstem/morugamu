@@ -9,16 +9,15 @@
 ; TODO: Make function to query (companies<->games:table)
 
 
-
 ; Function to get index of any game in the list. Returns -1 if not found.
 
 ; Converts a string title into an index by looking in the game:table
 ; and finding the row whose title matches the given title
-;fails if title is not found
 (define (title->index title)
+  (game:id
   (first
    (memf (title-is title)
-         (game:table))))
+         (game:table)))))
 
 (define (title-is title)
   (λ(g)
@@ -94,7 +93,7 @@
 
 ; Test lines
 (module+ test
-  (title->index "Vanguard ofWar") ;fails
+  (title->index "Vanguard ofWar") ; Gives error
   (received-greater-than 1000000 (game:table))
   (row-from-id "Dinosaur-Island" (game:table))
   (received-greater-than 1000000 (game:table))
