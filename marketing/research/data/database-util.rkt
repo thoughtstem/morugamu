@@ -49,7 +49,18 @@
                     (cons elem1 (received-greater-than amount (rest data)))
                     (received-greater-than amount (rest data)))]))
 
-; Query Function #3: returns entire row from given ID
+; Query Function #2: received < input $ amount
+; @param amount = integer
+; @param data = database list
+(define (received-less-than amount data)
+	(cond
+          [(null? data) '()]
+          [else (define elem1 (first data))
+                (if (< (game:$received elem1) (/ amount 10000))  ; units are in tens of thousands
+                    (cons elem1 (received-less-than amount (rest data)))
+                    (received-less-than amount (rest data)))]))
+
+; Query Function #4: returns entire row from given ID
 ; @param id = String
 ; @param data = database list
 (define (row-from-id id data) 
@@ -60,11 +71,23 @@
               elem1
               (row-from-id id (rest data)))]))
 
+; Query Function #5: returns entire row from given title
+; @param title = String
+; @param data = database list
+(define (row-from-title title data) 
+  (cond
+    [(null? data) -1]
+    [else (define elem1 (first data))
+          (if (equal? title (game:title elem1))
+              elem1
+              (row-from-title title (rest data)))]))
 
 ; Test lines
 (module+ test
   (title->index "Vanguard of War")
-  (received-greater-than 1000000 (game:table)))
-
-(row-from-id "Dinosaur-Island" (game:table))
+  (received-greater-than 1000000 (game:table))
+  (row-from-id "Dinosaur-Island" (game:table))
+  (received-greater-than 1000000 (game:table))
+  (row-from-id "Dinosaur-Island" (game:table))
+  (row-from-title "Zombicide: Black Plague" (game:table)))
 

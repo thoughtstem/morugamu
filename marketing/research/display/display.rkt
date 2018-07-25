@@ -4,14 +4,14 @@
   plot
   "display-util.rkt"
   "../../../util/util.rkt"
-  "../data/games/database.rkt")
+  (prefix-in game: "../data/games/database.rkt"))
 
 ;Plotting Games Database
 (define vector-asked
-  (map list->vector (elements->lst (table) 1 2)))
+  (map list->vector (elements->lst (game:table) 1 2)))
 
 (define vector-received
-  (map list->vector (elements->lst (table) 1 3)))
+  (map list->vector (elements->lst (game:table) 1 3)))
 
 (plot-new-window? #t)
 
