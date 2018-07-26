@@ -94,8 +94,27 @@
 (define (sort-by-receive data)
   (sort data #:key fourth >))
 
+
+(define (company->id name)
+  (define index-list
+    (memf (name-is name)
+          (company:table)))
+  (cond
+    [(false? index-list) #f]
+    [else (company:id
+           (first index-list))]))
+
+(define (name-is name)
+  (λ(g)
+    (displayln (company:name g))
+    (string=?
+     name
+     (company:name g))))
+
+(company->id "Load Board Game")
+
 ; Test lines
-(module+ test
+#;(module+ test
   (title->index "Vanguard ofWar")
   (title->index "Vanguard of War") 
   (received-greater-than 1000000 (game:table))
