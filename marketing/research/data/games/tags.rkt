@@ -13,7 +13,6 @@
     (Dice "Dice")
     (Cards "Cards")
     (Dark-Theme "Dark-Theme")
-    (Dark-Theme "Dark-Theme")
     (Kids "Kids")
     (Violent "Violent")
     (Comedy "Comedy")
