@@ -113,26 +113,26 @@
 
 (define (company-id->games game)
   (define index-list
-    (map (game-is game)
+    (game-is game
           (companies<->games:table)))
   (cond
     [(false? index-list) #f]
     ;[(false? (map companies<->games:game-id index-list)) #f]
-    [else
-     (map companies<->games:game-id (index-list))]))
+    [else index-list]))
 
-(define (game-is game)
-  (λ(g)
+(define (game-is g games)
     ;(displayln (companies<->games:game-id g))
-    
-     (displayln (eq?
-     game
-     (companies<->games:company-id g)))
-    
-    (cond
-    [(false? (eq? game (companies<->games:company-id g))) null]
-    [else (companies<->games:company-id g)])))
-    
+    ;(cond
+    ;[(false? (eq? game (companies<->games:company-id g))) null]
+    ;[else (companies<->games:game-id g)]))
+(cond
+  [(null? games) '()]
+          [else (define elem1 (first games))
+  (if (eq? elem1 g)  ; units are in tens of thousands
+                    (cons elem1 (game-is g (rest games)))
+                    (game-is g (rest games)))]))
+
+
 
 (company-id->games (company->id "Load Board Game"))
 
