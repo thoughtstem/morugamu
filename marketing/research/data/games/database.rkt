@@ -4,15 +4,17 @@
          id
          title
          $asked-for
-         $received)
+         $received
+         tags)
 
 (define id first)
 (define title second)
 (define $asked-for third)
 (define $received fourth)
+(define tags fifth)
 
 (define (table)
-  '((Vanguard-of-War "Vanguard of War" 2 12.3)
+  '((Vanguard-of-War "Vanguard of War" 2 12.3 ("light-themed", "fantasy", "violent"))
    (Era-of-Kingdoms "Era of Kingdoms" 0.8 0.85)
    (Reign-Ed "Reign Ed" 3.5 2.1)
    (The-Game-of-Crimps "The Game of Crimps" 0.85 0.28)
