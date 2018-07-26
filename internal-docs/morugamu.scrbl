@@ -388,6 +388,11 @@ data in various ways.  The docs for those functions are below:
 
 @subsection{Database Utilities}
 
+@defproc[(received-more [data list?])
+	(list?)]{
+This function receives a element of $received from the data table and compares the value to its $asked-for value to determine of their funding goal was reached and prints results. If list is non-existent for data then return new empty list. 
+}
+
 @defproc[(received-greater-than [amount integer?] [data list?])
 	(listof list?)]{
 This function takes in an amount ($) and a database list. It returns all row entries for which the amount received is greater than or equal to the input amount.
