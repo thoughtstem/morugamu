@@ -23,4 +23,5 @@
     (Adult "Adult")
     (Electronic "Electronic")
     (Strategy "Strategy")
-    (Historical "Historical")))
+    (Historical "Historical")
+    (3D "3D"))
