@@ -429,6 +429,23 @@ This function looks through the game table until a matching string is found.
 This is a function that contains a list of lists documenting the id, the name, and the company size of the gaming companies on kickstarter.
 }
 
+@defproc[(sort-by-name [data list?])
+         (list?)]
+{
+This is a function that takes in a list of lists with the 2nd index being a string and outputs a list of them in alphabetical order.
+}
+
+@defproc[(sort-by-ask [data list?])
+         (list?)]
+{
+This is a function that takes in a list of lists with the 3rd index being a number and outputs a list of them in decending order.
+}
+
+@defproc[(sort-by-receive [data list?])
+         (list?)]
+{
+This is a function that takes in a list of lists with the 4th index being a number and outputs a list of them in decending order.
+}
 
 @subsection{Display Utilities}
 
