@@ -15,7 +15,7 @@
         '(3 Third-Eye-Games Reign-Ed)
         '(4 Crimps-Company Adella-The-Game-of-Crimps)
         '(5 Chip-Theory-Games Game-to-Pick-a-Game)
-        '(6 Joggles-Games Crown-of-Aragon)
+        '(6 Joggle-Games Crown-of-Aragon)
         '(7 Drew-Glass Darkness-Incarnate)
         '(8 Games-for-Aliens Absolutism)
         '(9 Peterson-Games Startropolis)

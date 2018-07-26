@@ -24,7 +24,7 @@
 
 (define (title-is title)
   (λ(g)
-    (displayln (game:title g))
+    ;(displayln (game:title g))
     (string=?
      title
      (game:title g))))
@@ -106,16 +106,39 @@
 
 (define (name-is name)
   (λ(g)
-    (displayln (company:name g))
+    ;(displayln (company:name g))
     (string=?
      name
      (company:name g))))
 
-(company->id "Load Board Game")
+(define (company-id->games game)
+  (define index-list
+    (map (game-is game)
+          (companies<->games:table)))
+  (cond
+    [(false? index-list) #f]
+    ;[(false? (map companies<->games:game-id index-list)) #f]
+    [else
+     (map companies<->games:game-id (index-list))]))
+
+(define (game-is game)
+  (λ(g)
+    ;(displayln (companies<->games:game-id g))
+    
+     (displayln (eq?
+     game
+     (companies<->games:company-id g)))
+    
+    (cond
+    [(false? (eq? game (companies<->games:company-id g))) null]
+    [else (companies<->games:company-id g)])))
+    
+
+(company-id->games (company->id "Load Board Game"))
 
 ; Test lines
 #;(module+ test
-  (title->index "Vanguard ofWar")
+  (title->index "Vanguard of War")
   (title->index "Vanguard of War") 
   (received-greater-than 1000000 (game:table))
   (row-from-id "Dinosaur-Island" (game:table))
