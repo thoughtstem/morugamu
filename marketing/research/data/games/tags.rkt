@@ -21,4 +21,6 @@
     (Superheroes "Superheroes")
     (Pictureless "Pictureless")
     (Adult "Adult")
-    (Electronic "Electronic")))
+    (Electronic "Electronic")
+    (Strategy "Strategy")
+    (Historical "Historical")))
