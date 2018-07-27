@@ -12,7 +12,7 @@
 
 (define-language _clock-numbers++-lang
   (e cn++-e)
-  (cn++-e n++ (op n++) (bop n++ n++))
+  (cn++-e n++ (op cn++-e) (bop cn++-e cn++-e))
   (n++ (cons n n++) nil)
   (op S P)
   (bop add sub)
@@ -27,6 +27,11 @@
   (E hole
      (S E)
      (P E)
+     (add E e)
+     (add e E)
+     (sub E e)
+     (sub e E)
+     (zero? E)
      (cons E e)
      (cons e E)))
 
@@ -49,10 +54,10 @@
   [(P++~ (cons any_1 any_2)) (cons (P any_1) any_2)])
 
 (define-metafunction+ clock-numbers++-lang
-  zero?++~ : any -> any
-  [(zero?++~ (cons 0 nil))      #t]
-  [(zero?++~ (cons 0 any_1))    (zero?++~ any_1)]
-  [(zero?++~ any_1)             #f])
+  zero?++~ : any -> any  
+  [(zero?++~ (cons 0 nil))             #t]
+  [(zero?++~ (cons 0 any_1))           (zero?++~ any_1)]
+  [(zero?++~ (cons number_1 any_1))    #f])
 
 
 (define-metafunction+ clock-numbers++-lang
@@ -71,7 +76,7 @@
    (--> (in-hole E (S n++ ))      (in-hole E (S++~ n++)) S++)
    (--> (in-hole E (P n++ ))      (in-hole E (P++~ n++)) P++)
    (--> (in-hole E (zero? n++ ))  (in-hole E (zero?++~ n++)) zero?++)
-   (--> (in-hole E (add any_1 any_2))           (in-hole E (add++~ any_1 any_2)) add++)
+   (--> (in-hole E (add n++_1 n++_2))           (in-hole E (add++~ n++_1 n++_2)) add++)
    
    ))
 
@@ -90,15 +95,23 @@
 
 
 
-(module+ test
+#;(module+ test
   (traces clock-numbers++-red
-          (term (if (or #t #f)
-                    (S (cons 0 nil))
-                    #f))))
+          (term
+           (zero? (S (cons 9 nil)))
+           ))
+  (traces clock-numbers++-red
+          (term
+           (if (zero? (cons 0 (cons 0 nil)))
+               (S (cons 2 (cons 0 nil)))
+               (> 3 2))
+           )))
+
+
 
 (module+ test
   (traces clock-numbers++-red
-          (term (add (cons 5 nil)
+          (term (add (cons 5 (cons 0 nil))
                      (cons 0 (cons 1 nil)))))
   (traces clock-numbers++-red
           (term (zero? (cons 0 (cons 0 nil)))))
