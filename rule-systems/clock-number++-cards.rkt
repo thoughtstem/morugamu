@@ -1,7 +1,7 @@
 #lang racket
 
 (provide render
-         #;generate)
+         generate)
 
 (require "../rule-systems/card-designs.rkt"
          "../rule-systems/rules.rkt"
@@ -11,19 +11,19 @@
          redex)
 
 (module+ test
-  (require (prefix-in list: "./list-algebra-cards.rkt"))
-  (require (prefix-in list: "../themes/emoji-list-algebra.rkt"))
+  (require  (prefix-in list: "./list-algebra-cards.rkt"))
+  (require  (prefix-in list: "../themes/emoji-list-algebra.rkt"))
   (define b (list:render list:theme))
 
-  (require (prefix-in numb: "./clock-number-cards.rkt"))
-  (require (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
+  (require  (prefix-in numb: "./clock-number-cards.rkt"))
+  (require  (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
 
   (define n (numb:render numb:theme))
 
   (render numb:theme))
 
 (define (generate difficulty)
-  (generate-term clock-numbers++-lang e difficulty))
+  (generate-term clock-numbers++-lang cn++-e difficulty))
 
 (define (render theme)
 

@@ -1,6 +1,7 @@
 #lang racket
 
-(provide render)
+(provide render
+         generate)
 
 (require "./card-designs.rkt"
          "./rules.rkt"

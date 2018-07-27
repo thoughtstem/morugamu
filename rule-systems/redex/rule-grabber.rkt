@@ -16,6 +16,7 @@
 
 (define (untilde s)
   (cond [(list? s) (map untilde s)]
+        [(boolean? s) (untilde (if s 'T 'F))]
         [(number? s) s]
         [else
          (string->symbol

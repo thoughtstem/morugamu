@@ -6,8 +6,8 @@
   "../util/util.rkt"
   "./puzzle-util.rkt"
   "../print/printing-util.rkt"
-  (prefix-in lst: "../rule-systems/list-algebra-cards.rkt")
-  (prefix-in lst: "../themes/emoji-list-algebra.rkt")
+  (prefix-in list: "../rule-systems/list-algebra-cards.rkt")
+  (prefix-in list: "../themes/emoji-list-algebra.rkt")
   (prefix-in numb: "../rule-systems/clock-number-cards.rkt")  
   (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt")
   (prefix-in bool: "../rule-systems/boolean-algebra-cards.rkt")
@@ -26,19 +26,21 @@
   (ineq:render ineq:theme))
 
 (define list-algebra
-  (lst:render lst:theme))
+  (list:render list:theme))
 
 ;add puzzles for list algebra here, Alan
-(provide dank dank-deck)
+(provide puzzle-expressions
+         puzzle-deck)
 
-(define dank
-  (list
+(define puzzle-expressions
+  (remove-duplicates
+   (map list:generate
+        '(1 1 1 1 1 1 1 1
+            3 3 3 3 3 3 3 3
+            5 5 5 5 5 5 5 5))))
 
-   
+(define puzzle-deck (map expression->puzzle-card puzzle-expressions))
 
-   
-   ))
 
-(define dank-deck (map expression->puzzle-card dank))
+(module+ test puzzle-deck)
 
-(module+ test dank-deck)

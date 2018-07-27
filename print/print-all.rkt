@@ -38,14 +38,16 @@
 (define puzzles
   (append bool:puzzle-deck
           numb:puzzle-deck
-          ineq:puzzle-deck))
+          ineq:puzzle-deck
+          list:puzzle-deck))
 
 
 ;Collect all the rules+symbols together
 (define rules-and-symbols
   (append (bool:render bool:theme)
           (numb:render numb:theme)
-          (ineq:render ineq:theme)))
+          (ineq:render ineq:theme)
+          (list:render list:theme)))
 
 ;Filter the symbols from the rules
 (define symbols
