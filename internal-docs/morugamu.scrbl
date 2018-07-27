@@ -388,6 +388,11 @@ data in various ways.  The docs for those functions are below:
 
 @subsection{Database Utilities}
 
+@defproc[(received-more [data list?])
+	(list?)]{
+This function receives a element of $received from the data table and compares the value to its $asked-for value to determine of their funding goal was reached and prints results. If list is non-existent for data then return new empty list. 
+}
+
 @defproc[(received-greater-than [amount integer?] [data list?])
 	(listof list?)]{
 This function takes in an amount ($) and a database list. It returns all row entries for which the amount received is greater than or equal to the input amount.
@@ -429,6 +434,23 @@ This function looks through the game table until a matching string is found.
 This is a function that contains a list of lists documenting the id, the name, and the company size of the gaming companies on kickstarter.
 }
 
+@defproc[(sort-by-name [data list?])
+         (list?)]
+{
+This is a function that takes in a list of lists with the 2nd index being a string and outputs a list of them in alphabetical order.
+}
+
+@defproc[(sort-by-ask [data list?])
+         (list?)]
+{
+This is a function that takes in a list of lists with the 3rd index being a number and outputs a list of them in decending order.
+}
+
+@defproc[(sort-by-receive [data list?])
+         (list?)]
+{
+This is a function that takes in a list of lists with the 4th index being a number and outputs a list of them in decending order.
+}
 
 @subsection{Display Utilities}
 

@@ -24,7 +24,7 @@
 
 (define (title-is title)
   (λ(g)
-    (displayln (game:title g))
+    ;(displayln (game:title g))
     (string=?
      title
      (game:title g))))
@@ -94,9 +94,51 @@
 (define (sort-by-receive data)
   (sort data #:key fourth >))
 
+
+(define (company->id name)
+  (define index-list
+    (memf (name-is name)
+          (company:table)))
+  (cond
+    [(false? index-list) #f]
+    [else (company:id
+           (first index-list))]))
+
+(define (name-is name)
+  (λ(g)
+    ;(displayln (company:name g))
+    (string=?
+     name
+     (company:name g))))
+
+(define (company-id->games game)
+  (define index-list
+    (game-is game
+          (companies<->games:table)))
+  (cond
+    [(false? index-list) #f]
+    ;[(false? (map companies<->games:game-id index-list)) #f]
+    [else index-list]))
+
+(define (game-is g games)
+    ;(displayln (companies<->games:game-id g))
+    ;(cond
+    ;[(false? (eq? game (companies<->games:company-id g))) null]
+    ;[else (companies<->games:game-id g)]))
+(cond
+  [(null? games) '()]
+          [else (define elem1 (first games))
+  (if (eq? elem1 g)  ; units are in tens of thousands
+                    (cons elem1 (game-is g (rest games)))
+                    (game-is g (rest games)))]))
+
+
+
+(company-id->games (company->id "Load Board Game"))
+
 ; Test lines
-(module+ test
-  (title->index "Vanguard ofWar")
+#;(module+ test
+  (title->index "Vanguard of War")
   (title->index "Vanguard of War") 
   (received-greater-than 1000000 (game:table))
   (row-from-id "Dinosaur-Island" (game:table))

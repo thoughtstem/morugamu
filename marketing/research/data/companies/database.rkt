@@ -3,11 +3,13 @@
 (provide table
          id
          name
-         members)
+         members
+         followers)
 
 (define id first)
 (define name second)
 (define members third)
+(define followers fourth)
 
 (define (table)
   (list '(Load-Board-Game "Load Board Game" 3) 
@@ -21,16 +23,16 @@
         '(Dice-Envy "Dice Envy" "Team of unknown size")
         '(Horshoe-Games-LLC"Horseshoe Games, LLC" 2)
         '(Josh-Jordan "Josh Jordan" 1)
-        '(Archcon "Archon" "Company of unknown size")
-        '(KC-Games-Co "KC Games Co." "Company of unknown size")
+        '(Archcon "Archon" "Company of unknown size" 9227)
+        '(KC-Games-Co "KC Games Co." "Company of unknown size" 287)
         '(Third-Eye-Games "Third Eye Games" "Company of unknown size")
-        '(Crimps-Company"Crimps Company" "Company of unknown size")
+        '(Crimps-Company "Crimps Company" "Company of unknown size" 156)
         '(Chip-Theory-Games "Chip Theory Games" "Company of unknown size")
         '(Joggle-Games "Joggles Games" "Company of unknown size")
         '(Drew-Glass "Drew GLass" 1)
         '(Games-for-Aliens "Games for Aliens" 3)
         '(Petersen-Games "Petersen Games" 5)
-        '(Room-17-Games "Room 17 Games" 8)
+        '(Room-17-Games "Room 17 Games" 8 3451)
         '(Megacon-Games "Megacon Games" "Company of unknown size")
         '(Pandasaurus-Games "Pandasaurus Games" 8)
         '(Lucky-Duck-Games "Lucky Duck Games" 3)
@@ -39,12 +41,12 @@
         '(Atlas-Games "Atlas Games" "Company of unknown size")
         '(Piecekeeper-Games "PeaceKeeper Games" 5)
         '(Hyperbole-Games "Hyperbole Games" "Company of unknown size")
-        '(SoreLosersGames "SoreLosersGames" "Company of unknown size")
+        '(SoreLosersGames "SoreLosersGames" "Company of unknown size" 567)
         '(Brian-Suhre "Brian Suhre" "Company of unknown size")
         '(Eric-A-Martin "Eric A. Martin" 1)
         '(The-North-Star "The North Star" "Company of unknown size")
         '(Jeff-Siadeck "Jeff Siadeck" 1)
-        '(Hiatus-Games "Hiatus Games" "Company of unknown size")
+        '(Hiatus-Games "Hiatus Games" "Company of unknown size", 317)
         '(MathAndCoding "MathAndCoding" "Company of unknown size")
         '(Perry-Clemons "Perry Clemons" 1)
         '(Elege-Iberica "Elege Iberica" "Small company")
@@ -58,10 +60,10 @@
         '(Backspindle-Games "Backspindle Games" 2)
         '(Ares-Games "Ares Games" "Small Company")
         '(Todd-Kimball "Todd Kimball" 1)
-        '(Walrus-Ventures "Walrus Ventures" "Small Company")
+        '(Walrus-Ventures "Walrus Ventures" "Small Company" 3880)
         '(Nick-Garel-Jones "Nick Garel-Jones" 1)
         '(Monolith-Board-Games “Monolith Board Games”  “Company of unknown size”)
-        '(CMON “CMON” “Company of unknown size”)
+        '(CMON “CMON” “Company of unknown size” 79462)
         '(Flying-Frog-Productions “Flying Frog Productions” “Company of unknown size”)
         '(Academy-Games “Academy Games” “Company of unknown size”)
         '(Artipia-Games “Artipia Games” “Company of unknown size”)
@@ -70,5 +72,19 @@
         '(Steve-Jackson-Games “Steve Jackson Games” “Company of unknown size”)
         '(Quiver-Gaming-Gear “Company of unknown size”)
         '(Jason-Davis “Jason Davis” 4 )
+        '(Play-Trumps-Politics "Play Trumps Politics" "Need company size" 0)
+        '(Transit-City-Games "Transit City Games" "Need company size" 67)
+        '(Alexandra-Tinsman "Alexandra Tinsman" "Need company size" 189)
+        '(Blackspot-Games "Blackspot Games" "Need company size" 127)
+        '(PSC-Games "PSC Games" "Need company size" 1068)
+        '(Emergent-Games "Emergent Games" "Need company size" 2798)
+        '(Druid-City-Games "Druid City Games" "Need company size" 13763)
+        '(Mantic-Games "Mantic Games" "Need company size" 59437)
+        '(North-Star-Games "North Star Games" "Need company size" 10941)
+        '(GameKnight-Games "GameKnight Games" "Need company size" 2735)
+        
+        
+ 
+        
 
         ))

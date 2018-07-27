@@ -4,12 +4,15 @@
          id
          title
          $asked-for
-         $received)
+         $received
+         tags)
 
 (define id first)
 (define title second)
 (define $asked-for third)
 (define $received fourth)
+(define tags fifth)
+
 
 (define (table)
   '((Vanguard-of-War "Vanguard of War" 2 12.3)
