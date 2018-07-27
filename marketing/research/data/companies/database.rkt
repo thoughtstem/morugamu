@@ -58,7 +58,6 @@
         '(Van-Hammock-Games-llc "Van Hammock Games llc." 1)
         '(Isaac-Childres "Isaac Childres" 1)
         '(Backspindle-Games "Backspindle Games" 2)
-        '(Ares-Games "Ares Games" "Small Company")
         '(Todd-Kimball "Todd Kimball" 1)
         '(Walrus-Ventures "Walrus Ventures" "Small Company" 3880)
         '(Nick-Garel-Jones "Nick Garel-Jones" 1)
