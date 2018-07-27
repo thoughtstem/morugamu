@@ -6,13 +6,12 @@
 (require (prefix-in companies<->games: "./join-games-companies/database.rkt"))
 
 
-; TODO: Make function to query (companies<->games:table)
 
-
-; Function to get index of any game in the list. Returns -1 if not found.
-
+; Function to get index of any game in the list. Returns #f if not found.
 ; Converts a string title into an index by looking in the game:table
 ; and finding the row whose title matches the given title
+
+; string -> id 
 (define (title->index title)
   (define index-list
     (memf (title-is title)
@@ -22,9 +21,12 @@
     [else (game:id
            (first index-list))]))
 
+;Takes a string S and returns a function that takes a row
+; and determines if the game title in that row is S.
+
+;title-is :: string -> (row -> boolean)
 (define (title-is title)
   (λ(g)
-    ;(displayln (game:title g))
     (string=?
      title
      (game:title g))))
@@ -106,31 +108,31 @@
 
 (define (name-is name)
   (λ(g)
-    ;(displayln (company:name g))
     (string=?
      name
      (company:name g))))
 
-(define (company-id->games game)
+
+(define (company-id->games company-id)
   (define index-list
-    (game-is game
-          (companies<->games:table)))
+    (game-is company-id
+             (companies<->games:table)))
   (cond
     [(false? index-list) #f]
     ;[(false? (map companies<->games:game-id index-list)) #f]
     [else index-list]))
 
 (define (game-is g games)
-    ;(displayln (companies<->games:game-id g))
-    ;(cond
-    ;[(false? (eq? game (companies<->games:company-id g))) null]
-    ;[else (companies<->games:game-id g)]))
-(cond
-  [(null? games) '()]
-          [else (define elem1 (first games))
-  (if (eq? elem1 g)  ; units are in tens of thousands
-                    (cons elem1 (game-is g (rest games)))
-                    (game-is g (rest games)))]))
+  ;(displayln (companies<->games:game-id g))
+  ;(cond
+  ;[(false? (eq? game (companies<->games:company-id g))) null]
+  ;[else (companies<->games:game-id g)]))
+  (cond
+    [(null? games) '()]
+    [else (define elem1 (first games))
+          (if (eq? elem1 g)  ; units are in tens of thousands
+              (cons elem1 (game-is g (rest games)))
+              (game-is g (rest games)))]))
 
 
 
