@@ -3,7 +3,8 @@
 (provide render
          generate)
 
-(require "../rule-systems/card-designs.rkt"
+(require "../rule-systems/cards.rkt"
+         "../rule-systems/card-designs.rkt"
          "../rule-systems/rules.rkt"
          "./redex/clock-numbers++.rkt"
          "./redex/rule-grabber.rkt"
@@ -21,6 +22,15 @@
   (define n (numb:render numb:theme))
 
   (render numb:theme))
+
+(define-syntax-rule (simulate t)
+  (traces clock-numbers++-red
+          (term t)
+          #:pp
+          (lambda (term port w txt)
+            (write-special
+             (scale 0.2 (render-example term))
+             port))))
 
 (define (generate difficulty)
   (generate-term clock-numbers++-lang cn++-e difficulty))
