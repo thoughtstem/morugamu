@@ -1,7 +1,7 @@
 #reader(lib"read.ss""wxme")WXME0108 ## 
 #|
    This file uses the GRacket editor format.
-   Open this file in DrRacket version 6.12 or later to read it.
+   Open this file in DrRacket version 7.0 or later to read it.
 
    Most likely, it was created by saving a program in DrRacket,
    and it probably contains a program with non-text elements
@@ -62,7 +62,7 @@
 0 10 90 -1 90 -1 3 -1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 255 255 255 1 -1 0 9
 #"Standard\0"
 0 75 12 #"Courier New\0"
-0 10 90 -1 90 -1 3 -1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 255 255 255 1 -1 2 1
+0 12 90 -1 90 -1 3 -1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 255 255 255 1 -1 2 1
 #"\0"
 0 -1 1 #"\0"
 1 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 -1 -1 2 24
@@ -208,11 +208,8 @@
 0 -1 1 #"\0"
 1 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 1 0 0 0 0 0 0 255 165 0 0 0 0 -1 -1 0 1
 #"\0"
-0 75 1 #"\0"
-0.0 12 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
-255 255 1 -1 0 1 #"\0"
-0 75 6 #"Menlo\0"
-0.0 14 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
+0 75 12 #"Courier New\0"
+0.0 10 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
 255 255 1 -1 2 1 #"\0"
 0 -1 1 #"\0"
 1.0 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0.0 0.0 0.0 1.0 1.0 1.0 0 0 0 0 0 0
@@ -225,7 +222,13 @@
 0 -1 -1 2 1 #"\0"
 0 -1 1 #"\0"
 1.0 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0.0 0.0 0.0 1.0 1.0 1.0 0 0 175 0 0
-0 -1 -1 2 1 #"\0"
+0 -1 -1 0 1 #"\0"
+0 75 1 #"\0"
+0.0 12 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
+255 255 1 -1 0 1 #"\0"
+0 75 6 #"Menlo\0"
+0.0 14 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
+255 255 1 -1 2 1 #"\0"
 0 -1 1 #"\0"
 1.0 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0.0 0.0 0.0 1.0 1.0 1.0 194 116 31 0
 0 0 -1 -1 2 41 #"profj:syntax-colors:scheme:block-comment\0"
@@ -274,9 +277,6 @@
 0 -1 1 #"\0"
 1.0 0 -1 -1 -1 -1 -1 -1 0 0 0 0 0 0 0.0 0.0 0.0 1.0 1.0 1.0 139 0 139 0
 0 0 -1 -1 0 1 #"\0"
-0 75 12 #"Courier New\0"
-0.0 10 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
-255 255 1 -1 0 1 #"\0"
 0 75 12 #"Courier New\0"
 0.0 11 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
 255 255 1 -1 0 1 #"\0"
@@ -451,7 +451,7 @@
 228 225 -1 -1 0 1 #"\0"
 0 75 6 #"Menlo\0"
 0.0 12 90 -1 90 -1 3 -1 0 1 0 1 0 0 0.0 0.0 0.0 0.0 0.0 0.0 0 0 0 255
-255 255 1 -1           0 1203 0 28 3 12 #"#lang racket"
+255 255 1 -1           0 1206 0 28 3 12 #"#lang racket"
 0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
 0 0 17 3 20 #";(provide get-index)"
@@ -615,11 +615,9 @@
 0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
 0 0 24 3 2 #"  "
-0 0 17 3 82
-(
- #";Note: this is NOT valid data. We made up these numbers for testing "
- #"purposes only."
-) 0 0 24 29 1 #"\n"
+0 0 17 3 39 #";Note: this is NOT valid data. We made "
+0 0 17 3 43 #"up these numbers for testing purposes only."
+0 0 24 29 1 #"\n"
 0 0 24 3 3 #"  ("
 0 0 15 3 6 #"define"
 0 0 24 3 2 #" ("
@@ -738,11 +736,9 @@
 0 0 24 3 2 #"  "
 0 0 24 29 1 #"\n"
 0 0 24 3 2 #"  "
-0 0 17 3 83
-(
- #";TODO: Add test databases for the other two tables too. - in progres"
- #"s, Ayda & Julia"
-) 0 0 24 29 1 #"\n"
+0 0 17 3 40 #";TODO: Add test databases for the other "
+0 0 17 3 43 #"two tables too. - in progress, Ayda & Julia"
+0 0 24 29 1 #"\n"
 0 0 24 3 3 #"  )"
 0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
@@ -1161,11 +1157,9 @@
 0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
 0 0 24 3 2 #"  "
-0 0 17 3 84
-(
- #";TODO: Add more tests for other tables and other columns - in progre"
- #"ss, Ayda & Julia"
-) 0 0 24 29 1 #"\n"
+0 0 17 3 39 #";TODO: Add more tests for other tables "
+0 0 17 3 45 #"and other columns - in progress, Ayda & Julia"
+0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
 0 0 24 3 3 #"  ("
 0 0 14 3 12 #"check-equal?"
@@ -2508,7 +2502,7 @@
 0 0 24 3 3 #"  )"
 0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
-0 9        2767 21           0 0           0 460 0 14 3 3 #"How"
+0 9        3055 21           0 0           0 508 0 14 3 3 #"How"
 0 0 24 3 1 #" "
 0 0 15 3 2 #"do"
 0 0 24 3 1 #" "
@@ -2928,6 +2922,58 @@
 0 0 14 3 10 #"successful"
 0 0 24 3 1 #" "
 0 0 14 3 12 #"kickstarter?"
+0 0 24 29 1 #"\n"
+0 0 24 29 1 #"\n"
+0 0 17 3 32 #"; NAME: more-than-one-successful"
+0 0 24 29 1 #"\n"
+0 0 17 3 2 #"; "
+0 0 24 29 1 #"\n"
+0 0 17 3 91
+(
+ #"; DESCRIPTION: Finds a subtable with games that have received more m"
+ #"oney than was asked for"
+) 0 0 24 29 1 #"\n"
+0 0 17 3 2 #"; "
+0 0 24 29 1 #"\n"
+0 0 17 3 7 #"; TYPE:"
+0 0 24 29 1 #"\n"
+0 0 17 3 60
+#"; ;more-than-one-successful :: there-are-no-inputs -> table?"
+0 0 24 29 1 #"\n"
+0 0 17 3 2 #"; "
+0 0 24 29 1 #"\n"
+0 0 17 3 10 #"; EXAMPLE:"
+0 0 24 29 1 #"\n"
+0 0 17 3 29 #";  (more-than-one-successful)"
+0 0 24 29 1 #"\n"
+0 0 24 29 1 #"\n"
+0 0 24 3 1 #"("
+0 0 15 3 6 #"define"
+0 0 24 3 2 #" ("
+0 0 14 3 24 #"more-than-one-successful"
+0 0 24 3 1 #")"
+0 0 24 29 1 #"\n"
+0 0 24 3 3 #"  ("
+0 0 15 3 6 #"define"
+0 0 24 3 1 #" "
+0 0 14 3 11 #"multi-table"
+0 0 24 3 2 #" ("
+0 0 14 3 13 #"more-than-one"
+0 0 24 3 2 #" ("
+0 0 14 3 13 #"company:table"
+0 0 24 3 3 #")))"
+0 0 24 29 1 #"\n"
+0 0 24 3 3 #"  ("
+0 0 14 3 3 #"map"
+0 0 24 3 2 #" ("
+0 0 14 3 6 #"curryr"
+0 0 24 3 1 #" "
+0 0 14 3 10 #"find-games"
+0 0 24 3 2 #" ("
+0 0 14 3 23 #"companies<->games:table"
+0 0 24 3 3 #")) "
+0 0 14 3 11 #"multi-table"
+0 0 24 3 2 #"))"
 0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
 0 0 14 3 5 #"TODO:"
