@@ -61,4 +61,4 @@
  (list (data->histogram vector-unsuccess-asked 3 0 "$ Asked For" 0 0)
        (data->histogram vector-unsuccess-received 3 1 "$ Received" 2 2))
         #:x-label "Games" #:y-label "Money (in tens of thousands of dollars)"
-        #:title "Board Games Funded Via Kickstarter and did not Succeeded"))
+        #:title "Board Games Funded Via Kickstarter and did not Succeed"))
