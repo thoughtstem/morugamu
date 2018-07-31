@@ -64,7 +64,7 @@
    (Space:-1889 "Space: 1889" 1.1 2.3)
    (THE-FANTASY-TRIP "THE FANTASY TRIP" 2 15.2)
    (Snag-the-Flag "Snag the Flag" 0.6 0.3)
-   (Unicorns-and-Zombies "Unicorns and Zombies" 1.2 1))
+   (Unicorns-and-Zombies "Unicorns and Zombies" 1.2 1)
    (Play-Trumps-Politics "Play Trumps Politics" 1 0.0001)
    (Manipulate "Manipulate" 1.9 2.3)
    (Drunk-In-The-Trunk "Drunk In The Trunk" 0.1 0.076)
