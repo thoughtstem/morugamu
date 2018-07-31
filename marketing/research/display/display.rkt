@@ -4,7 +4,9 @@
   plot
   "display-util.rkt"
   "../../../util/util.rkt"
-  (prefix-in game: "../data/games/database.rkt"))
+  (prefix-in game: "../data/games/database.rkt")
+  "../data/stephens-database-util.rkt"
+   )
 
 ;Plotting Games Database
 (define vector-asked
