@@ -81,7 +81,7 @@
           (map (curryr row 6) (all-symbols)))))
 
 (define (make-icon s)
-  (text (symbol->string s) 24 'black))
+  (text (format "~a" s) 24 'black))
 
 (define-tile the-x  'x
   (square 50 "solid" "green"))

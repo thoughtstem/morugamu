@@ -23,7 +23,7 @@
           (string-replace (symbol->string s) "~" ""))]))
 
 (define (rules-for s)
-  (hash-ref (get-rule-data) s))
+  (hash-ref (get-rule-data) s #f))
 
 (define-syntax-rule (define-metafunction+ lang id rules ...)
   (begin

@@ -1,32 +1,28 @@
 #lang racket
 
 (require
+  "../rule-systems/common.rkt"
   "../rule-systems/card-designs.rkt"
   "../rule-systems/rules.rkt"
   "../util/util.rkt"
   "./puzzle-util.rkt"
   "../print/printing-util.rkt"
-  (prefix-in numb: "../rule-systems/clock-number-cards.rkt")  
-  (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
+  2htdp/image)
 
-(define clock-numbers-algebra
-  (numb:render numb:theme))
-
+(require-lang list)
 
 (provide puzzle-expressions
          puzzle-deck)
 
-
 (define puzzle-expressions
   (remove-duplicates
-   (map numb:generate
+   (map list:generate
         '(1 1 1 1 1 1 1 1
             3 3 3 3 3 3 3 3
-            5 5 5 5 5 5 5 5
-            10 10 10 10 10 10))))
-
+            5 5 5 5 5 5 5 5))))
 
 (define puzzle-deck (map expression->puzzle-card puzzle-expressions))
 
-(module+ test
-  puzzle-deck)
+
+(module+ test puzzle-deck)
+
