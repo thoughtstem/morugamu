@@ -11,7 +11,7 @@
          redex)
 
 (module+ test
-  (require (prefix-in list: "../themes/emoji-list-algebra.rkt"))
+  (require (prefix-in list: "../themes/emoji-list.rkt"))
 
   (render list:theme))
 

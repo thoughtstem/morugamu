@@ -1,24 +1,18 @@
 #lang racket
 
-(provide render
-         generate)
+(require "./common.rkt")
+(require "./redex/clock-numbers.rkt")
 
-(require "../rule-systems/card-designs.rkt"
-         "../rule-systems/rules.rkt"
-         "./redex/clock-numbers.rkt"
-         "./redex/rule-grabber.rkt"
-         2htdp/image
-         redex)
+(make-generator generate clock-numbers-lang e)
+(make-simulator simulate clock-numbers-red)
+(make-renderer  render
+                (S P
+                 0 1 2 3 4 5 6 7 8 9
+                 add sub))
 
-(module+ test
-  (require (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
-
-  (render numb:theme))
-
-(define (generate difficulty)
-  (generate-term clock-numbers-lang e difficulty))
-
-(define (render theme)
+;TODO:
+;  Number identifiers are broken
+#;(define (render theme)
 
   (define dot (third theme))
 

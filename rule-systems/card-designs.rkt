@@ -9,7 +9,8 @@
          get-all-symbols
          define-tile
          define-meta-tile
-         set-symbol-map!)
+         set-symbol-map!
+         make-icon)
 
 (require 2htdp/image)
 (require "../util/config.rkt")
@@ -78,6 +79,9 @@
            (row rparen 6))
 
           (map (curryr row 6) (all-symbols)))))
+
+(define (make-icon s)
+  (text (symbol->string s) 24 'black))
 
 (define-tile the-x  'x
   (square 50 "solid" "green"))
