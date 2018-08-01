@@ -19,20 +19,20 @@
 
 ;plotting successful games
 (define vector-success-asked
-  (map list->vector (elements->lst (util:Success? game:$received game:$asked-for (game:table)) 1 2)
+  (map list->vector (elements->lst (util:success? (game:table)) 1 2)
   ))
 
 (define vector-success-received
-  (map list->vector (elements->lst (util:Success? game:$received game:$asked-for (game:table)) 1 3)
+  (map list->vector (elements->lst (util:success? (game:table)) 1 3)
   ))
 
 ;plotting unsuccessful games
 (define vector-unsuccess-asked
-  (map list->vector (elements->lst (util:Success? game:$asked-for game:$received (game:table)) 1 2)
+  (map list->vector (elements->lst (util:success? (game:table)) 1 2)
   ))
 
 (define vector-unsuccess-received
-  (map list->vector (elements->lst (util:Success? game:$asked-for game:$received (game:table)) 1 3)
+  (map list->vector (elements->lst (util:success? (game:table)) 1 3)
   ))
 
 
@@ -73,19 +73,19 @@
         ;receive/ask ratio for successful (r >1)
 (splitter string?
 (merge
- (map string-upcase (map first (elements->lst (util:Success? game:$received game:$asked-for (game:table)) 1 3)))
+ (map string-upcase (map first (elements->lst (util:success?(game:table)) 1 3)))
      (map /
-     (map second (elements->lst (util:Success? game:$received game:$asked-for (game:table)) 1 3))
-     (map second (elements->lst (util:Success? game:$received game:$asked-for (game:table)) 1 2)))  
+     (map second (elements->lst (util:success? (game:table)) 1 3))
+     (map second (elements->lst (util:success? (game:table)) 1 2)))  
      ))
      
      ;ratio for unsuccessful (r<1)
 (splitter string?
 (merge
- (map string-upcase (map first (elements->lst (util:Success? game:$asked-for game:$received (game:table)) 1 3)))
+ (map string-upcase (map first (elements->lst (util:success? (game:table)) 1 3)))
      (map /
-     (map second (elements->lst (util:Success? game:$asked-for game:$received (game:table)) 1 3))
-     (map second (elements->lst (util:Success? game:$asked-for game:$received (game:table)) 1 2))
+     (map second (elements->lst (util:success? (game:table)) 1 3))
+     (map second (elements->lst (util:success? (game:table)) 1 2))
      )))
 )))
 
