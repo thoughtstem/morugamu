@@ -6,7 +6,10 @@
   "../../../util/util.rkt"
   (prefix-in game: "../data/games/database.rkt")
   (prefix-in util:"../data/stephens-database-util.rkt")
+  srfi/1
    )
+
+(plot-new-window? #t)
 
 ;Plotting Games Database
 (define vector-asked
@@ -14,8 +17,6 @@
 
 (define vector-received
   (map list->vector (elements->lst (game:table) 1 3)))
-
-(plot-new-window? #t)
 
 ;plotting successful games
 (define vector-success-asked
@@ -34,22 +35,6 @@
 (define vector-unsuccess-received
   (map list->vector (elements->lst (util:success? (game:table)) 1 3)
   ))
-
-
-;start of receive/ask for ratio 
-        ;asked for value for successful games
-;        (map second (elements->lst (util:Success? game:$received game:$asked-for (game:table)) 1 2))
-        
-        ;received for value for successful games
- ;       (map second (elements->lst (util:Success? game:$received game:$asked-for (game:table)) 1 3))
-        
-        ;asked for value for unsuccessful games
-  ;      (map second (elements->lst (util:Success? game:$asked-for game:$received (game:table)) 1 2))
-        
-        ;recieved value for unsuccessful games
-   ;     (map second (elements->lst (util:Success? game:$asked-for game:$received (game:table)) 1 3))
-
-(require srfi/1)
 
 (define (merge l1 l2)
       (if (null? l1) l2
