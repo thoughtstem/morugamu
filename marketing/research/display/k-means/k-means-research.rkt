@@ -43,5 +43,6 @@
   (map list->vector (map (curry map exact-round) centers)))
   
 
-(plot (points (append vector-successful
-              vector-centroids)))
+(plot (list (points vector-successful)
+            (points vector-centroids
+                    #:color "blue" #:line-width 6)))
