@@ -234,7 +234,7 @@
 0 -1 -1 2 1 #"\0"
 0 -1 1 #"\0"
 1.0 0 -1 -1 -1 93 -1 -1 0 1 0 0 0 0 0.0 0.0 0.0 1.0 1.0 1.0 0 0 175 0 0
-0 -1 -1           0 7 0 28 3 12 #"#lang racket"
+0 -1 -1           0 12 0 28 3 12 #"#lang racket"
 0 0 24 29 1 #"\n"
 0 0 24 29 1 #"\n"
 0 9         691 21           0 0           0 114 0 14 3 15
@@ -422,4 +422,15 @@
 0 0 24 3 1 #" "
 0 0 14 3 7 #"genres."
 0 0 24 29 1 #"\n"
-0           0 0           0
+0           0 0 0 24 29 1 #"\n"
+0 0 24 29 1 #"\n"
+0 0 17 3 94
+(
+ #";TODO: Create a function that will calculate the number of games tha"
+ #"t contain a particular tag"
+) 0 0 24 29 1 #"\n"
+0 0 17 3 103
+(
+ #";TODO: Create a circle with segments going around it based on the nu"
+ #"mber of times a certain tag is used"
+) 0           0
