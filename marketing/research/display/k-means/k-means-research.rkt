@@ -83,7 +83,7 @@
   (for ([j (in-range 1 (length centroids-points))])
     (if (>= mindistance (distance (list-ref successes-points i) (list-ref centroids-points j)))
         ((set! mindistance (distance (list-ref successes-points i) (list-ref centroids-points j)))
-        (append points-colors j))
+        (cons points-colors j))
         '()
         )
     )
