@@ -11,7 +11,8 @@
     (bitmap "./emojis/or.png")
     (bitmap "./emojis/not.png")
     (bitmap "./emojis/true.png")
-    (bitmap "./emojis/false.png")))
+    (bitmap "./emojis/false.png")
+    (text "if" 24 'black)))
 
 
 

@@ -24,4 +24,6 @@
     (Electronic "Electronic")
     (Strategy "Strategy")
     (Historical "Historical")
-    (3D "3D"))
+    (Adventure "Adventure")
+    (Educational "Educational")
+    (Puzzle "Puzzle")))

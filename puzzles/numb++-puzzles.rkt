@@ -4,20 +4,19 @@
   "../rule-systems/common.rkt"
   "./puzzle-util.rkt")
 
-(require-lang bool)
 (require-lang numb)
 (require-lang list)
-(require-lang ineq)
+(require-lang numb++)
 
 (provide puzzle-expressions
          puzzle-deck)
 
 (define puzzle-expressions
   (remove-duplicates
-   (map ineq:generate
+   (map numb++:generate
         '(1 1 1 1 1 1 1 1
-            3 3 3 3 3 3 3 3
-            5 5 5 5 5 5 5 5))))
+          3 3 3 3 3 3 3 3
+          5 5 5 5 5 5 5 5))))
 
 (define puzzle-deck (map expression->puzzle-card puzzle-expressions))
 

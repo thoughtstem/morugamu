@@ -5,12 +5,14 @@
          rule
          rule-from
          rule-to
-         redex-to-rule-card)
+         redex-to-rule-card
+         redex-to-rule-cards)
 
 (require 2htdp/image
          "./cards.rkt"
          "./card-designs.rkt"
-         "../util/config.rkt")
+         "../util/config.rkt"
+         "../util/util.rkt")
 
 (define (scale-to s i)
   (define m (max (image-width i)
@@ -83,3 +85,8 @@
 
 (define (redex-to-rule-card d)
   (apply rule-card (map redex-to-rule-line d)))
+
+
+(define (redex-to-rule-cards d)
+  (map redex-to-rule-card
+       (split-by d 5)))

@@ -1,17 +1,10 @@
 #lang racket
 
 (require
-  "../rule-systems/card-designs.rkt"
-  "../rule-systems/rules.rkt"
-  "../util/util.rkt"
-  "./puzzle-util.rkt"
-  "../print/printing-util.rkt"
-  (prefix-in numb: "../rule-systems/clock-number-cards.rkt")  
-  (prefix-in numb: "../themes/emoji-clock-arithmetic.rkt"))
+  "../rule-systems/common.rkt"
+  "./puzzle-util.rkt")
 
-(define clock-numbers-algebra
-  (numb:render numb:theme))
-
+(require-lang numb)
 
 (provide puzzle-expressions
          puzzle-deck)

@@ -2,19 +2,17 @@
 
 (require
   "../rule-systems/common.rkt"
-  "./puzzle-util.rkt")
+  "./puzzle-util.rkt"
+  2htdp/image)
 
-(require-lang bool)
-(require-lang numb)
 (require-lang list)
-(require-lang ineq)
 
 (provide puzzle-expressions
          puzzle-deck)
 
 (define puzzle-expressions
   (remove-duplicates
-   (map ineq:generate
+   (map list:generate
         '(1 1 1 1 1 1 1 1
             3 3 3 3 3 3 3 3
             5 5 5 5 5 5 5 5))))
