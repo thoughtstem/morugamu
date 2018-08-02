@@ -1,6 +1,8 @@
 #lang racket
 (require plot)
 
+;PARAMETERS: title...title of the new veen-diagram
+;            lst...list of labels to put in the venn diagram
 (define (make-venn-diagram title lst)
   (plot-new-window? #t)
   (plot (flatten (list (isoline (λ (x y) (sqrt (+ (sqr (- x 1)) (sqr y)))) 1.5
@@ -21,20 +23,19 @@
 ;DESCRIPTION: uses the length of cur-list to determine where to place a new point with the specified label
 ;RETURNS: cur-list with one more vector added (so like a list)
 (define (add-point label cur-list #|success?|#)
-  (cons (point-label (vector 1 (+ (* (length cur-list) .1) .4)) label) cur-list)
+  (cons (point-label (vector 1 (+ (* (length cur-list) .1) .1)) label) cur-list)
   )
 
 
 ;testing add-point
-(define l (list (point-label (vector 1 1) "a")
-            (point-label (vector 1 .90) "b")
-            (point-label (vector 1 .8) "c")))
+(make-venn-diagram "please work" (add-point "a" (add-point "b" (add-point "c" (add-point "d" (list))))))
 
-(make-venn-diagram "please work" (add-point "d" l))
 
+;TO-DO: implement success? parameter in add-point function so points can be placed in the right spot in the diagram
 
 
 
+;--------------------------------------------------------------------
 ;repeat code for later
 (define (repeat f n l)
   (if (= n 0)
