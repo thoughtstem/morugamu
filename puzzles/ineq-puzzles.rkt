@@ -1,9 +1,7 @@
 #lang racket
 
 (require
-  "../rule-systems/card-designs.rkt"
   "../rule-systems/common.rkt"
-  "../rule-systems/rules.rkt"
   "./puzzle-util.rkt")
 
 (require-lang bool)

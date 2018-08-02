@@ -1,12 +1,8 @@
 #lang racket
 
 (require
-  "../rule-systems/card-designs.rkt"
   "../rule-systems/common.rkt"
-  "../rule-systems/rules.rkt"
-  "../util/util.rkt"
-  "./puzzle-util.rkt"
-  "../print/printing-util.rkt")
+  "./puzzle-util.rkt")
 
 (require-lang numb)
 

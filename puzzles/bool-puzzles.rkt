@@ -2,11 +2,9 @@
 
 (require
   "./puzzle-util.rkt"
-  (prefix-in bool: "../rule-systems/bool-cards.rkt")
-  (prefix-in bool: "../themes/emoji-bool.rkt"))
+  "../rule-systems/common.rkt")
 
-(define boolean-algebra
-  (bool:render bool:theme))
+(require-lang bool)
 
 (provide puzzle-expressions
          puzzle-deck)

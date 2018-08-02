@@ -49,7 +49,11 @@
 
 
 (define (render-symbol s)
-  (hash-ref symbol-map s))
+  (define (fix-bools s)
+    (cond [(equal? s #t) 'T]
+          [(equal? s #f) 'F]
+          [else s]))
+  (hash-ref symbol-map (fix-bools s) (make-icon s)))
 
 
 (define (all-symbols)

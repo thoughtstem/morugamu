@@ -2,11 +2,7 @@
 
 (require
   "../rule-systems/common.rkt"
-  "../rule-systems/card-designs.rkt"
-  "../rule-systems/rules.rkt"
-  "../util/util.rkt"
   "./puzzle-util.rkt"
-  "../print/printing-util.rkt"
   2htdp/image)
 
 (require-lang list)
@@ -23,6 +19,4 @@
 
 (define puzzle-deck (map expression->puzzle-card puzzle-expressions))
 
-
 (module+ test puzzle-deck)
-

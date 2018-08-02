@@ -4,21 +4,20 @@
   2htdp/image
   "../rule-systems/common.rkt"
   "../rule-systems/card-designs.rkt"
-  "../rule-systems/rules.rkt"
-  "./printing-util.rkt"
-  
-  (prefix-in bool: "../puzzles/bool-puzzles.rkt")
-  (prefix-in numb: "../puzzles/numb-puzzles.rkt")
-  (prefix-in ineq: "../puzzles/ineq-puzzles.rkt")
-  (prefix-in list: "../puzzles/list-puzzles.rkt"))
+  "./printing-util.rkt")
 
 
-;TODO: Gotta fix this.  Relative paths are wrong...
-;TODO: Also include the puzzles with the lang?
 (require-lang bool)
+(require-lang-puzzles bool)
+
 (require-lang numb)
+(require-lang-puzzles numb)
+
 (require-lang ineq)
+(require-lang-puzzles ineq)
+
 (require-lang list)
+(require-lang-puzzles list)
 
 
 

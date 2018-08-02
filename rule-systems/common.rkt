@@ -3,7 +3,8 @@
 (provide make-simulator
          make-generator
          make-renderer
-         require-lang)
+         require-lang
+         require-lang-puzzles)
 
 (require (for-syntax racket racket/syntax))
 
@@ -78,10 +79,21 @@
   (define card-path (format "~a/rule-systems/~a-cards.rkt" root-dir base))
   (define theme-path (format "~a/themes/emoji-~a.rkt" root-dir base))
   (datum->syntax stx `(begin
-                        (displayln ,root-dir)
                         (require (prefix-in ,name: (file ,card-path)))
                         (require (prefix-in ,name: (file ,theme-path)))
                         (define ,name: (,name:render ,name:theme)))))
 
 
-#;(require-lang bool)
+(define-syntax (require-lang-puzzles stx)
+  (define base (syntax->datum (second (syntax-e stx))))
+  (define name: (format-symbol "~a:" base))
+  (define name:render (format-symbol "~arender" name:))
+  (define name:theme (format-symbol "~atheme" name:))
+  (define puzzle-path (format "~a/puzzles/~a-puzzles.rkt" root-dir base))
+  (datum->syntax stx `(begin
+                        (require (prefix-in ,name: (file ,puzzle-path)))
+                        #;(define ,name: (,name:render ,name:theme)))))
+
+
+
+
