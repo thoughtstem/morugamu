@@ -1,28 +1,11 @@
 #lang racket
-(require 2htdp/image)
-(require htdp/gui)
+(require plot)
 
-; text1 : GUI-ITEM...i.e. the text field
-(define text1
-  (make-text "Please enter your name"))
- 
-; msg1 : GUI-ITEM
-(define msg1
-  (make-message (string-append "Hello, World" (make-string 33 #\space))))
- 
-; Event -> true
-; draws the current contents of text1 into msg1, prepended with "Hello, "
-(define (respond e)
-  (draw-message msg1 (string-append "Hello, " (text-contents text1))))
+(plot-new-window? #t)
+(plot (list (isoline (λ (x y) (sqrt (+ (sqr (- x 1)) (sqr y)))) 1.5
+                     -2 2 -2 2 #:label "z")
+            (isoline (λ (x y) (sqrt (+ (sqr (+ x 1)) (sqr y)))) 1.5
+                     -2 2 -2 2 #:label "z")
+            (point-label (vector 1 1) "hi")))
 
- 
-; set up window with three "lines":
-;    a text field, a message, and two buttons
-; fill in text and click OKAY
-(define w
-  (create-window
-   (list
-    (list text1)
-    (list msg1)
-    (list (make-button "OKAY" respond)
-          (make-button "QUIT" (lambda (e) (hide-window w)))))))
+;to-do: add data points to graph with point-label function
