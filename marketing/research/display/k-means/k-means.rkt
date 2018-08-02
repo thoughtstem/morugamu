@@ -1,7 +1,7 @@
 #lang racket
-;; Luke Miles, June 2015
-
+;NOTE: INSTALL UNSTABLE.PKG BEFORE RUNNING
 (require (only-in unstable/list group-by))
+(provide cluster)
 
 ;; splits a list ls into k non-empty & disjoint sublists
 (define (split-into ls k)
@@ -50,6 +50,3 @@
     (fixed-point (λ (centers) (make-next-centers points centers))
                  first-centers))
   (values final-centers (group-by (curry closest final-centers) points)))
-
-;TODO? put a contract on cluster
-(provide cluster)
