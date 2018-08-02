@@ -13,16 +13,6 @@
 ;making a test venn-diagram
 (make-venn-diagram "apple" '())
 
-;to-do: write a function that will add data points to graph with point-label function
-;NAME: add-points
-;PARAMETERS: list of labels
-(define (repeat f n l)
-  (if (= n 0)
-      l
-      (repeat f
-              (- n 1)
-              (f l))
-      ))
 
 ;use the length of a list of points to determine the y-coordinate of a new point that's added
 ;PARAMETERS: cur-list...list of the points currently on the graph
@@ -34,8 +24,22 @@
   (cons (point-label (vector 1 (+ (* (length cur-list) .1) .4)) label) cur-list)
   )
 
+
+;testing add-point
 (define l (list (point-label (vector 1 1) "a")
             (point-label (vector 1 .90) "b")
             (point-label (vector 1 .8) "c")))
 
 (make-venn-diagram "please work" (add-point "d" l))
+
+
+
+
+;repeat code for later
+(define (repeat f n l)
+  (if (= n 0)
+      l
+      (repeat f
+              (- n 1)
+              (f l))
+      ))
