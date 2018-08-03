@@ -66,6 +66,15 @@
     (sqrt (+ (square (- (car a) (car b)))
              (square (- (cdr a) (cdr b)))))))
 
+
+;Name: K means Coloring
+
+;Description:
+;Based on the distances from the graphed points to the centers the points will be
+;grouped and colored based on the distances
+
+;
+
 (define successes-points (map cons (map first (map vector->list vector-successful))
                                    (map second (map vector->list vector-successful)
                                         )))
@@ -75,17 +84,24 @@
 
 (define points-colors '())
 
-
-
 (for ([i (in-range 1 (length successes-points))])
-  (define mindistance 10000000)
+  (define min-distance 10000000)
 
   (for ([j (in-range 1 (length centroids-points))])
-    (if (>= mindistance (distance (list-ref successes-points i) (list-ref centroids-points j)))
-        ((set! mindistance (distance (list-ref successes-points i) (list-ref centroids-points j)))
-        (cons points-colors j))
-        '()
+    (cond
+      [(> min-distance (distance (list-ref successes-points i) (list-ref centroids-points j)))
+        (set! min-distance (distance (list-ref successes-points i) (list-ref centroids-points j)))
+         (set! points-colors (flatten (cons points-colors j)))
+         ]
         )
     )
     )
- 
+(display points-colors)
+
+;merges two lists
+(define (merge l1 l2)
+      (if (null? l1) l2
+          (if (null? l2) l1
+              (cons (car l1) (cons (car l2) (merge (cdr l1) (cdr l2)))))))
+
+(merge vector-successful points-colors)
