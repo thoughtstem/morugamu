@@ -27,6 +27,7 @@ int mindistance = int_max;
 
 
 ;TODO: THIS IS YOUR GENIUS PESUDOCODE
+;PLEASE DO IT CORRECTLY
 for (i = 0; i < whichColor.length; i++) {
 
 if (whichColor.get(i) == 1) {
