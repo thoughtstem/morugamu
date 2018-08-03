@@ -1,0 +1,46 @@
+
+arraylist points = [...];
+arraylist centers = [...];
+
+arraylist whichColor = [empty];
+
+function distance (point, center)
+*returns a number*
+
+
+
+for (i = 0; i < points.length; i++) {
+
+int mindistance = int_max;
+
+    for (j = 0; j < 5; j++) {
+
+
+        if (min >= distance (point.get(i), center.get(j)) {
+        min = distance (point.get(i), center.get(j))
+
+        whichColor.get(i) = j
+
+        }
+      }
+}
+
+
+;TODO: THIS IS YOUR GENIUS PESUDOCODE
+for (i = 0; i < whichColor.length; i++) {
+
+if (whichColor.get(i) == 1) {
+make points.get(i) = green
+}
+else if (whichColor.get(i) == 2) {
+make points.get(i) = red
+}
+else if (whichColor.get(i) == 3) {
+make points.get(i) = purple
+}
+else if (whichColor.get(i) == 4) {
+make points.get(i) = yellow
+}
+else make points.get(i) = black
+
+}
