@@ -40,7 +40,7 @@
   list-lang-eval)
 
 
-(require (for-syntax racket racket/list))
+(require (for-syntax racket racket/list racket/syntax))
 
 (define-for-syntax (every-other l #:start-at start-at)
   (define new-l (drop l start-at))
@@ -52,17 +52,53 @@
 (define-for-syntax (f-name head-and-body)
   (first (first head-and-body)))
 
+(define-for-syntax (f-name->meta: head-and-body)
+  (define head (first head-and-body))
+  (define body (second head-and-body))
+
+  (define name (first head))
+
+  (define new-head (list-set head 0 (meta: name)))
+
+  (list new-head body))
+
+(define-for-syntax (meta: s)
+  (format-symbol "meta:~a" s))
+
 (define-for-syntax (->meta lang fns)
   (define name (f-name (first fns)))
   `(define-metafunction+ ,lang
-     ,name : any -> any
-     ,@fns  ))
+     ,(meta: name) : any -> any
+     ,@(map f-name->meta: fns)  ))
+
+(define-for-syntax (->red-line head)
+  ;TODO: Handle higher arity functions...
+  `(--> (in-hole E (,(first head) any))
+        (in-hole E (,(format-symbol "meta:~a"(first head))))
+        ,(first head))
+  )
+
+(define-for-syntax (->red red-name lang-eval-name heads)
+  `(define ,red-name
+     (reduction-relation
+      ,lang-eval-name
+      #:domain any
+
+      ,@(map ->red-line heads)
+      ;(--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
+      ;(--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
+      )))
 
 (define-syntax (functions stx)
-  (define lang-and-kvs    (rest (syntax->datum stx)))
+  (define inputs (rest (syntax->datum stx)))
+  
+  (define lang   (first inputs))
+  (define lang-eval-name   (second inputs))
+  (define red-name   (third inputs))
+  
+  (define kvs    (drop inputs 3))
 
-  (define lang   (first lang-and-kvs))
-  (define kvs    (rest lang-and-kvs))
+  
   (define heads  (every-other kvs #:start-at 0))
   (define bodies (every-other kvs #:start-at 1))
 
@@ -70,15 +106,22 @@
 
   (define fns (group-by f-name zipped-heads-and-bodies))
 
-  (displayln (->meta lang (first fns)))
-  
+  (define uniq-heads
+    (map first
+         (group-by first heads)))
+
   (datum->syntax stx
                  `(begin
-                      ,@(map (curry ->meta lang) fns))))
+                      ,@(map (curry ->meta lang) fns)
+                      ,(->red red-name lang-eval-name uniq-heads))))
+
+
 
 
 ;Does this work?  Do we need to figure out squiggles?
-(functions clock-numbers++-lang  ;reduction relation name here???
+(functions clock-numbers++-lang      ;Uses this (could define?)
+           clock-numbers++-lang-eval ;Uses this (could define?)
+           TEST_clock-numbers++-red      ;Defines this
  
  (testS nil)                  nil
  (testS (cons 9 any_1))       (cons 0 (testS any_1))
@@ -86,36 +129,35 @@
  
  (testP nil)                  nil
  (testP (cons 0 any_1))       (cons 9 (testP any_1))
- (testP (cons any_1 any_2))   (cons (testP any_1) any_2) 
- )
+ (testP (cons any_1 any_2))   (cons (testP any_1) any_2))
 
 
 ;Can we macroify the following....
 
 (define-metafunction+ clock-numbers++-lang
-  S++~ : any -> any
-  [(S++~ nil)                nil]
-  [(S++~ (cons 9 any_1))     (cons 0 (S any_1))]
-  [(S++~ (cons any_1 any_2)) (cons (S any_1) any_2)])
+  S~ : any -> any
+  [(S~ nil)                nil]
+  [(S~ (cons 9 any_1))     (cons 0 (S any_1))]
+  [(S~ (cons any_1 any_2)) (cons (S any_1) any_2)])
 
 (define-metafunction+ clock-numbers++-lang
-  P++~ : any -> any
-  [(P++~ nil)                   nil]
-  [(P++~ (cons 0 any_1))        (cons 9 (P any_1))]
-  [(P++~ (cons any_1 any_2)) (cons (P any_1) any_2)])
+  P~ : any -> any
+  [(P~ nil)                   nil]
+  [(P~ (cons 0 any_1))        (cons 9 (P any_1))]
+  [(P~ (cons any_1 any_2)) (cons (P any_1) any_2)])
 
 (define-metafunction+ clock-numbers++-lang
-  zero?++~ : any -> any
-  [(zero?++~ nil) #t]
-  [(zero?++~ (cons 0 nil))             #t]
-  [(zero?++~ (cons 0 any_1))           (zero?++~ any_1)]
-  [(zero?++~ (cons number_1 any_1))    #f])
+  zero?~ : any -> any
+  [(zero?~ nil) #t]
+  [(zero?~ (cons 0 nil))             #t]
+  [(zero?~ (cons 0 any_1))           (zero?~ any_1)]
+  [(zero?~ (cons number_1 any_1))    #f])
 
 
 (define-metafunction+ clock-numbers++-lang
-  pad++~ : any -> any
-  [(pad++~ nil)                 (cons 0 nil)]
-  [(pad++~ (cons any_1 any_2))  (cons any_1 (pad any_2))])
+  pad~ : any -> any
+  [(pad~ nil)                 (cons 0 nil)]
+  [(pad~ (cons any_1 any_2))  (cons any_1 (pad any_2))])
 
 (define-metafunction+ clock-numbers++-lang
   nines?++~ : any -> any
@@ -128,8 +170,8 @@
 
 
 (define-metafunction+ clock-numbers++-lang
-  safe-pad++~ : any  -> any
-  [(safe-pad++~ any_1)    (if (nines? any_1)
+  safe-pad~ : any  -> any
+  [(safe-pad~ any_1)    (if (nines? any_1)
                               (pad any_1)
                               any_1) ])
 
@@ -138,26 +180,26 @@
 
 
 (define-metafunction+ clock-numbers++-lang
-  add++~ : any any -> any
-  [(add++~ any_1 any_2)        (if (zero? any_2)
+  add~ : any any -> any
+  [(add~ any_1 any_2)        (if (zero? any_2)
                                    any_1
                                    (add (S any_1) (P any_2)))])
 
 (define-metafunction+ clock-numbers++-lang
-  mult++~ : any any -> any
-  [(mult++~ any_1 any_2)        (if (zero? any_2)
+  mult~ : any any -> any
+  [(mult~ any_1 any_2)        (if (zero? any_2)
                                     (cons 0 nil)
                                     (add any_1 (mult any_1 (P any_2))))])
 
 (define-metafunction+ clock-numbers++-lang
-  sub++~ : any any -> any
-  [(sub++~ any_1 any_2)        (if (zero? any_2)
+  sub~ : any any -> any
+  [(sub~ any_1 any_2)        (if (zero? any_2)
                                    any_1
                                    (sub (P any_1) (P any_2)))])
 
 (define-metafunction+ clock-numbers++-lang
-  mod++~ : any any -> any
-  [(mod++~ any_1 any_2)        (if (< any_2 any_1)
+  mod~ : any any -> any
+  [(mod~ any_1 any_2)        (if (< any_2 any_1)
                                    any_2
                                    (mod (sub any_1 any_2)
                                         any_2))])
@@ -165,9 +207,9 @@
 
 
 (define-metafunction+ clock-numbers++-lang
-  unpad++~ : any  -> any
-  [(unpad++~ nil) nil]
-  [(unpad++~ (cons any_1 any_2))    (if (zero? any_2)
+  unpad~ : any  -> any
+  [(unpad~ nil) nil]
+  [(unpad~ (cons any_1 any_2))    (if (zero? any_2)
                                         (cons any_1 nil)
                                         (cons any_1 (unpad any_2))) ])
 
@@ -193,23 +235,23 @@
    #:domain any
    
    
-   (--> (in-hole E (S n++ ))             (in-hole E (S++~ n++)) S++)
-   (--> (in-hole E (P n++ ))             (in-hole E (P++~ n++)) P++)
-   (--> (in-hole E (zero? n++ ))         (in-hole E (zero?++~ n++)) zero?++)
-   (--> (in-hole E (unpad n++ ))         (in-hole E (unpad++~ n++)) unpad++)
+   (--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
+   (--> (in-hole E (P n++ ))             (in-hole E (P~ n++)) P++)
+   (--> (in-hole E (zero? n++ ))         (in-hole E (zero?~ n++)) zero?++)
+   (--> (in-hole E (unpad n++ ))         (in-hole E (unpad~ n++)) unpad++)
 
    (--> (in-hole E (nines? n++ ))        (in-hole E (nines?++~ n++)) nines?++)
-   (--> (in-hole E (pad n++ ))           (in-hole E (pad++~ n++)) pad++)
-   (--> (in-hole E (safe-pad n++ ))      (in-hole E (safe-pad++~ n++)) safe-pad++)
+   (--> (in-hole E (pad n++ ))           (in-hole E (pad~ n++)) pad++)
+   (--> (in-hole E (safe-pad n++ ))      (in-hole E (safe-pad~ n++)) safe-pad++)
    
-   (--> (in-hole E (add n++_1 n++_2))    (in-hole E (add++~ n++_1 n++_2)) add++)
-   (--> (in-hole E (sub n++_1 n++_2))    (in-hole E (sub++~ n++_1 n++_2)) sub++)
-   (--> (in-hole E (mult n++_1 n++_2))   (in-hole E (mult++~ n++_1 n++_2)) mult++)
-   (--> (in-hole E (mod n++_1 n++_2))   (in-hole E (mod++~ n++_1 n++_2)) mod++)))
+   (--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
+   (--> (in-hole E (sub n++_1 n++_2))    (in-hole E (sub~ n++_1 n++_2)) sub++)
+   (--> (in-hole E (mult n++_1 n++_2))   (in-hole E (mult~ n++_1 n++_2)) mult++)
+   (--> (in-hole E (mod n++_1 n++_2))    (in-hole E (mod~ n++_1 n++_2)) mod++)))
 
 ;End macroification
 
-
+ 
 
 (define extended-list-lang-red
   (extend-reduction-relation list-lang-red
