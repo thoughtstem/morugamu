@@ -13,7 +13,7 @@
 ;I keep accidentally using this function,
 ; instead of test-->>.  Preventing future mistakes here. 
 (define (test--> . x)
-  (raise "don't use test-->"))
+  (raise "don't use test-->, use test-->>"))
 
 (define-language _clock-numbers++-lang
   (e cn++-e)
@@ -38,6 +38,56 @@
   _clock-numbers++-lang-eval
   inequalities-lang-eval
   list-lang-eval)
+
+
+(require (for-syntax racket racket/list))
+
+(define-for-syntax (every-other l #:start-at start-at)
+  (define new-l (drop l start-at))
+  (define indexes (filter even? (range 0 (length new-l))))
+
+  (map (curry list-ref new-l) indexes))
+
+
+(define-for-syntax (f-name head-and-body)
+  (first (first head-and-body)))
+
+(define-for-syntax (->meta lang fns)
+  (define name (f-name (first fns)))
+  `(define-metafunction+ ,lang
+     ,name : any -> any
+     ,@fns  ))
+
+(define-syntax (functions stx)
+  (define lang-and-kvs    (rest (syntax->datum stx)))
+
+  (define lang   (first lang-and-kvs))
+  (define kvs    (rest lang-and-kvs))
+  (define heads  (every-other kvs #:start-at 0))
+  (define bodies (every-other kvs #:start-at 1))
+
+  (define zipped-heads-and-bodies (map list heads bodies))
+
+  (define fns (group-by f-name zipped-heads-and-bodies))
+
+  (displayln (->meta lang (first fns)))
+  
+  (datum->syntax stx
+                 `(begin
+                      ,@(map (curry ->meta lang) fns))))
+
+
+;Does this work?  Do we need to figure out squiggles?
+(functions clock-numbers++-lang  ;reduction relation name here???
+ 
+ (testS nil)                  nil
+ (testS (cons 9 any_1))       (cons 0 (testS any_1))
+ (testS (cons any_1 any_2))   (cons (testS any_1) any_2)
+ 
+ (testP nil)                  nil
+ (testP (cons 0 any_1))       (cons 9 (testP any_1))
+ (testP (cons any_1 any_2))   (cons (testP any_1) any_2) 
+ )
 
 
 ;Can we macroify the following....
