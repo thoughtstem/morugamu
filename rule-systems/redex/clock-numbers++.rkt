@@ -73,10 +73,11 @@
 
 (define-for-syntax (->red-line head)
   ;TODO: Handle higher arity functions...
-  `(--> (in-hole E (,(first head) any))
-        (in-hole E (,(format-symbol "meta:~a"(first head))))
-        ,(first head))
-  )
+  ;TODO: Don't want to have to use n++, but using any clashes
+  ;      with lower level versions of (S ...)
+  `(--> (in-hole E (,(first head) n++))
+        (in-hole E (,(format-symbol "meta:~a" (first head)) n++))
+        ,(format "~a~a" (first head) (random 10000)) ))
 
 (define-for-syntax (->red red-name lang-eval-name heads)
   `(define ,red-name
@@ -88,6 +89,9 @@
       ;(--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
       ;(--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
       )))
+
+
+
 
 (define-syntax (functions stx)
   (define inputs (rest (syntax->datum stx)))
@@ -123,24 +127,24 @@
            clock-numbers++-lang-eval ;Uses this (could define?)
            TEST_clock-numbers++-red      ;Defines this
  
- (testS nil)                  nil
- (testS (cons 9 any_1))       (cons 0 (testS any_1))
- (testS (cons any_1 any_2))   (cons (testS any_1) any_2)
+ (S nil)                  nil
+ (S (cons 9 any_1))       (cons 0 (S any_1))
+ (S (cons any_1 any_2))   (cons (S any_1) any_2)
  
- (testP nil)                  nil
- (testP (cons 0 any_1))       (cons 9 (testP any_1))
- (testP (cons any_1 any_2))   (cons (testP any_1) any_2))
+ (P nil)                  nil
+ (P (cons 0 any_1))       (cons 9 (P any_1))
+ (P (cons any_1 any_2))   (cons (P any_1) any_2))
 
 
 ;Can we macroify the following....
 
-(define-metafunction+ clock-numbers++-lang
+#;(define-metafunction+ clock-numbers++-lang
   S~ : any -> any
   [(S~ nil)                nil]
   [(S~ (cons 9 any_1))     (cons 0 (S any_1))]
   [(S~ (cons any_1 any_2)) (cons (S any_1) any_2)])
 
-(define-metafunction+ clock-numbers++-lang
+#;(define-metafunction+ clock-numbers++-lang
   P~ : any -> any
   [(P~ nil)                   nil]
   [(P~ (cons 0 any_1))        (cons 9 (P any_1))]
@@ -235,8 +239,8 @@
    #:domain any
    
    
-   (--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
-   (--> (in-hole E (P n++ ))             (in-hole E (P~ n++)) P++)
+  ; (--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
+  ; (--> (in-hole E (P n++ ))             (in-hole E (P~ n++)) P++)
    (--> (in-hole E (zero? n++ ))         (in-hole E (zero?~ n++)) zero?++)
    (--> (in-hole E (unpad n++ ))         (in-hole E (unpad~ n++)) unpad++)
 
@@ -263,8 +267,10 @@
 
 (define clock-numbers++-red
   (union-reduction-relations _clock-numbers++-red
+                             TEST_clock-numbers++-red
                              extended-inequalities-lang-red
-                             extended-list-lang-red))
+                             extended-list-lang-red
+                             ))
 
 
 
