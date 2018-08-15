@@ -133,24 +133,33 @@
  
  (P nil)                  nil
  (P (cons 0 any_1))       (cons 9 (P any_1))
- (P (cons any_1 any_2))   (cons (P any_1) any_2))
+ (P (cons any_1 any_2))   (cons (P any_1) any_2)
+
+ (zero? nil)                      #t
+ (zero? (cons 0 nil))             #t
+ (zero? (cons 0 any_1))           (zero? any_1)
+ (zero? (cons number_1 any_1))    #f
+
+ (pad nil)                 (cons 0 nil)
+ (pad (cons any_1 any_2))  (cons any_1 (pad any_2))
 
 
-;Can we macroify the following....
+ (nines? nil)                      #f
+ (nines? (cons 9 nil))             #t
+ (nines? (cons 9 any_1))           (nines? any_1)
+ (nines? (cons number_1 any_1))    #f
+
+ (safe-pad any_1)    (if (nines? any_1)
+                         (pad any_1)
+                         any_1)
+
+ (unpad nil) nil
+ (unpad (cons any_1 any_2))    (if (zero? any_2)
+                                   (cons any_1 nil)
+                                   (cons any_1 (unpad any_2))))
+
 
 #;(define-metafunction+ clock-numbers++-lang
-  S~ : any -> any
-  [(S~ nil)                nil]
-  [(S~ (cons 9 any_1))     (cons 0 (S any_1))]
-  [(S~ (cons any_1 any_2)) (cons (S any_1) any_2)])
-
-#;(define-metafunction+ clock-numbers++-lang
-  P~ : any -> any
-  [(P~ nil)                   nil]
-  [(P~ (cons 0 any_1))        (cons 9 (P any_1))]
-  [(P~ (cons any_1 any_2)) (cons (P any_1) any_2)])
-
-(define-metafunction+ clock-numbers++-lang
   zero?~ : any -> any
   [(zero?~ nil) #t]
   [(zero?~ (cons 0 nil))             #t]
@@ -158,12 +167,12 @@
   [(zero?~ (cons number_1 any_1))    #f])
 
 
-(define-metafunction+ clock-numbers++-lang
+#;(define-metafunction+ clock-numbers++-lang
   pad~ : any -> any
   [(pad~ nil)                 (cons 0 nil)]
   [(pad~ (cons any_1 any_2))  (cons any_1 (pad any_2))])
 
-(define-metafunction+ clock-numbers++-lang
+#;(define-metafunction+ clock-numbers++-lang
   nines?++~ : any -> any
   [(nines?++~ nil)                      #f]
   [(nines?++~ (cons 9 nil))             #t]
@@ -173,7 +182,7 @@
 
 
 
-(define-metafunction+ clock-numbers++-lang
+#;(define-metafunction+ clock-numbers++-lang
   safe-pad~ : any  -> any
   [(safe-pad~ any_1)    (if (nines? any_1)
                               (pad any_1)
@@ -210,7 +219,7 @@
 
 
 
-(define-metafunction+ clock-numbers++-lang
+#;(define-metafunction+ clock-numbers++-lang
   unpad~ : any  -> any
   [(unpad~ nil) nil]
   [(unpad~ (cons any_1 any_2))    (if (zero? any_2)
@@ -241,12 +250,12 @@
    
   ; (--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
   ; (--> (in-hole E (P n++ ))             (in-hole E (P~ n++)) P++)
-   (--> (in-hole E (zero? n++ ))         (in-hole E (zero?~ n++)) zero?++)
-   (--> (in-hole E (unpad n++ ))         (in-hole E (unpad~ n++)) unpad++)
+  ; (--> (in-hole E (zero? n++ ))         (in-hole E (zero?~ n++)) zero?++)
+  ; (--> (in-hole E (unpad n++ ))         (in-hole E (unpad~ n++)) unpad++)
 
-   (--> (in-hole E (nines? n++ ))        (in-hole E (nines?++~ n++)) nines?++)
-   (--> (in-hole E (pad n++ ))           (in-hole E (pad~ n++)) pad++)
-   (--> (in-hole E (safe-pad n++ ))      (in-hole E (safe-pad~ n++)) safe-pad++)
+  ; (--> (in-hole E (nines? n++ ))        (in-hole E (nines?++~ n++)) nines?++)
+  ; (--> (in-hole E (pad n++ ))           (in-hole E (pad~ n++)) pad++)
+  ; (--> (in-hole E (safe-pad n++ ))      (in-hole E (safe-pad~ n++)) safe-pad++)
    
    (--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
    (--> (in-hole E (sub n++_1 n++_2))    (in-hole E (sub~ n++_1 n++_2)) sub++)
