@@ -10,7 +10,7 @@
 (require "./inequalities.rkt"
          "./list-algebra.rkt")
 
-;I keep accidentally using this function,
+;I keep accidentally using test-->,
 ; instead of test-->>.  Preventing future mistakes here. 
 (define (test--> . x)
   (raise "don't use test-->, use test-->>"))
@@ -68,15 +68,22 @@
 (define-for-syntax (->meta lang fns)
   (define name (f-name (first fns)))
   `(define-metafunction+ ,lang
-     ,(meta: name) : any -> any
+     ,(meta: name) : ,@(map (thunk* 'any) (range (arity (first (first fns))))) -> any
      ,@(map f-name->meta: fns)  ))
+
+(define-for-syntax (arity head)
+  (sub1 (length head)))
+
+(define-for-syntax (vars-for head)
+  (define (var-for-num n) (format-symbol "n++_~a" n)) ;n++_1 here is annoying.  Make any_1?
+  (map var-for-num (range 1 (add1 (arity head)))))
 
 (define-for-syntax (->red-line head)
   ;TODO: Handle higher arity functions...
   ;TODO: Don't want to have to use n++, but using any clashes
   ;      with lower level versions of (S ...)
-  `(--> (in-hole E (,(first head) n++))
-        (in-hole E (,(format-symbol "meta:~a" (first head)) n++))
+  `(--> (in-hole E (,(first head) ,@(vars-for head) #;n++))
+        (in-hole E (,(format-symbol "meta:~a" (first head)) ,@(vars-for head) #;n++))
         ,(format "~a~a" (first head) (random 10000)) ))
 
 (define-for-syntax (->red red-name lang-eval-name heads)
@@ -85,10 +92,7 @@
       ,lang-eval-name
       #:domain any
 
-      ,@(map ->red-line heads)
-      ;(--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
-      ;(--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
-      )))
+      ,@(map ->red-line heads))))
 
 
 
@@ -122,7 +126,6 @@
 
 
 
-;Does this work?  Do we need to figure out squiggles?
 (functions clock-numbers++-lang      ;Uses this (could define?)
            clock-numbers++-lang-eval ;Uses this (could define?)
            TEST_clock-numbers++-red      ;Defines this
@@ -153,46 +156,20 @@
                          (pad any_1)
                          any_1)
 
- (unpad nil) nil
+ (unpad nil)                   nil
  (unpad (cons any_1 any_2))    (if (zero? any_2)
                                    (cons any_1 nil)
-                                   (cons any_1 (unpad any_2))))
+                                   (cons any_1 (unpad any_2)))
 
-
-#;(define-metafunction+ clock-numbers++-lang
-  zero?~ : any -> any
-  [(zero?~ nil) #t]
-  [(zero?~ (cons 0 nil))             #t]
-  [(zero?~ (cons 0 any_1))           (zero?~ any_1)]
-  [(zero?~ (cons number_1 any_1))    #f])
-
-
-#;(define-metafunction+ clock-numbers++-lang
-  pad~ : any -> any
-  [(pad~ nil)                 (cons 0 nil)]
-  [(pad~ (cons any_1 any_2))  (cons any_1 (pad any_2))])
-
-#;(define-metafunction+ clock-numbers++-lang
-  nines?++~ : any -> any
-  [(nines?++~ nil)                      #f]
-  [(nines?++~ (cons 9 nil))             #t]
-  [(nines?++~ (cons 9 any_1))           (nines?++~ any_1)]
-  [(nines?++~ (cons number_1 any_1))    #f])
+ (add any_1 any_2)        (if (zero? any_2)
+                               any_1
+                               (add (S any_1) (P any_2)))
+ )
 
 
 
 
 #;(define-metafunction+ clock-numbers++-lang
-  safe-pad~ : any  -> any
-  [(safe-pad~ any_1)    (if (nines? any_1)
-                              (pad any_1)
-                              any_1) ])
-
-
-
-
-
-(define-metafunction+ clock-numbers++-lang
   add~ : any any -> any
   [(add~ any_1 any_2)        (if (zero? any_2)
                                    any_1
@@ -257,7 +234,7 @@
   ; (--> (in-hole E (pad n++ ))           (in-hole E (pad~ n++)) pad++)
   ; (--> (in-hole E (safe-pad n++ ))      (in-hole E (safe-pad~ n++)) safe-pad++)
    
-   (--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
+  ; (--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
    (--> (in-hole E (sub n++_1 n++_2))    (in-hole E (sub~ n++_1 n++_2)) sub++)
    (--> (in-hole E (mult n++_1 n++_2))   (in-hole E (mult~ n++_1 n++_2)) mult++)
    (--> (in-hole E (mod n++_1 n++_2))    (in-hole E (mod~ n++_1 n++_2)) mod++)))
@@ -363,8 +340,8 @@
 
 
 (module+ test
-  #;(displayln "Test add")
-  #;(test-->> clock-numbers++-red
+  (displayln "Test add")
+  (test-->> clock-numbers++-red
             (term (add (cons 5 (cons 0 nil))
                        (cons 0 (cons 1 nil))))
             (term (cons 5 (cons 1))))
