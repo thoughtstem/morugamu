@@ -5,6 +5,7 @@
          clock-numbers++-lang-eval)
 
 (require redex)
+
 (require "./rule-grabber.rkt")
 
 (require "./inequalities.rkt"
@@ -40,95 +41,10 @@
   list-lang-eval)
 
 
-(require (for-syntax racket racket/list racket/syntax))
-
-(define-for-syntax (every-other l #:start-at start-at)
-  (define new-l (drop l start-at))
-  (define indexes (filter even? (range 0 (length new-l))))
-
-  (map (curry list-ref new-l) indexes))
-
-
-(define-for-syntax (f-name head-and-body)
-  (first (first head-and-body)))
-
-(define-for-syntax (f-name->meta: head-and-body)
-  (define head (first head-and-body))
-  (define body (second head-and-body))
-
-  (define name (first head))
-
-  (define new-head (list-set head 0 (meta: name)))
-
-  (list new-head body))
-
-(define-for-syntax (meta: s)
-  (format-symbol "meta:~a" s))
-
-(define-for-syntax (->meta lang fns)
-  (define name (f-name (first fns)))
-  `(define-metafunction+ ,lang
-     ,(meta: name) : ,@(map (thunk* 'any) (range (arity (first (first fns))))) -> any
-     ,@(map f-name->meta: fns)  ))
-
-(define-for-syntax (arity head)
-  (sub1 (length head)))
-
-(define-for-syntax (vars-for head)
-  (define (var-for-num n) (format-symbol "n++_~a" n)) ;n++_1 here is annoying.  Make any_1?
-  (map var-for-num (range 1 (add1 (arity head)))))
-
-(define-for-syntax (->red-line head)
-  ;TODO: Handle higher arity functions...
-  ;TODO: Don't want to have to use n++, but using any clashes
-  ;      with lower level versions of (S ...)
-  `(--> (in-hole E (,(first head) ,@(vars-for head) #;n++))
-        (in-hole E (,(format-symbol "meta:~a" (first head)) ,@(vars-for head) #;n++))
-        ,(format "~a~a" (first head) (random 10000)) ))
-
-(define-for-syntax (->red red-name lang-eval-name heads)
-  `(define ,red-name
-     (reduction-relation
-      ,lang-eval-name
-      #:domain any
-
-      ,@(map ->red-line heads))))
-
-
-
-
-(define-syntax (functions stx)
-  (define inputs (rest (syntax->datum stx)))
-  
-  (define lang   (first inputs))
-  (define lang-eval-name   (second inputs))
-  (define red-name   (third inputs))
-  
-  (define kvs    (drop inputs 3))
-
-  
-  (define heads  (every-other kvs #:start-at 0))
-  (define bodies (every-other kvs #:start-at 1))
-
-  (define zipped-heads-and-bodies (map list heads bodies))
-
-  (define fns (group-by f-name zipped-heads-and-bodies))
-
-  (define uniq-heads
-    (map first
-         (group-by first heads)))
-
-  (datum->syntax stx
-                 `(begin
-                      ,@(map (curry ->meta lang) fns)
-                      ,(->red red-name lang-eval-name uniq-heads))))
-
-
-
-
 (functions clock-numbers++-lang      ;Uses this (could define?)
            clock-numbers++-lang-eval ;Uses this (could define?)
            TEST_clock-numbers++-red      ;Defines this
+           n++
  
  (S nil)                  nil
  (S (cons 9 any_1))       (cons 0 (S any_1))
@@ -164,84 +80,26 @@
  (add any_1 any_2)        (if (zero? any_2)
                                any_1
                                (add (S any_1) (P any_2)))
+
+ (mult any_1 any_2)        (if (zero? any_2)
+                               (cons 0 nil)
+                               (add any_1 (mult any_1 (P any_2))))
+
+ (sub any_1 any_2)        (if (zero? any_2)
+                              any_1
+                              (sub (P any_1) (P any_2)))
+
+ (mod any_1 any_2)        (if (< any_2 any_1)
+                              any_2
+                              (mod (sub any_1 any_2)
+                                   any_2))
+
+ ;(<++~ any_1 any_2)    (???)
+
+ ;(num-digits++ nil)                (cons 0 nil)
+ ;(num-digits++ (cons any_1 any_2)) (S (safe-pad
+ ;                                      (num-digits any_2)))
  )
-
-
-
-
-#;(define-metafunction+ clock-numbers++-lang
-  add~ : any any -> any
-  [(add~ any_1 any_2)        (if (zero? any_2)
-                                   any_1
-                                   (add (S any_1) (P any_2)))])
-
-(define-metafunction+ clock-numbers++-lang
-  mult~ : any any -> any
-  [(mult~ any_1 any_2)        (if (zero? any_2)
-                                    (cons 0 nil)
-                                    (add any_1 (mult any_1 (P any_2))))])
-
-(define-metafunction+ clock-numbers++-lang
-  sub~ : any any -> any
-  [(sub~ any_1 any_2)        (if (zero? any_2)
-                                   any_1
-                                   (sub (P any_1) (P any_2)))])
-
-(define-metafunction+ clock-numbers++-lang
-  mod~ : any any -> any
-  [(mod~ any_1 any_2)        (if (< any_2 any_1)
-                                   any_2
-                                   (mod (sub any_1 any_2)
-                                        any_2))])
-
-
-
-#;(define-metafunction+ clock-numbers++-lang
-  unpad~ : any  -> any
-  [(unpad~ nil) nil]
-  [(unpad~ (cons any_1 any_2))    (if (zero? any_2)
-                                        (cons any_1 nil)
-                                        (cons any_1 (unpad any_2))) ])
-
-
-
-
-
-(define-metafunction+ clock-numbers++-lang
-  num-digits++ : any  -> any
-  [(num-digits++ nil)                (cons 0 nil)]
-  [(num-digits++ (cons any_1 any_2)) (S (safe-pad
-                                         (num-digits any_2)))])
-
-
-#;(define-metafunction+ clock-numbers++-lang
-  <++~ : any any -> any
-  [(<++~ any_1 any_2)    (???) ])
-
-
-(define _clock-numbers++-red
-  (reduction-relation
-   clock-numbers++-lang-eval
-   #:domain any
-   
-   
-  ; (--> (in-hole E (S n++ ))             (in-hole E (S~ n++)) S++)
-  ; (--> (in-hole E (P n++ ))             (in-hole E (P~ n++)) P++)
-  ; (--> (in-hole E (zero? n++ ))         (in-hole E (zero?~ n++)) zero?++)
-  ; (--> (in-hole E (unpad n++ ))         (in-hole E (unpad~ n++)) unpad++)
-
-  ; (--> (in-hole E (nines? n++ ))        (in-hole E (nines?++~ n++)) nines?++)
-  ; (--> (in-hole E (pad n++ ))           (in-hole E (pad~ n++)) pad++)
-  ; (--> (in-hole E (safe-pad n++ ))      (in-hole E (safe-pad~ n++)) safe-pad++)
-   
-  ; (--> (in-hole E (add n++_1 n++_2))    (in-hole E (add~ n++_1 n++_2)) add++)
-   (--> (in-hole E (sub n++_1 n++_2))    (in-hole E (sub~ n++_1 n++_2)) sub++)
-   (--> (in-hole E (mult n++_1 n++_2))   (in-hole E (mult~ n++_1 n++_2)) mult++)
-   (--> (in-hole E (mod n++_1 n++_2))    (in-hole E (mod~ n++_1 n++_2)) mod++)))
-
-;End macroification
-
- 
 
 (define extended-list-lang-red
   (extend-reduction-relation list-lang-red
@@ -252,7 +110,7 @@
                              clock-numbers++-lang-eval))
 
 (define clock-numbers++-red
-  (union-reduction-relations _clock-numbers++-red
+  (union-reduction-relations ;_clock-numbers++-red
                              TEST_clock-numbers++-red
                              extended-inequalities-lang-red
                              extended-list-lang-red
@@ -260,7 +118,6 @@
 
 
 
-;TODO: Make this an automated test.  Ditto for all tests in file.
 (module+ test
 
   (displayln "Test S")
@@ -340,8 +197,8 @@
 
 
 (module+ test
-  (displayln "Test add")
-  (test-->> clock-numbers++-red
+  #;(displayln "Test add")
+  #;(test-->> clock-numbers++-red
             (term (add (cons 5 (cons 0 nil))
                        (cons 0 (cons 1 nil))))
             (term (cons 5 (cons 1))))
