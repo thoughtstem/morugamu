@@ -1,0 +1,26 @@
+<annotation verified="yes">
+	<folder>Cookie_tile_resized</folder>
+	<filename>Cookie_Pic_146.jpg</filename>
+	<path>/home/steven/Desktop/Cookie_tile_resized/Cookie_Pic_146.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>650</width>
+		<height>488</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>cookie</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>203</xmin>
+			<ymin>175</ymin>
+			<xmax>282</xmax>
+			<ymax>257</ymax>
+		</bndbox>
+	</object>
+</annotation>
