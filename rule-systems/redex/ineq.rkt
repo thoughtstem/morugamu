@@ -1,8 +1,8 @@
 #lang racket
 
-(provide inequalities-lang
-         inequalities-lang-red
-         inequalities-lang-eval)
+(provide ineq-lang
+         ineq-lang-red
+         ineq-lang-eval)
 
 (require redex)
 (require "./rule-grabber.rkt")
@@ -19,7 +19,7 @@
 
 (define-union-language _inequalities-lang boolean-algebra-lang clock-numbers-lang )
 
-(define-extended-language inequalities-lang _inequalities-lang
+(define-extended-language ineq-lang _inequalities-lang
   (e out-bool in-e)
   (out-bool basic-in-e)
   (basic-in-e 
@@ -37,7 +37,7 @@
         min-max-in-e)
   )
 
-(define-extended-language _eval-inequalities-lang  inequalities-lang
+(define-extended-language _eval-inequalities-lang  ineq-lang
   (E hole
      (< in-e E) (< E in-e)
      (> in-e E) (> E in-e)
@@ -45,17 +45,17 @@
      (<= in-e E) (<= E in-e)
      (= in-e E) (= E in-e)))
 
-(define-union-language inequalities-lang-eval
+(define-union-language ineq-lang-eval
   _eval-inequalities-lang
   clock-numbers-lang-eval
   boolean-algebra-lang-eval)
 
-(define-metafunction+ inequalities-lang-eval
+(define-metafunction+ ineq-lang-eval
   =~ : any any -> any
   [(=~ number_1 number_1) #t]
   [(=~ number_1 number_2) #f])
 
-(define-metafunction+ inequalities-lang-eval
+(define-metafunction+ ineq-lang-eval
   <~ : n n -> in-e
   [(<~ number_1 number_1) #f]
   [(<~ number_1 9) #t]
@@ -78,27 +78,27 @@
   [(<~ 1 number_1) #f]
   [(<~ number_1 0) #f])
 
-(define-metafunction+ inequalities-lang-eval
+(define-metafunction+ ineq-lang-eval
   <=~ : any any -> any
   [(<=~ number_1 number_2) (or (= number_1 number_2)
                                (< number_1 number_2))])
 
-(define-metafunction+ inequalities-lang-eval
+(define-metafunction+ ineq-lang-eval
   >~ : any any -> any
   [(>~ number_1 number_2) (< number_2 number_1)])
 
-(define-metafunction+ inequalities-lang-eval
+(define-metafunction+ ineq-lang-eval
   >=~ : any any -> any
   [(>=~ number_1 number_2) (or (= number_1 number_2)
                                (> number_1 number_2))])
 
-(define-metafunction+ inequalities-lang-eval
+(define-metafunction+ ineq-lang-eval
   max~ : any any -> any
   [(max~ number_1 number_2) (if (> number_1 number_2)
                                 number_1
                                 number_2)])
 
-(define-metafunction+ inequalities-lang-eval
+(define-metafunction+ ineq-lang-eval
   min~ : any any -> any
   [(min~ number_1 number_2) (if (> number_1 number_2)
                                 number_2
@@ -108,7 +108,7 @@
 
 (define _inequalities-lang-red
   (reduction-relation
-   inequalities-lang-eval
+   ineq-lang-eval
    #:domain any
    (--> (in-hole E (< n_1 n_2))  (in-hole E (<~ n_1 n_2)) <)
    (--> (in-hole E (> n_1 n_2))  (in-hole E (>~ n_1 n_2)) >)
@@ -123,23 +123,23 @@
 
 (define extended-boolean-algebra-lang-red
   (extend-reduction-relation boolean-algebra-lang-red
-                             inequalities-lang-eval))
+                             ineq-lang-eval))
 
 
 
 (define extended-clock-numbers-lang-red
   (extend-reduction-relation clock-numbers-lang-red
-                             inequalities-lang-eval))
+                             ineq-lang-eval))
 
 
 
-(define inequalities-lang-red
+(define ineq-lang-red
   (union-reduction-relations _inequalities-lang-red
                              extended-boolean-algebra-lang-red
                              extended-clock-numbers-lang-red))
 
 (module+ test
-  (traces inequalities-lang-red
+  (traces ineq-lang-red
           (term (if (> 4 3) (> 3 4) 4)))
   
   #;(traces inequalities-lang-red

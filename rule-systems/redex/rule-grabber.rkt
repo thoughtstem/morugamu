@@ -5,8 +5,7 @@
 (provide define-metafunction+
          get-rule-data
          rules-for
-         functions
-         define-language+eval
+         language
          test-->)
 
 (define data (hash))
@@ -91,16 +90,10 @@
 
 
 
-(define-syntax (functions stx)
-  (define inputs (rest (syntax->datum stx)))
-  
-  (define lang   (first inputs))
-  (define lang-eval-name   (second inputs))
-  (define red-name   (third inputs))
-  (define domain (fourth inputs))
-  
-  (define kvs    (drop inputs 4))
+(define-for-syntax (functions lang eval-lang red-name extends f-defs)
 
+  (define domain (first f-defs))  
+  (define kvs    (rest f-defs))
   
   (define heads  (every-other kvs #:start-at 0))
   (define bodies (every-other kvs #:start-at 1))
@@ -113,32 +106,70 @@
     (map first
          (group-by first heads)))
 
-  (datum->syntax stx
-                 `(begin
-                      ,@(map (curry ->meta lang) fns)
-                      ,(->red red-name lang-eval-name uniq-heads domain))))
+  `(begin
+     ,@(map (curry ->meta lang) fns)
+     ,(->red '_red-name eval-lang uniq-heads domain)
+                      
+     ,@(map
+        (lambda (e)
+          `(define ,(format-symbol "extended-~a-lang-red" e)
+             (extend-reduction-relation ,(format-symbol "~a-lang-red" e)
+                                        ,eval-lang)))
+        extends)
+
+     (define ,red-name
+       (union-reduction-relations _red-name
+                                  ,@(map (curry format-symbol "extended-~a-lang-red") extends)
+                                  ))
+
+     ))
 
 
 
-(define-syntax (define-language+eval stx)
+(define-syntax (language stx)
   (define inputs (rest (syntax->datum stx)))
   
   (define lang (first inputs))
   (define eval-lang (second inputs))
+  (define red-name (third inputs))
 
-  (define the-rest (drop inputs 2))
+  (define the-rest (drop inputs 3))
 
+  (define extends (rest (first the-rest))) ;Hmmm....
+
+  (define grammar (rest (second the-rest))) ;Okay, I am seeing the point of patterns now...
+
+  (define f-defs (rest (third the-rest)))
+  
   (datum->syntax stx
                  `(begin
-                    (define-language
-                      ,lang
-                      ,@the-rest)
                     
-                    (define-extended-language ,eval-lang ,lang
+                    
+                    (define-language
+                      _temp ;,lang
+                      ,@grammar)
+                    
+                    (define-extended-language _temp-eval _temp
                       (E hole
                          (op E)
                          (bop E e)
-                         (bop e E))))))
+                         (bop e E)))
+
+                    ;Are these unions strickly necessary?  Or was I just
+                    ; stabbing in the dark?
+                    
+                    (define-union-language ,lang
+                      _temp
+                      ,@(map (curry format-symbol "~a-lang") extends))
+
+                    (define-union-language ,eval-lang
+                      _temp-eval
+                      ,@(map (curry format-symbol "~a-lang-eval") extends))
+
+
+                    ,(functions lang eval-lang red-name extends f-defs)
+
+                    )))
 
 
 
