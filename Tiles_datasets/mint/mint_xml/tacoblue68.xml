@@ -1,0 +1,26 @@
+<annotation>
+	<folder>blue-candy</folder>
+	<filename>tacoblue68.jpg</filename>
+	<path>C:\Users\theno.DESKTOP-FEM7UKI\Documents\thoughtstem morugamu cv\blue-candy\tacoblue68.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>605</width>
+		<height>605</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>blue_mint</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>316</xmin>
+			<ymin>326</ymin>
+			<xmax>406</xmax>
+			<ymax>406</ymax>
+		</bndbox>
+	</object>
+</annotation>

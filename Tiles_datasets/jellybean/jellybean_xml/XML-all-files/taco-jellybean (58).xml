@@ -1,0 +1,26 @@
+<annotation>
+	<folder>purple-jellybean-taco</folder>
+	<filename>taco-jellybean (58).jpg</filename>
+	<path>C:\Users\theno.DESKTOP-FEM7UKI\Documents\thoughtstem morugamu cv\purple-jellybean-taco\taco-jellybean (58).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>605</width>
+		<height>605</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>purple_jellybean</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>276</xmin>
+			<ymin>246</ymin>
+			<xmax>350</xmax>
+			<ymax>322</ymax>
+		</bndbox>
+	</object>
+</annotation>
