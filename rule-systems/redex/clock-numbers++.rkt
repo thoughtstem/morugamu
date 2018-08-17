@@ -4,36 +4,32 @@
          clock-numbers++-red
          clock-numbers++-lang-eval)
 
-(require redex)
+(require (except-in redex test-->))
 
 (require "./rule-grabber.rkt")
 
 (require "./inequalities.rkt"
          "./list-algebra.rkt")
 
-;I keep accidentally using test-->,
-; instead of test-->>.  Preventing future mistakes here. 
-(define (test--> . x)
-  (raise "don't use test-->, use test-->>"))
 
-(define-language _clock-numbers++-lang
+(define-language+eval _clock-numbers++-lang _clock-numbers++-lang-eval
+
+  
   (e cn++-e)
   (cn++-e n++ (op cn++-e) (bop cn++-e cn++-e))
   (n++ (cons n n++) nil)
-  (op S P zero? unpad pad nines?)
+  (op S P zero? unpad pad nines? safe-pad num-digits)
   (bop add sub div mod mult cons)
-  (n 0 1 2 3 4 5 6 7 8 9))
+  (n 0 1 2 3 4 5 6 7 8 9)
 
+  )
+
+;Can we get rid of these unions.  Hide within Macro?
 (define-union-language clock-numbers++-lang
   _clock-numbers++-lang
   inequalities-lang-eval
-  list-lang)
-
-(define-extended-language _clock-numbers++-lang-eval clock-numbers++-lang
-  (E hole
-     (op E)
-     (bop E e)
-     (bop e E)))
+  list-lang
+  )
 
 (define-union-language clock-numbers++-lang-eval
   _clock-numbers++-lang-eval
@@ -41,10 +37,11 @@
   list-lang-eval)
 
 
-(functions clock-numbers++-lang      ;Uses this (could define?)
-           clock-numbers++-lang-eval ;Uses this (could define?)
-           TEST_clock-numbers++-red      ;Defines this
-           n++
+(functions
+ clock-numbers++-lang      ;Uses this (could define?)
+ clock-numbers++-lang-eval ;Uses this (could define?)
+ _clock-numbers++-red      ;Defines this
+ n++
  
  (S nil)                  nil
  (S (cons 9 any_1))       (cons 0 (S any_1))
@@ -78,8 +75,8 @@
                                    (cons any_1 (unpad any_2)))
 
  (add any_1 any_2)        (if (zero? any_2)
-                               any_1
-                               (add (S any_1) (P any_2)))
+                              any_1
+                              (add (S any_1) (P any_2)))
 
  (mult any_1 any_2)        (if (zero? any_2)
                                (cons 0 nil)
@@ -94,13 +91,16 @@
                               (mod (sub any_1 any_2)
                                    any_2))
 
- ;(<++~ any_1 any_2)    (???)
+ (< any_1 any_2)    (or (longer-num any_1 any_2)
+                        ())
 
- ;(num-digits++ nil)                (cons 0 nil)
- ;(num-digits++ (cons any_1 any_2)) (S (safe-pad
- ;                                      (num-digits any_2)))
+ (num-digits nil)                (cons 0 nil)
+ (num-digits (cons any_1 any_2)) (S (safe-pad
+                                     (num-digits any_2)))
  )
 
+
+;Hide this wiring within the macro too...
 (define extended-list-lang-red
   (extend-reduction-relation list-lang-red
                              clock-numbers++-lang-eval))
@@ -110,8 +110,7 @@
                              clock-numbers++-lang-eval))
 
 (define clock-numbers++-red
-  (union-reduction-relations ;_clock-numbers++-red
-                             TEST_clock-numbers++-red
+  (union-reduction-relations _clock-numbers++-red
                              extended-inequalities-lang-red
                              extended-list-lang-red
                              ))
@@ -131,77 +130,75 @@
   (test-->> clock-numbers++-red
             (term
              (nines? (cons 9 (cons 8 nil))))
-            (term #f)))
+            (term #f))
 
 
-(module+ test
   (displayln "Test safe-pad")
   (test-->> clock-numbers++-red
             (term
              (safe-pad (cons 9 (cons 8 nil))))
             (term
-             (cons 9 (cons 8 nil)))))
+             (cons 9 (cons 8 nil))))
 
-(module+ test
+
   (displayln "Test unpad")
   (test-->>
    clock-numbers++-red
    (term
     (unpad (cons 2 (cons 2 (cons 0 (cons 0 (cons 0 nil)))))))
    (term
-    (cons 2 (cons 2 nil)))))
-
-#;(module+ test
-  (test--> clock-numbers++-red
-           (term
-            (num-digits (cons 2 (cons 2 nil))))
-           (term
-            (cons 2 nil))))
+    (cons 2 (cons 2 nil))))
 
 
-#;(module+ test
+  (displayln "Test num-digits")
+  (test-->> clock-numbers++-red
+            (term
+             (num-digits (cons 2 (cons 2 nil))))
+            (term
+             (cons 2 nil)))
+
+
+  (displayln "Test mult")
   (test-->> clock-numbers++-red
             (term
              (mult (cons 2 (cons 0 nil))
-                   (cons 5 (cons 0 nil))))
+                   (cons 2 (cons 0 nil))))
             (term
-             (cons 0 (cons 1 nil)))))
+             (cons 4 (cons 0 nil))))
 
 
-#;(module+ test
+  (displayln "Test sub")
   (test-->> clock-numbers++-red
             (term
              (sub (cons 5 nil)
                   (cons 2 nil)))
             (term
-             (cons 3 nil))))
+             (cons 3 nil)))
 
-
-#;(module+ test
+  (displayln "Test mod")
   (test-->> clock-numbers++-red
             (term
              (mod (cons 9 nil)
                   (cons 2 nil)))
             (term
-             (cons 1 nil))))
+             (cons 1 nil)))
 
 
+  (displayln "Test <")
+  (test-->> clock-numbers++-red
+            (term
+             (< (cons 2 (cons 1))                 ;12 vs
+                (cons 5 (cons 2 (cons 0 nil)))    ;025 (zero padded 25)
+                ))
+            (term
+             #t))
 
-#;(module+ test
-  (traces clock-numbers++-red
-          (term
-           (< (cons 2 (cons 1))                 ;12 vs
-              (cons 5 (cons 2 (cons 0 nil)))    ;025 (zero padded 25)
-              ))))
 
-
-
-(module+ test
-  #;(displayln "Test add")
-  #;(test-->> clock-numbers++-red
-            (term (add (cons 5 (cons 0 nil))
-                       (cons 0 (cons 1 nil))))
-            (term (cons 5 (cons 1))))
+  (displayln "Test add")
+  (test-->> clock-numbers++-red
+            (term (add (cons 9 (cons 0 nil))
+                       (cons 1 (cons 0 nil))))
+            (term (cons 0 (cons 1 nil))))
 
   (displayln "Test zero?")
   (test-->> clock-numbers++-red
@@ -210,23 +207,23 @@
 
   (displayln "Test zero?")
   (test-->> clock-numbers++-red
-           (term (zero? (cons 0 (cons 1 nil))))
-           (term #f))
+            (term (zero? (cons 0 (cons 1 nil))))
+            (term #f))
 
   (displayln "Test (S (P x))")
   (test-->> clock-numbers++-red
-           (term (S (P (cons 4 (cons 0 nil)))))
-           (term (cons 4 (cons 0 nil))))
+            (term (S (P (cons 4 (cons 0 nil)))))
+            (term (cons 4 (cons 0 nil))))
 
   (displayln "Test S")
   (test-->> clock-numbers++-red
-           (term (S (cons 9 (cons 0 nil))))
-           (term (cons 0 (cons 1 nil))))
+            (term (S (cons 9 (cons 0 nil))))
+            (term (cons 0 (cons 1 nil))))
 
   (displayln "Test P")
   (test-->> clock-numbers++-red
-           (term (P (cons 0 (cons 0 nil))))
-           (term (cons 9 (cons 9 nil)))))
+            (term (P (cons 0 (cons 0 nil))))
+            (term (cons 9 (cons 9 nil)))))
 
 
 

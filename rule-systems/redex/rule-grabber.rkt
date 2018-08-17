@@ -5,7 +5,9 @@
 (provide define-metafunction+
          get-rule-data
          rules-for
-         functions)
+         functions
+         define-language+eval
+         test-->)
 
 (define data (hash))
 (define (set-data! d)
@@ -76,7 +78,7 @@
 (define-for-syntax (->red-line head domain)
   `(--> (in-hole E (,(first head) ,@(vars-for head domain) #;n++))
         (in-hole E (,(format-symbol "meta:~a" (first head)) ,@(vars-for head domain) #;n++))
-        ,(format "~a~a" (first head) (random 10000)) ))
+        ,(format "~a-~a" (first head) domain) ))
 
 (define-for-syntax (->red red-name lang-eval-name heads domain)
   `(define ,red-name
@@ -115,6 +117,28 @@
                  `(begin
                       ,@(map (curry ->meta lang) fns)
                       ,(->red red-name lang-eval-name uniq-heads domain))))
+
+
+
+(define-syntax (define-language+eval stx)
+  (define inputs (rest (syntax->datum stx)))
+  
+  (define lang (first inputs))
+  (define eval-lang (second inputs))
+
+  (define the-rest (drop inputs 2))
+
+  (datum->syntax stx
+                 `(begin
+                    (define-language
+                      ,lang
+                      ,@the-rest)
+                    
+                    (define-extended-language ,eval-lang ,lang
+                      (E hole
+                         (op E)
+                         (bop E e)
+                         (bop e E))))))
 
 
 
