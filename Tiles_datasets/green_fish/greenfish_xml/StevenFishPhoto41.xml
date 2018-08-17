@@ -1,0 +1,26 @@
+<annotation verified="yes">
+	<folder>fish-pics</folder>
+	<filename>StevenFishPhoto41.jpg</filename>
+	<path>/home/steven/Documents/fish-pics/StevenFishPhoto41.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>800</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Fish Tile</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>397</xmin>
+			<ymin>269</ymin>
+			<xmax>511</xmax>
+			<ymax>387</ymax>
+		</bndbox>
+	</object>
+</annotation>

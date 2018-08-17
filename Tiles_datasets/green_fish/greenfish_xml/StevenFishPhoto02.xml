@@ -1,0 +1,26 @@
+<annotation>
+	<folder>fish-pics</folder>
+	<filename>StevenFishPhoto02.jpg</filename>
+	<path>/home/steven/Documents/fish-pics/StevenFishPhoto02.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>800</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Fish Tile</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>359</xmin>
+			<ymin>92</ymin>
+			<xmax>481</xmax>
+			<ymax>205</ymax>
+		</bndbox>
+	</object>
+</annotation>
