@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Fish photos</folder>
+	<filename>DanielFish_22_result.jpg</filename>
+	<path>C:\Users\danie\Downloads\Fish photos\Fish photos\DanielFish_22_result.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>450</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Fish Tile</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>188</xmin>
+			<ymin>234</ymin>
+			<xmax>311</xmax>
+			<ymax>355</ymax>
+		</bndbox>
+	</object>
+</annotation>

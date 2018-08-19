@@ -1,0 +1,26 @@
+<annotation>
+	<folder>reduced images</folder>
+	<filename>taco_fish10.jpg</filename>
+	<path>C:\Users\theno.DESKTOP-FEM7UKI\Documents\thoughtstem morugamu cv\reduced images\taco_fish10.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>600</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Fish Tiles</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>203</xmin>
+			<ymin>211</ymin>
+			<xmax>322</xmax>
+			<ymax>330</ymax>
+		</bndbox>
+	</object>
+</annotation>
