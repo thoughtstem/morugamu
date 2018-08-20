@@ -1,7 +1,7 @@
 #lang racket
 
 (require "./common.rkt"
-         "./redex/inequalities.rkt")
+         "./redex/ineq.rkt")
 
 (module+ test
   (require-lang bool)
@@ -11,8 +11,8 @@
 
   (render ineq:theme))
 
-(make-generator generate inequalities-lang e)
-(make-simulator simulate inequalities-lang)
+(make-generator generate ineq-lang e)
+(make-simulator simulate ineq-lang)
 
 (make-renderer render
                (< max ret = min > >= <=))

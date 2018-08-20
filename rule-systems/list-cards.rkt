@@ -1,7 +1,7 @@
 #lang racket
 
 (require "./common.rkt"
-         "./redex/list-algebra.rkt")
+         "./redex/list.rkt")
 
 (module+ test
   (require (prefix-in list: "../themes/emoji-list.rkt"))
